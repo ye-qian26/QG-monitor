@@ -4,12 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.qg.alert.mapper.NotificationMapper;
 import com.qg.alert.mapper.ResponsibilityMapper;
 import com.qg.alert.service.NotificationService;
-import com.qg.common.domain.po.Notification;
-import com.qg.common.domain.po.Responsibility;
+import com.qg.common.domain.po.*;
 import com.qg.common.repository.ErrorRepository;
 import com.qg.common.repository.RepositoryConstants;
 
-import com.qg.common.utils.WechatAlertUtil;
+
+import com.qg.feign.clients.*;
+
+import com.qg.feign.domain.dto.UsersDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static com.qg.common.utils.Constants.*;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -35,11 +39,11 @@ public class ResponsibilityMonitor {
     @Autowired
     private NotificationMapper notificationMapper;
     @Autowired
-    private RoleMapper roleMapper;
-    @Autowired
     private NotificationService notificationService;
+    /*
+
     @Autowired
-    private ErrorRepository errorRepository;
+    private WechatAlertUtil wechatAlertUtil;
     @Autowired
     private ProjectMapper projectMapper;
     @Autowired
@@ -50,6 +54,17 @@ public class ResponsibilityMonitor {
     private BackendErrorMapper backendErrorMapper;
     @Autowired
     private UsersMapper usersMapper;
+    */
+
+    private final UserClient userClient;
+    private final ProjectClient projectClient;
+    private final BackendClient backendClient;
+    private final FrontendClient frontendClient;
+    private final MobileClient mobileClient;
+
+    @Autowired
+    private ErrorRepository errorRepository;
+
 
     // 每1分钟检查一次(可根据需要调整)
     @Scheduled(fixedRate = 1 * 60 * 1000)
@@ -109,7 +124,7 @@ public class ResponsibilityMonitor {
                         notificationService.add(allNotifications);
 
                         //发微信
-                        wechatAlertUtil.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                        errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
                                 , buildMentionedMobileList(item, USER_ROLE_ADMIN));
                     }
                     //发信息
@@ -120,7 +135,7 @@ public class ResponsibilityMonitor {
                     //发信息
                     notificationService.add(allNotifications);
                     //发微信
-                    wechatAlertUtil.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_BOSS));
 
                 }else if(userRole.equals(USER_ROLE_ADMIN)){
@@ -133,7 +148,7 @@ public class ResponsibilityMonitor {
                         log.warn("该项目无成员，无法再发送！");
                     }
                     //发微信
-                    wechatAlertUtil.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_MEMBER));
 
                     //发送给老板
@@ -149,7 +164,7 @@ public class ResponsibilityMonitor {
                         notificationService.add(allNotifications);
 
                         //发微信
-                        wechatAlertUtil.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                        errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
                                 , buildMentionedMobileList(item, USER_ROLE_ADMIN));
                     }
                     List<Notification> allNotifications = Stream.concat(
@@ -160,7 +175,7 @@ public class ResponsibilityMonitor {
                     //发信息
 
                     //发微信
-                    wechatAlertUtil.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_BOSS));
 
                 }else if(userRole.equals(USER_ROLE_BOSS)){
@@ -183,10 +198,10 @@ public class ResponsibilityMonitor {
                     ).collect(Collectors.toList());
 
                     notificationService.add(allNotifications);
-                    wechatAlertUtil.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_ADMIN));
 
-                    wechatAlertUtil.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_MEMBER));
                 }else if(userRole.equals(USER_ROLE_MEMBER)){
                     log.info("获取信息成功，上次发给了普通员工，升级报警，发送给管理员");
@@ -207,11 +222,11 @@ public class ResponsibilityMonitor {
                     notificationService.add(allNotifications);
 
                     //发送给成员
-                    wechatAlertUtil.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_MEMBER));
 
                     //发送给管理员
-                    wechatAlertUtil.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_ADMIN));
 
                 }else if(userRole.equals(USER_ROLE_ADMIN)){
@@ -256,7 +271,9 @@ public class ResponsibilityMonitor {
         queryWrapper1.eq(Role::getUserId, existNotification.getReceiverId())
                 .eq(Role::getProjectId, existNotification.getProjectId());
 
-        Role role = roleMapper.selectOne(queryWrapper1);
+        //Role role = roleMapper.selectOne(queryWrapper1);
+        Role role = projectClient.getRoleListByQueryWrapper(queryWrapper1).get(0);
+
         if (role == null) {
             log.warn("未查询到相关信息！");
             return null;
@@ -281,13 +298,15 @@ public class ResponsibilityMonitor {
             LambdaQueryWrapper<Role> qw = new LambdaQueryWrapper<>();
             qw.eq(Role::getUserId, item.getResponsibleId())
                     .eq(Role::getProjectId, item.getProjectId());
-            Role role = roleMapper.selectOne(qw);
+            //Role role = roleMapper.selectOne(qw);
+            Role role = projectClient.getRoleListByQueryWrapper(qw).get(0);
             roles.add(role);
 
         } else {
             LambdaQueryWrapper<Role> qw = new LambdaQueryWrapper<>();
             qw.eq(Role::getUserRole, userRole).eq(Role::getProjectId, item.getProjectId());
-            roles = roleMapper.selectList(qw);
+            //roles = roleMapper.selectList(qw);
+            roles = projectClient.getRoleListByQueryWrapper(qw);
         }
         for (Role role : roles) {
             Notification notification = new Notification();
@@ -313,19 +332,22 @@ public class ResponsibilityMonitor {
             LambdaQueryWrapper<Role> qw = new LambdaQueryWrapper<>();
             qw.eq(Role::getUserId, responsibility.getResponsibleId())
                     .eq(Role::getProjectId, responsibility.getProjectId());
-            Role role = roleMapper.selectOne(qw);
+            //Role role = roleMapper.selectOne(qw);
+            Role role = projectClient.getRoleListByQueryWrapper(qw).get(0);
             roleList.add(role);
         } else {
 
             LambdaQueryWrapper<Role> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(Role::getProjectId, responsibility.getProjectId())
                     .eq(Role::getUserRole, userRole);
-            roleList = roleMapper.selectList(queryWrapper);
+            //roleList = roleMapper.selectList(queryWrapper);
+            roleList = projectClient.getRoleListByQueryWrapper(queryWrapper);
         }
         for (Role role : roleList) {
             LambdaQueryWrapper<Users> queryWrapper1 = new LambdaQueryWrapper<>();
             queryWrapper1.eq(Users::getId, role.getUserId());
-            Users user = usersMapper.selectOne(queryWrapper1);
+            //Users user = usersMapper.selectOne(queryWrapper1);
+            UsersDto user = userClient.findUserById(role.getUserId());
             mobileList.add(user.getPhone());
 
 
@@ -339,7 +361,8 @@ public class ResponsibilityMonitor {
      */
     protected String getWebhookUrl(String projectId) {
         // 从数据库查询webhook
-        return projectMapper.selectWebhookByProjectId(projectId);
+        //return projectMapper.selectWebhookByProjectId(projectId);
+        return projectClient.selectWebhookByProjectId(projectId);
     }
 
     /**
@@ -352,7 +375,8 @@ public class ResponsibilityMonitor {
             log.info("发送移动端错误！");
             LambdaQueryWrapper<MobileError> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(MobileError::getId, item.getErrorId());
-            MobileError mobileError = mobileErrorMapper.selectOne(queryWrapper);
+            //MobileError mobileError = mobileErrorMapper.selectOne(queryWrapper);
+            MobileError mobileError = mobileClient.getMobileErrorByWrapper(queryWrapper).get(0);
             return String.format("【移动端错误告警】\n" +
                             "项目ID：%s\n" +
                             "错误类型：%s\n" +
@@ -373,7 +397,8 @@ public class ResponsibilityMonitor {
             log.info("发送前端错误！");
             LambdaQueryWrapper<FrontendError> queryWrapper1 = new LambdaQueryWrapper<>();
             queryWrapper1.eq(FrontendError::getId, item.getErrorId());
-            FrontendError frontendError = frontendErrorMapper.selectOne(queryWrapper1);
+            //FrontendError frontendError = frontendErrorMapper.selectOne(queryWrapper1);
+            FrontendError frontendError = frontendClient.getFrontendErrorByWrapper(queryWrapper1).get(0);
             return String.format("【前端错误告警】\n" +
                             "项目ID：%s\n" +
                             "错误类型：%s\n" +
@@ -392,7 +417,8 @@ public class ResponsibilityMonitor {
             log.info("发送后端错误！");
             LambdaQueryWrapper<BackendError> queryWrapper2 = new LambdaQueryWrapper<>();
             queryWrapper2.eq(BackendError::getId, item.getErrorId());
-            BackendError backendError = backendErrorMapper.selectOne(queryWrapper2);
+            //BackendError backendError = backendErrorMapper.selectOne(queryWrapper2);
+            BackendError backendError = backendClient.getBackendErrorByWrapper(queryWrapper2).get(0);
             return String.format("【后端错误告警】\n" +
                             "项目ID：%s\n" +
                             "错误类型：%s\n" +

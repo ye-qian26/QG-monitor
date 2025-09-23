@@ -325,4 +325,6 @@ public class RoleServiceImpl implements RoleService {
     public List<Role> getRoleListByQueryWrapper(LambdaQueryWrapper<Role> queryWrapper) {
         return roleMapper.selectList(queryWrapper);
     }
+
+
 }

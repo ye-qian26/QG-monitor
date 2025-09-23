@@ -25,4 +25,6 @@ public interface RoleService {
     Result getBossCountByProjectId(String projectId);
 
     List<Role> getRoleListByQueryWrapper(LambdaQueryWrapper<Role> queryWrapper);
+
+
 }
