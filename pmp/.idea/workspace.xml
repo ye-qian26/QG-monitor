@@ -5,14 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="101c86bb-486b-41b5-994b-d61830a62385" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/monitor/ResponsibilityMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/monitor/ResponsibilityMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/service/impl/NotificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/service/impl/NotificationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/service/impl/ResponsibilityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/service/impl/ResponsibilityServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/aggregator/BackendErrorAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/aggregator/BackendErrorAggregator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/BackendErrorFatherRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/controller/BackendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/controller/BackendController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/BackendErrorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/BackendErrorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/BackendLogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/BackendLogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/MethodInvocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/MethodInvocationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/MethodInvocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/MethodInvocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/impl/BackendErrorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/impl/BackendErrorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/impl/BackendResponsibilityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/impl/BackendResponsibilityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/impl/MethodInvocationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/impl/MethodInvocationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/BackendClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/BackendClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/UserClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/UserClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/dto/UsersDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/domain/dto/UsersDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/pojo/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/vo/BackendErrorHandleVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/domain/vo/BackendErrorHandleVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/vo/FrontendErrorHandleVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/domain/vo/FrontendErrorHandleVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/vo/MobileErrorHandleVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/domain/vo/MobileErrorHandleVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/aggregator/FrontendErrorAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/aggregator/FrontendErrorAggregator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/repository/FrontendErrorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/repository/FrontendErrorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/qg/gateway/AuthorizeFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/qg/gateway/AuthorizeFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/mapper/MethodInvocationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/mapper/MethodInvocationMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllErrorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllErrorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllPerformanceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllPerformanceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/GraphServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/GraphServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message-service/src/main/java/com/qg/message/service/impl/MessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/message-service/src/main/java/com/qg/message/service/impl/MessageServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/repository/MobileErrorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/repository/MobileErrorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/service/impl/MobileResponsibilityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/service/impl/MobileResponsibilityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/ProjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/RoleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/ErrorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/ErrorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/StatisticsDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/StatisticsDataRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +96,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BackendServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ProjectServiceApplication">
     <configuration name="BackendServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="backend-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.qg.backend.BackendServiceApplication" />

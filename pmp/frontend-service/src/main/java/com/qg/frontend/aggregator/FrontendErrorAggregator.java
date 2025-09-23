@@ -4,6 +4,7 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 
 import com.qg.common.domain.po.FrontendError;
+import com.qg.common.domain.po.Project;
 import com.qg.frontend.mapper.FrontendErrorMapper;
 
 import com.qg.frontend.repository.FrontendErrorRepository;
@@ -34,9 +35,6 @@ public class FrontendErrorAggregator {
 
     @Autowired
     private FrontendErrorMapper frontendErrorMapper;
-
-    @Autowired
-    private ProjectMapper projectMapper;
 
     // 添加线程池用于延迟处理
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(3);

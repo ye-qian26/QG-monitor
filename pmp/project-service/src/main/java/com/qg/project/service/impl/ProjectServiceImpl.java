@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import static com.qg.common.domain.po.Code.*;
+import static com.qg.common.utils.Constants.*;
 import static com.qg.common.utils.RedisConstants.INVITE_CODE_KEY;
 import static com.qg.common.utils.RedisConstants.INVITE_CODE_TTL;
 

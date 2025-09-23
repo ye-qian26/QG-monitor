@@ -2,11 +2,15 @@ package com.qg.backend.repository;
 
 
 import com.qg.backend.domain.po.BackendLog;
+import com.qg.backend.mapper.BackendLogMapper;
+import com.qg.common.domain.po.BackendError;
 import com.qg.common.repository.StatisticsDataRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 import static com.qg.common.repository.RepositoryConstants.BACKEND_LOG_PREFIX;
 import static com.qg.common.repository.RepositoryConstants.TTL_MINUTES;
@@ -44,5 +48,14 @@ public class BackendLogRepository extends StatisticsDataRepository<BackendLog> {
     @Override
     protected void incrementEvent(BackendLog log) {
         log.incrementEvent();
+    }
+
+    @Override
+    protected void checkIfAlert(BackendLog entity) {
+    }
+
+    @Override
+    protected boolean saveNotification(List<Long> alertReceiverID, BackendError error) {
+        return false;
     }
 }

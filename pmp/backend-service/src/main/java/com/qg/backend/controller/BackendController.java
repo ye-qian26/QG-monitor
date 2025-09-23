@@ -16,6 +16,7 @@ import com.qg.common.domain.po.BackendPerformance;
 import com.qg.common.domain.po.Result;
 import com.qg.common.domain.vo.EarthVO;
 import com.qg.common.domain.vo.IllegalAttackVO;
+import com.qg.common.domain.vo.MethodInvocationVO;
 import com.qg.feign.clients.ProjectClient;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -211,6 +212,22 @@ public class BackendController {
     @GetMapping("/getBackendPerformanceByWrapper")
     public List<BackendPerformance> getBackendPerformanceByWrapper(@RequestParam LambdaQueryWrapper<BackendPerformance> queryWrapper) {
         return backendPerformanceService.getBackendPerformanceByWrapper(queryWrapper);
+    }
+
+    /**
+     * 获取后端方法调用统计
+     *
+     * @param projectId 项目id
+     * @param startTime 开始时间
+     * @param endTime   结束时间
+     * @return 结果
+     */
+    @GetMapping("/queryMethodInvocationStats")
+    public List<MethodInvocationVO> queryMethodInvocationStats(
+            @RequestParam String projectId,
+            @RequestParam LocalDateTime startTime,
+            @RequestParam LocalDateTime endTime) {
+        return methodInvocationService.queryMethodInvocationStats(projectId, startTime, endTime);
     }
 }
 

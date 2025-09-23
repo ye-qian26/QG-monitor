@@ -6,6 +6,7 @@ import com.qg.common.domain.po.BackendError;
 import com.qg.backend.mapper.BackendErrorMapper;
 
 import com.qg.backend.repository.BackendErrorRepository;
+import com.qg.common.domain.po.Project;
 import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,6 @@ public class BackendErrorAggregator {
     @Autowired
     private BackendErrorMapper backendErrorMapper;
 
-    @Autowired
-    private ProjectMapper projectMapper;
 
     // 添加线程池用于延迟处理
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(3);

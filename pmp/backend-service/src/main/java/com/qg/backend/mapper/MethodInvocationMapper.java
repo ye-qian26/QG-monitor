@@ -1,4 +1,4 @@
-package com.qg.graph.mapper;
+package com.qg.backend.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qg.common.domain.dto.MethodInvocationDTO;

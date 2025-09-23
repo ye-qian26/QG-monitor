@@ -1,4 +1,4 @@
-package com.qg.feign.vo;
+package com.qg.feign.domain.vo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;

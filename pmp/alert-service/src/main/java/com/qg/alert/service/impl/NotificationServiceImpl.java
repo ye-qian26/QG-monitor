@@ -10,7 +10,7 @@ import com.qg.alert.mapper.NotificationMapper;
 import com.qg.alert.service.NotificationService;
 import com.qg.common.websocket.UnifiedWebSocketHandler;
 import com.qg.feign.clients.*;
-import com.qg.feign.dto.UsersDto;
+import com.qg.feign.domain.dto.UsersDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;

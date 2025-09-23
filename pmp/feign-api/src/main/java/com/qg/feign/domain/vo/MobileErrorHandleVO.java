@@ -1,4 +1,4 @@
-package com.qg.feign.vo;
+package com.qg.feign.domain.vo;
 
 import lombok.Data;
 

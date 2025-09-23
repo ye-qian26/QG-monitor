@@ -14,7 +14,7 @@ import com.qg.common.repository.RepositoryConstants;
 import com.qg.feign.clients.AlertClient;
 import com.qg.feign.clients.ProjectClient;
 import com.qg.feign.clients.UserClient;
-import com.qg.feign.dto.UsersDto;
+import com.qg.feign.domain.dto.UsersDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;

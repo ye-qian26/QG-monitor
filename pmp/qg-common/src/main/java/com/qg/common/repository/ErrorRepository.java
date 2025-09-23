@@ -32,7 +32,6 @@ public abstract class ErrorRepository<T> extends StatisticsDataRepository<T> {
     protected final UserClient userClient;
     protected final AlertClient alertClient;
 
-
     protected abstract boolean saveNotification(List<Long> alertReceiverID, T entity);
     protected abstract boolean shouldAlert(String redisKey, T entity);
     protected abstract String generateAlertMessage(T entity);

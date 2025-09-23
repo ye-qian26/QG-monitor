@@ -2,7 +2,7 @@ package com.qg.graph.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 
-import com.qg.common.domain.po.Result;
+import com.qg.common.domain.po.*;
 import com.qg.graph.service.AllErrorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -13,6 +13,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.qg.common.domain.po.Code.BAD_REQUEST;
+import static com.qg.common.domain.po.Code.INTERNAL_ERROR;
 
 
 /**
@@ -57,7 +58,7 @@ public Result selectByCondition(String projectId, String type) {
 
     try {
         // 查询条件构建
-        LambdaQueryWrapper<BackendError> backendQueryWrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper< BackendError> backendQueryWrapper = new LambdaQueryWrapper<>();
         LambdaQueryWrapper<FrontendError> frontendQueryWrapper = new LambdaQueryWrapper<>();
         LambdaQueryWrapper<MobileError> mobileQueryWrapper = new LambdaQueryWrapper<>();
 

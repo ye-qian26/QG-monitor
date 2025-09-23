@@ -1,8 +1,9 @@
 package com.qg.backend.repository;
 
+import com.qg.backend.mapper.MethodInvocationMapper;
 import com.qg.common.domain.dto.MethodInvocationDTO;
 import com.qg.backend.domain.po.MethodInvocation;
-import com.qg.backend.mapper.MethodInvocationMapper;
+import com.qg.common.domain.po.BackendError;
 import com.qg.common.repository.RepositoryConstants;
 import com.qg.common.repository.StatisticsDataRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -11,11 +12,9 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
-
-
 
 
 @Repository
@@ -27,7 +26,8 @@ public class MethodInvocationRepository extends StatisticsDataRepository<MethodI
 
     /**
      * 统计方法调用
-     * @param methodMap
+     *
+     * @param methodMap 要统计的方法
      */
     public void statisticsMethod(Map<String, Integer> methodMap) {
         // 批量更新Redis
@@ -36,7 +36,7 @@ public class MethodInvocationRepository extends StatisticsDataRepository<MethodI
                 String redisKey = RepositoryConstants.REDIS_KEY_PREFIX.getAsString() + fullKey;
                 connection.stringCommands().incrBy(redisKey.getBytes(), count);
                 // 设置过期时间
-                connection.keyCommands().expire(redisKey.getBytes(), Duration.ofMinutes(getTtlMinutes()));
+                connection.keyCommands().expire(redisKey.getBytes(), getTtlMinutes());
             });
             return null;
         });
@@ -85,6 +85,10 @@ public class MethodInvocationRepository extends StatisticsDataRepository<MethodI
     protected void incrementEvent(MethodInvocation entity) {
     }
 
+    @Override
+    protected void checkIfAlert(MethodInvocation entity) {
+    }
+
     /**
      * 重写父类逻辑
      */
@@ -99,6 +103,11 @@ public class MethodInvocationRepository extends StatisticsDataRepository<MethodI
                 cacheMap.remove(fullKey);
             }
         });
+    }
+
+    @Override
+    protected boolean saveNotification(List<Long> alertReceiverID, BackendError error) {
+        return false;
     }
 
     /**

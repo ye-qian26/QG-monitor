@@ -49,8 +49,8 @@ public class BackendErrorServiceImpl implements BackendErrorService {
     @Autowired
     private ModuleMapper moduleMapper;
 
-    @Autowired
-    private BackendErrorAggregator backendErrorAggregator;
+//    @Autowired
+//    private BackendErrorAggregator backendErrorAggregator;
     @Autowired
     private ModuleService moduleService;
     //@Autowired

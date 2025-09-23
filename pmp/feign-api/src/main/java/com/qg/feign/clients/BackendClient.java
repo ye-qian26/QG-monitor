@@ -6,6 +6,7 @@ import com.qg.common.domain.po.BackendPerformance;
 import com.qg.common.domain.po.Result;
 import com.qg.common.domain.vo.EarthVO;
 import com.qg.common.domain.vo.IllegalAttackVO;
+import com.qg.common.domain.vo.MethodInvocationVO;
 import kotlin.jvm.internal.Lambda;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -81,4 +82,18 @@ public interface BackendClient {
 
     @GetMapping("/getBackendPerformanceByWrapper")
     List<BackendPerformance> getBackendPerformanceByWrapper(@RequestParam LambdaQueryWrapper<BackendPerformance> queryWrapper);
+
+    /**
+     * 获取后端方法调用统计
+     *
+     * @param projectId 项目id
+     * @param startTime 开始时间
+     * @param endTime   结束时间
+     * @return 结果
+     */
+    @GetMapping("/queryMethodInvocationStats")
+    List<MethodInvocationVO> queryMethodInvocationStats(
+            @RequestParam String projectId,
+            @RequestParam LocalDateTime startTime,
+            @RequestParam LocalDateTime endTime);
 }

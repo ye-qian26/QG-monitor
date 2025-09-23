@@ -6,6 +6,7 @@ import com.qg.alert.mapper.ResponsibilityMapper;
 import com.qg.alert.service.NotificationService;
 import com.qg.common.domain.po.Notification;
 import com.qg.common.domain.po.Responsibility;
+import com.qg.common.repository.ErrorRepository;
 import com.qg.common.repository.RepositoryConstants;
 
 import com.qg.common.utils.WechatAlertUtil;
@@ -38,7 +39,7 @@ public class ResponsibilityMonitor {
     @Autowired
     private NotificationService notificationService;
     @Autowired
-    private WechatAlertUtil wechatAlertUtil;
+    private ErrorRepository errorRepository;
     @Autowired
     private ProjectMapper projectMapper;
     @Autowired
@@ -87,7 +88,7 @@ public class ResponsibilityMonitor {
                         log.warn("该项目无成员，无法再发送！");
                     }
                     //发微信
-                    wechatAlertUtil.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_MEMBER));
 
                     //发送给老板

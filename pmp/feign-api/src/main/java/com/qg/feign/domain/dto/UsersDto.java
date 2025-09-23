@@ -1,4 +1,4 @@
-package com.qg.feign.dto;
+package com.qg.feign.domain.dto;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

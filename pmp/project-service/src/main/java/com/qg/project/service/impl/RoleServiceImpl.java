@@ -9,7 +9,7 @@ import com.qg.common.domain.po.Result;
 
 import com.qg.feign.clients.AlertClient;
 import com.qg.feign.clients.UserClient;
-import com.qg.feign.dto.UsersDto;
+import com.qg.feign.domain.dto.UsersDto;
 import com.qg.common.domain.po.Project;
 import com.qg.common.domain.po.Role;
 import com.qg.project.domain.vo.ProjectMemberVO;
@@ -28,6 +28,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.qg.common.utils.Constants.*;
 
 @Service
 @Slf4j
