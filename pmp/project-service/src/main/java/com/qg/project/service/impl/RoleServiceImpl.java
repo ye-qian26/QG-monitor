@@ -29,6 +29,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.qg.common.utils.Constants.*;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -323,4 +325,6 @@ public class RoleServiceImpl implements RoleService {
     public List<Role> getRoleListByQueryWrapper(LambdaQueryWrapper<Role> queryWrapper) {
         return roleMapper.selectList(queryWrapper);
     }
+
+
 }

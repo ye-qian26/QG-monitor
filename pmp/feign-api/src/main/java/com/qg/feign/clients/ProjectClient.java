@@ -34,4 +34,5 @@ public interface ProjectClient {
 
     @GetMapping("/projects/getProjectByUUIds")
     List<Project> getProjectByUUIds(@RequestParam List<String> uuids);
+
 }

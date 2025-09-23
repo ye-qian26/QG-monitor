@@ -4,6 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="381648de-4cc2-48ec-acfc-ba1adfa4473c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
     <list default="true" id="101c86bb-486b-41b5-994b-d61830a62385" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -13,6 +18,7 @@
       <change beforePath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/repository/MobileErrorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/repository/MobileErrorRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/ErrorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/ErrorRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/StatisticsDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/StatisticsDataRepository.java" afterDir="false" />
+>>>>>>> upstream/main
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,8 +174,16 @@
       <created>1758554335049</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1758508887933</updated>
+      <workItem from="1758508888217" duration="2751000" />
+      <workItem from="1758511981435" duration="3671000" />
+      <workItem from="1758546537049" duration="6644000" />
+      <workItem from="1758608142929" duration="1470000" />
+=======
       <updated>1758554335049</updated>
       <workItem from="1758554336652" duration="18791000" />
+>>>>>>> upstream/main
     </task>
     <servers />
   </component>
