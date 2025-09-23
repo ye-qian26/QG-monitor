@@ -188,7 +188,7 @@ public abstract class BackendErrorRepository extends ErrorRepository<BackendErro
      * @param error 后端错误
      */
     @Override
-    protected void checkIfAlert(BackendError error) {
+    public void checkIfAlert(BackendError error) {
 
         log.info("判断是否达到阈值！");
 
@@ -427,4 +427,5 @@ public abstract class BackendErrorRepository extends ErrorRepository<BackendErro
         return false;
 
     }
+
 }

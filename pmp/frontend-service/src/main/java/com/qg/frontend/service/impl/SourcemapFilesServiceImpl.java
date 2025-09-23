@@ -82,7 +82,7 @@ public class SourcemapFilesServiceImpl implements SourcemapFilesService {
 //            projectQueryWrapper.eq(Project::getUuid, projectId);
 //            Project project = projectMapper.selectOne(projectQueryWrapper);
 
-            if (projectClient.checkProjectIdExist(Long.valueOf(projectId))) {
+            if (projectClient.checkProjectIdExist(projectId)) {
                 return new Result(Code.NOT_FOUND, "项目不存在");
             }
 

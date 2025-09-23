@@ -86,7 +86,7 @@ public class MethodInvocationRepository extends StatisticsDataRepository<MethodI
     }
 
     @Override
-    protected void checkIfAlert(MethodInvocation entity) {
+    public void checkIfAlert(MethodInvocation entity) {
     }
 
     /**

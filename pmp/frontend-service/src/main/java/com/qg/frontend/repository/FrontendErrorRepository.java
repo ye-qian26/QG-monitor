@@ -183,7 +183,7 @@ public abstract class FrontendErrorRepository extends ErrorRepository<FrontendEr
      * @param error 前端错误
      */
     @Override
-    protected void checkIfAlert(FrontendError error) {
+    public void checkIfAlert(FrontendError error) {
         log.info("判断是否达到阈值！");
 
         Integer threshold = alertClient.selectThresholdByProjectAndErrorType(

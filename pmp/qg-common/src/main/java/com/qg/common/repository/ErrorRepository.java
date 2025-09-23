@@ -135,7 +135,7 @@ public abstract class ErrorRepository<T> extends StatisticsDataRepository<T> {
     }
 
     @Override
-    protected void checkIfAlert(T entity) {
+    public void checkIfAlert(T entity) {
     }
 
 }

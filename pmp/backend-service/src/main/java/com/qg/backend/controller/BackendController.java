@@ -81,7 +81,7 @@ public class BackendController {
           /*  if (!projectService.checkProjectIdExist(projectId)) {
                 return;
             }*/
-            if (!projectClient.checkProjectIdExist(Long.valueOf(projectId))) {
+            if (!projectClient.checkProjectIdExist(projectId)) {
                 return;
             }
 

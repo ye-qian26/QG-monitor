@@ -49,8 +49,9 @@ public class BackendErrorServiceImpl implements BackendErrorService {
     @Autowired
     private ModuleMapper moduleMapper;
 
-//    @Autowired
-//    private BackendErrorAggregator backendErrorAggregator;
+    @Autowired
+    private BackendErrorAggregator backendErrorAggregator;
+
     @Autowired
     private ModuleService moduleService;
     //@Autowired
@@ -106,7 +107,7 @@ public class BackendErrorServiceImpl implements BackendErrorService {
         try {
             BackendError backendError = JSONUtil.toBean(errorData, BackendError.class);
             if (backendError.getProjectId() == null ||
-                !projectClient.checkProjectIdExist(Long.valueOf(backendError.getProjectId())) ||
+                !projectClient.checkProjectIdExist(backendError.getProjectId()) ||
                 backendError.getErrorType() == null ||
                 backendError.getEnvironment() == null) {
                 log.error("参数错误");

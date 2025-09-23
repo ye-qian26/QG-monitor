@@ -97,7 +97,7 @@ public class BackendPerformanceServiceImpl implements BackendPerformanceService 
 
             // 检查项目ID是否存在
             String projectId = backendPerformances.getFirst().getProjectId();
-            if (!projectClient.checkProjectIdExist(Long.valueOf(projectId))) {
+            if (!projectClient.checkProjectIdExist(projectId)) {
                 log.warn("项目ID:{}不存在", projectId);
                 return new Result(BAD_REQUEST, "项目ID不存在");
             }

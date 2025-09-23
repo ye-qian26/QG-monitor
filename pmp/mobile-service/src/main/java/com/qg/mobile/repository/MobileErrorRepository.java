@@ -183,7 +183,7 @@ public abstract class MobileErrorRepository extends ErrorRepository<MobileError>
      * @param error 移动错误
      */
     @Override
-    protected void checkIfAlert(MobileError error) {
+    public void checkIfAlert(MobileError error) {
         log.info("判断是否达到阈值");
 
         int currentCount = error.getEvent();

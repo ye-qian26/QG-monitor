@@ -51,7 +51,7 @@ public class BackendLogRepository extends StatisticsDataRepository<BackendLog> {
     }
 
     @Override
-    protected void checkIfAlert(BackendLog entity) {
+    public void checkIfAlert(BackendLog entity) {
     }
 
     @Override
