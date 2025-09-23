@@ -119,6 +119,4 @@ public abstract class StatisticsDataRepository<T> {
             }
         }
     }
-
-    protected abstract boolean saveNotification(List<Long> alertReceiverID, BackendError error);
 }

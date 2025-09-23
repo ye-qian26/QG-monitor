@@ -8,7 +8,7 @@ import com.qg.backend.mapper.BackendErrorMapper;
 import com.qg.common.domain.po.Notification;
 import com.qg.common.domain.po.Responsibility;
 import com.qg.common.domain.po.Role;
-import com.qg.common.repository.ErrorRepository;
+import com.qg.feign.repository.ErrorRepository;
 import com.qg.common.repository.RepositoryConstants;
 
 import com.qg.feign.clients.AlertClient;
@@ -38,8 +38,7 @@ import static com.qg.common.utils.Constants.USER_ROLE_ADMIN;
 
 @Slf4j
 @Repository
-
-public abstract class BackendErrorRepository extends ErrorRepository<BackendError> {
+public class BackendErrorRepository extends ErrorRepository<BackendError> {
 
     @Autowired
     protected BackendErrorMapper backendErrorMapper;

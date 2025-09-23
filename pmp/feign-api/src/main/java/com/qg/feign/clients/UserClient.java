@@ -29,7 +29,7 @@ public interface UserClient {
      * @param userIds 用户id集合
      * @return 结果
      */
-    @GetMapping("/selectBatchIds")
+    @GetMapping("/users/selectBatchIds")
     List<Users> selectBatchIds(@RequestParam Set<Long> userIds);
 
     /**
@@ -38,6 +38,6 @@ public interface UserClient {
      * @param queryWrapper 查询器
      * @return 结果
      */
-    @GetMapping("/selectList")
-    List<Users> selectList(LambdaQueryWrapper<Users> queryWrapper);
+    @GetMapping("/users/selectList")
+    List<Users> selectList(@RequestParam LambdaQueryWrapper<Users> queryWrapper);
 }

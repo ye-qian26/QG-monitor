@@ -5,7 +5,7 @@ import com.qg.alert.mapper.NotificationMapper;
 import com.qg.alert.mapper.ResponsibilityMapper;
 import com.qg.alert.service.NotificationService;
 import com.qg.common.domain.po.*;
-import com.qg.common.repository.ErrorRepository;
+import com.qg.feign.repository.ErrorRepository;
 import com.qg.common.repository.RepositoryConstants;
 
 

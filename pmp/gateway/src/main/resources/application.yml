@@ -5,6 +5,8 @@ spring:
     name: gateway
   cloud:
     nacos:
+      discovery:
+        enabled: true  # 开启服务注册发现
       server-addr: http://47.113.224.195:8848 # nacos地址
     gateway:
       routes:
@@ -48,11 +50,11 @@ spring:
           uri: lb://project-service
           predicates:
             - Path=/project/**
-        # 角色服务
-        - id: role-service
-          uri: lb://role-service
-          predicates:
-            - Path=/role/**
+#        # 角色服务
+#        - id: role-service
+#          uri: lb://role-service
+#          predicates:
+#            - Path=/role/**
         # 用户服务
         - id: user-service
           uri: lb://user-service

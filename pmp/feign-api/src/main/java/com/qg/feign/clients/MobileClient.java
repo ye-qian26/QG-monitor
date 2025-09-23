@@ -14,7 +14,6 @@ import java.util.List;
 
 
 @FeignClient("mobile-service")
-@RequestMapping("/mobile")
 public interface MobileClient {
 
     /**
@@ -24,7 +23,7 @@ public interface MobileClient {
      * @param timeType  时间类型
      * @return 结果
      */
-    @GetMapping("/getAverageTime")
+    @GetMapping("/mobile/getAverageTime")
     Result getAverageTime(@RequestParam String projectId, @RequestParam String timeType);
 
     /**
@@ -34,7 +33,7 @@ public interface MobileClient {
      * @param timeType  时间类型
      * @return 结果
      */
-    @GetMapping("/getMobileOperation")
+    @GetMapping("/mobile/getMobileOperation")
     Result getMobileOperation(@RequestParam String projectId, @RequestParam String timeType);
 
     /**
@@ -43,7 +42,7 @@ public interface MobileClient {
      * @param projectId 项目id
      * @return 结果
      */
-    @GetMapping("/getMobileErrorStats")
+    @GetMapping("/mobile/getMobileErrorStats")
     Object[] getMobileErrorStats(@RequestParam String projectId);
 
     /**
@@ -52,12 +51,12 @@ public interface MobileClient {
      * @param projectId 项目id
      * @return 结果
      */
-    @GetMapping("/getMobileErrorStatsPro")
+    @GetMapping("/mobile/getMobileErrorStatsPro")
     Object[] getMobileErrorStatsPro(@RequestParam String projectId);
 
-    @GetMapping("/getMobileErrorByWrapper")
+    @GetMapping("/mobile/getMobileErrorByWrapper")
     List<MobileError> getMobileErrorByWrapper(@RequestParam LambdaQueryWrapper<MobileError> wrapper);
 
-    @GetMapping("/getMobilePerformanceByWrapper")
+    @GetMapping("/mobile/getMobilePerformanceByWrapper")
     List<MobilePerformance> getMobilePerformanceByWrapper(@RequestParam LambdaQueryWrapper<MobilePerformance> wrapper);
 }

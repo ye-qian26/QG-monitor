@@ -54,8 +54,4 @@ public class BackendLogRepository extends StatisticsDataRepository<BackendLog> {
     public void checkIfAlert(BackendLog entity) {
     }
 
-    @Override
-    protected boolean saveNotification(List<Long> alertReceiverID, BackendError error) {
-        return false;
-    }
 }

@@ -105,11 +105,6 @@ public class MethodInvocationRepository extends StatisticsDataRepository<MethodI
         });
     }
 
-    @Override
-    protected boolean saveNotification(List<Long> alertReceiverID, BackendError error) {
-        return false;
-    }
-
     /**
      * 将实体转换为VO
      *

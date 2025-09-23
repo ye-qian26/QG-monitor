@@ -20,8 +20,8 @@
         <module name="frontend-service" />
         <module name="message-service" />
         <module name="project-service" />
-        <module name="gateway" />
         <module name="feign-api" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
   </component>

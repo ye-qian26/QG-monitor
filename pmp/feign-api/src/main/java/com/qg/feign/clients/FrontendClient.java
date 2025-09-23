@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @FeignClient("frontend-service")
-@RequestMapping("/frontend")
 public interface FrontendClient {
 
     /**
@@ -30,7 +29,7 @@ public interface FrontendClient {
      * @param endTime   结束时间
      * @return 结果
      */
-    @GetMapping("/queryTimeDataByProjectIdAndTimeRange")
+    @GetMapping("/frontend/queryTimeDataByProjectIdAndTimeRange")
     List<FrontendBehaviorVO> queryTimeDataByProjectIdAndTimeRange(
             @RequestParam String projectId,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime startTime,
@@ -45,7 +44,7 @@ public interface FrontendClient {
      * @param endTime   结束时间
      * @return 结果
      */
-    @GetMapping("/queryTimeDataByProjectIdAndTimeRangeAndRoute")
+    @GetMapping("/frontend/queryTimeDataByProjectIdAndTimeRangeAndRoute")
     List<FrontendBehaviorVO> queryTimeDataByProjectIdAndTimeRangeAndRoute(
             @RequestParam String projectId,
             @RequestParam String route,
@@ -60,7 +59,7 @@ public interface FrontendClient {
      * @param endTime   结束时间
      * @return 结果
      */
-    @GetMapping("/getErrorTrend")
+    @GetMapping("/frontend/getErrorTrend")
     List<ErrorTrendVO> getErrorTrend(
             @RequestParam String projectId,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime startTime,
@@ -74,11 +73,11 @@ public interface FrontendClient {
      * @param endTime   结束时间
      * @return 结果
      */
-    @GetMapping("/queryManualTrackingStats")
+    @GetMapping("/frontend/queryManualTrackingStats")
     List<ManualTrackingVO> queryManualTrackingStats(
-            @Param("projectId") String projectId,
-            @Param("startTime") LocalDateTime startTime,
-            @Param("endTime") LocalDateTime endTime);
+            @RequestParam String projectId,
+            @RequestParam LocalDateTime startTime,
+            @RequestParam LocalDateTime endTime);
 
     /**
      * 获取两种前端错误信息
@@ -86,8 +85,8 @@ public interface FrontendClient {
      * @param projectId 项目id
      * @return 结果
      */
-    @GetMapping("/getErrorStats")
-    Object[] getErrorStats(@Param("projectId") String projectId);
+    @GetMapping("/frontend/getErrorStats")
+    Object[] getErrorStats(@RequestParam String projectId);
 
     /**
      * 获取前端性能，加载时间平均数据
@@ -97,11 +96,11 @@ public interface FrontendClient {
      * @param endTime   结束时间
      * @return 结果
      */
-    @GetMapping("/queryAverageFrontendPerformanceTime")
+    @GetMapping("/frontend/queryAverageFrontendPerformanceTime")
     FrontendPerformanceAverageVO queryAverageFrontendPerformanceTime(
-            @Param("projectId") String projectId,
-            @Param("startTime") LocalDateTime startTime,
-            @Param("endTime") LocalDateTime endTime);
+            @RequestParam String projectId,
+            @RequestParam LocalDateTime startTime,
+            @RequestParam LocalDateTime endTime);
 
     /**
      * 获取某个项目的访问量
@@ -110,8 +109,8 @@ public interface FrontendClient {
      * @param timeType  时间类型
      * @return 结果
      */
-    @GetMapping("/getVisits")
-    Result getVisits(@Param("projectId") String projectId, @Param("timeType") String timeType);
+    @GetMapping("/frontend/getVisits")
+    Result getVisits(@RequestParam String projectId, @RequestParam String timeType);
 
     /**
      * 获取前端按钮数据
@@ -119,8 +118,8 @@ public interface FrontendClient {
      * @param projectId 项目id
      * @return 结果
      */
-    @GetMapping("/getFrontendButton")
-    Result getFrontendButton(@Param("projectId") String projectId);
+    @GetMapping("/frontend/getFrontendButton")
+    Result getFrontendButton(@RequestParam String projectId);
 
     /**
      * 获取前端api平均响应时间
@@ -129,12 +128,12 @@ public interface FrontendClient {
      * @param timeType  时间类型
      * @return 结果
      */
-    @GetMapping("/getAverageTime")
-    Result getAverageTime(@Param("projectId") String projectId, @Param("timeType") String timeType);
+    @GetMapping("/frontend/getAverageTime")
+    Result getAverageTime(@RequestParam String projectId, @RequestParam String timeType);
 
-    @GetMapping("/getFrontendErrorByWrapper")
-    List<FrontendError> getFrontendErrorByWrapper( LambdaQueryWrapper<FrontendError> queryWrapper);
+    @GetMapping("/frontend/getFrontendErrorByWrapper")
+    List<FrontendError> getFrontendErrorByWrapper(@RequestParam LambdaQueryWrapper<FrontendError> queryWrapper);
 
-    @GetMapping("/getFrontendPerformanceByWrapper")
-    List<FrontendPerformance> getFrontendPerformanceByWrapper( LambdaQueryWrapper<FrontendPerformance> queryWrapper);
+    @GetMapping("/frontend/getFrontendPerformanceByWrapper")
+    List<FrontendPerformance> getFrontendPerformanceByWrapper(@RequestParam LambdaQueryWrapper<FrontendPerformance> queryWrapper);
 }

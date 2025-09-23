@@ -4,7 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 
 import com.qg.common.domain.po.*;
-import com.qg.common.repository.ErrorRepository;
+import com.qg.feign.repository.ErrorRepository;
 
 import com.qg.common.repository.RepositoryConstants;
 import com.qg.feign.clients.AlertClient;
@@ -36,7 +36,7 @@ import static com.qg.common.utils.Constants.USER_ROLE_ADMIN;
 
 @Slf4j
 @Repository
-public abstract class FrontendErrorRepository extends ErrorRepository<FrontendError> {
+public class FrontendErrorRepository extends ErrorRepository<FrontendError> {
 
     @Autowired
     protected FrontendErrorMapper frontendErrorMapper;

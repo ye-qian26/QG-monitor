@@ -4,50 +4,86 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="101c86bb-486b-41b5-994b-d61830a62385" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" afterDir="false" />
+    <list default="true" id="0d4e2c00-b97e-472b-a0a8-4a54829a6679" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.cache/.Apifox_Helper/.toolWindow.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/monitor/ResponsibilityMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/monitor/ResponsibilityMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/ProjectClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/ProjectClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/controller/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/BackendErrorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/BackendErrorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/BackendLogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/BackendLogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/MethodInvocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/MethodInvocationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/target/classes/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/BackendClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/BackendClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/FrontendClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/FrontendClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/MobileClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/MobileClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/UserClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/UserClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/repository/FrontendErrorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/repository/FrontendErrorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/target/classes/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllErrorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllErrorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllPerformanceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllPerformanceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/graph-service/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/graph-service/target/classes/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/src/main/java/com/qg/milvus/MilvusServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/milvus-service/src/main/java/com/qg/milvus/MilvusServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/milvus-service/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/milvus-service/target/classes/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/repository/MobileErrorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/repository/MobileErrorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-service/src/main/resources/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-service/target/classes/bootstrap.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/ErrorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/repository/ErrorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/StatisticsDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/StatisticsDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/bootstrap.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="333msJZd7IZGtcp2aApOknhkifh" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="335lqvBhfMM2N7rUgzIZNcUmjgG" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.BackendServiceApplication.executor": "Run",
-    "git-widget-placeholder": "正在合并 main",
+    "Spring Boot.FrontendServiceApplication.executor": "Run",
+    "Spring Boot.GatewayApplication.executor": "Run",
+    "Spring Boot.GraphServiceApplication.executor": "Run",
+    "Spring Boot.MessageServiceApplication.executor": "Run",
+    "Spring Boot.MilvusServiceApplication.executor": "Run",
+    "Spring Boot.MobileServiceApplication.executor": "Run",
+    "Spring Boot.ProjectServiceApplication.executor": "Run",
+    "Spring Boot.UserServiceApplication.executor": "Run",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/14527/Desktop/末期/QG-monitor/pmp/gateway/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -59,8 +95,8 @@
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.qg.feign.clients" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\14527\Desktop\末期\QG-monitor\pmp\gateway\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -73,7 +109,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ProjectServiceApplication">
+  <component name="RunManager" selected="Spring Boot.GatewayApplication">
     <configuration name="BackendServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="backend-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.qg.backend.BackendServiceApplication" />
@@ -116,16 +152,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MobileServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="mobile-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.qg.mobile.MobileServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MobileServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="mobile-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.qg.MobileServiceApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.qg.mobile.MobileServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -144,16 +173,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="lua.app" factoryName="Lua Application">
-      <option name="program" value="lua.exe" />
-      <option name="file" value="" />
-      <option name="workingDir" value="$PROJECT_DIR$/feign-api/src/main/java" />
-      <option name="debuggerType" value="1" />
-      <option name="params" value="" />
-      <option name="charset" value="UTF-8" />
-      <option name="showConsole" value="true" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -166,12 +185,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="101c86bb-486b-41b5-994b-d61830a62385" name="更改" comment="" />
-      <created>1758554335049</created>
+      <changelist id="0d4e2c00-b97e-472b-a0a8-4a54829a6679" name="更改" comment="" />
+      <created>1758615008920</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1758554335049</updated>
-      <workItem from="1758554336652" duration="18791000" />
+      <updated>1758615008920</updated>
+      <workItem from="1758615010356" duration="2342000" />
     </task>
     <servers />
   </component>
