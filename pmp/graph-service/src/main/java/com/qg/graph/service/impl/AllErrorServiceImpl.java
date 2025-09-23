@@ -12,8 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.qg.common.domain.po.Code.BAD_REQUEST;
-import static com.qg.common.domain.po.Code.INTERNAL_ERROR;
+import static com.qg.common.domain.po.Code.*;
 
 
 /**
@@ -117,7 +116,7 @@ public Result selectByCondition(String projectId, String type) {
         // 处理移动端错误数据
         List<MobileResponsibilityVO> mobileResponsibilityVOList = processMobileErrors(mobileErrors, mobileResponsibilities, userMap);
 
-        return new Result(Code.SUCCESS,
+        return new Result(SUCCESS,
                 Arrays.asList(backendResponsibilityVOList, frontendResponsibilityVOList, mobileResponsibilityVOList),
                 "查询成功");
 
