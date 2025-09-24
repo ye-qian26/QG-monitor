@@ -6,7 +6,7 @@ import com.qg.project.domain.dto.InviteDto;
 import com.qg.common.domain.po.Project;
 import com.qg.project.domain.vo.PersonalProjectVO;
 import com.qg.project.service.ProjectService;
-import io.swagger.v3.oas.annotations.tags.Tag;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Slf4j
-@Tag(name ="项目")
+//@Tag(name ="项目")
 @RestController
 @RequestMapping("/projects")
 public class ProjectController {

@@ -1,4 +1,4 @@
-package com.qg.common.websocket;
+package com.qg.alert.websocket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;

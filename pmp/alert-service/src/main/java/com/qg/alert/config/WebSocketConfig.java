@@ -1,7 +1,7 @@
-package com.qg.common.config;
+package com.qg.alert.config;
 
 
-import com.qg.common.websocket.UnifiedWebSocketHandler;
+import com.qg.alert.websocket.UnifiedWebSocketHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;

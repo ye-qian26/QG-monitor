@@ -8,7 +8,6 @@ spring:
       password: nacos
       config:
         enabled: true  # 配置中心启用
-#        endpoint: 47.113.224.195:8848
         file-extension: yaml
         shared-configs:
           - data-id: shared-spring.yaml

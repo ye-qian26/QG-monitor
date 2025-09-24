@@ -4,6 +4,7 @@ package com.qg.alert.controller;
 import com.qg.alert.domain.po.AlertRule;
 import com.qg.alert.service.AlertRuleService;
 import com.qg.common.domain.po.Result;
+
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

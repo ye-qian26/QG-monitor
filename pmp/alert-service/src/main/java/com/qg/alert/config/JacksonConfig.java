@@ -1,4 +1,4 @@
-package com.qg.common.config;
+package com.qg.alert.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 
 
+import com.qg.alert.websocket.UnifiedWebSocketHandler;
 import com.qg.common.domain.po.*;
 import com.qg.alert.domain.vo.NotificationVO;
 import com.qg.alert.mapper.NotificationMapper;
 import com.qg.alert.service.NotificationService;
-import com.qg.common.websocket.UnifiedWebSocketHandler;
+
 import com.qg.feign.clients.*;
 import com.qg.feign.domain.dto.UsersDto;
 import lombok.RequiredArgsConstructor;
@@ -454,7 +455,7 @@ public class NotificationServiceImpl implements NotificationService {
     /**
      * 批量获取项目信息映射
      */
-    private Map<String, com.qg.common.domain.po.Project> getProjectMap(List<String> projectIds) {
+    private Map<String, Project> getProjectMap(List<String> projectIds) {
         if (projectIds.isEmpty()) {
             return new HashMap<>();
         }
@@ -462,10 +463,10 @@ public class NotificationServiceImpl implements NotificationService {
         /*LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.in(Project::getUuid, projectIds);
         List<Project> projects = projectMapper.selectList(queryWrapper);*/
-        List<com.qg.common.domain.po.Project> projects = projectClient.getProjectByUUIds(projectIds);
+        List<Project> projects = projectClient.getProjectByUUIds(projectIds);
 
         return projects.stream()
-                .collect(Collectors.toMap(com.qg.common.domain.po.Project::getUuid, project -> project));
+                .collect(Collectors.toMap(Project::getUuid, project -> project));
     }
 
     /**

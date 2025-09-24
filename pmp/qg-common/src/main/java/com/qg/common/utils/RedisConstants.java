@@ -1,6 +1,5 @@
 package com.qg.common.utils;
 
-import io.swagger.v3.oas.models.security.SecurityScheme;
 
 public class RedisConstants {
     /**

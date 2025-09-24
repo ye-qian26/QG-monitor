@@ -1,4 +1,7 @@
 spring:
+  main:
+    # 强制使用响应式 Web 类型（WebFlux），禁用 Servlet 类型（MVC）
+    web-application-type: reactive
   application:
     name: gateway
   cloud:
