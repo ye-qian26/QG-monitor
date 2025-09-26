@@ -1,7 +1,5 @@
 package com.qg.common.repository;
 
-
-import com.qg.common.domain.po.BackendError;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alert-service/alert-service.iml" filepath="$PROJECT_DIR$/alert-service/alert-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend-service/backend-service.iml" filepath="$PROJECT_DIR$/backend-service/backend-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/feign-api/feign-api.iml" filepath="$PROJECT_DIR$/feign-api/feign-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend-service/frontend-service.iml" filepath="$PROJECT_DIR$/frontend-service/frontend-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/graph-service/graph-service.iml" filepath="$PROJECT_DIR$/graph-service/graph-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/message-service/message-service.iml" filepath="$PROJECT_DIR$/message-service/message-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/milvus-service/milvus-service.iml" filepath="$PROJECT_DIR$/milvus-service/milvus-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobile-service/mobile-service.iml" filepath="$PROJECT_DIR$/mobile-service/mobile-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pmp.iml" filepath="$PROJECT_DIR$/pmp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-service/project-service.iml" filepath="$PROJECT_DIR$/project-service/project-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qg-common/qg-common.iml" filepath="$PROJECT_DIR$/qg-common/qg-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-service/user-service.iml" filepath="$PROJECT_DIR$/user-service/user-service.iml" />
     </modules>
   </component>
 </project>

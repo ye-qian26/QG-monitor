@@ -17,11 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.yeqian</groupId>-->
-<!--            <artifactId>pmp</artifactId>-->
-<!--            <version>0.0.1-SNAPSHOT</version>-->
-<!--        </dependency>-->
+
         <dependency>
             <groupId>com.yeqian</groupId>
             <artifactId>qg-common</artifactId>

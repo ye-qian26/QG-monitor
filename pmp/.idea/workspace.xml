@@ -4,108 +4,297 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="101c86bb-486b-41b5-994b-d61830a62385" name="更改" comment="">
+    <list default="true" id="43c55836-bca0-4038-8896-0435ddb6cfd4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc.corrupted.20250926-045958.reason.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc.corrupted.20250926-045958.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc/storage_v2/_src_/database/pmp.E7IBAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc/storage_v2/_src_/database/pmp.E7IBAA/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc/storage_v2/_src_/database/pmp.E7IBAA/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc/storage_v2/_src_/database/postgres.edMnLQ/schema/gaussdb.OazO9A.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc/storage_v2/_src_/database/postgres.edMnLQ/schema/pmp.E7IBAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-=======
-    <list default="true" id="0d4e2c00-b97e-472b-a0a8-4a54829a6679" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/controller/BackendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/controller/BackendController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/domain/vo/BackendResponsibilityVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/vo/BackendResponsibilityVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/impl/BackendResponsibilityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/impl/BackendResponsibilityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/controller/BackendController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/controller/BackendController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/controller/BackendController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/controller/BackendController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/BackendClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/BackendClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/FrontendClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/FrontendClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/MobileClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/MobileClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/BackendClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/BackendClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/FrontendClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/FrontendClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/MobileClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/MobileClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/controller/FrontendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/controller/FrontendController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/domain/po/SourcemapFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/po/SourcemapFiles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/domain/vo/FrontendErrorSourceCodeVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/vo/FrontendErrorSourceCodeVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/domain/vo/FrontendResponsibilityVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/vo/FrontendResponsibilityVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/mapper/SourcemapFilesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/mapper/SourcemapFilesMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/parse/SourceMapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/utils/SourceMapParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/parse/SourceMapService.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/utils/SourceMapService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/SourcemapFilesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/SourcemapFilesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/impl/FrontendResponsibilityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/impl/FrontendResponsibilityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/impl/SourcemapFilesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/impl/SourcemapFilesServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllErrorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllErrorServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllPerformanceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllPerformanceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/controller/MobileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/controller/MobileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/domain/vo/MobileResponsibilityVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/vo/MobileResponsibilityVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/service/impl/MobileResponsibilityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/service/impl/MobileResponsibilityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/service/impl/ProjectServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/service/impl/ProjectServiceImpl.class" afterDir="false" />
->>>>>>> upstream/main
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/AlertServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/config/JacksonConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/config/WebSocketConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/controller/AlertRuleController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/controller/NotificationController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/controller/ResponsibilityController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/domain/po/AlertRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/domain/vo/NotificationVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/domain/vo/ResponsibilityVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/mapper/AlertRuleMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/mapper/NotificationMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/mapper/ResponsibilityMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/monitor/ResponsibilityMonitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/repository/ErrorSonForWechatAlertRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/service/AlertRuleService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/service/NotificationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/service/ResponsibilityService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/service/impl/AlertRuleServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/service/impl/NotificationServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/service/impl/ResponsibilityServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/com/qg/alert/websocket/UnifiedWebSocketHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/bootstrap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/BackendServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/aggregator/BackendErrorAggregator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/controller/BackendController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/controller/BackendController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/controller/ModuleController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/domain/po/BackendLog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/domain/po/EnvironmentSnapshot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/domain/po/MethodInvocation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/domain/po/Module.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/mapper/BackendErrorMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/mapper/BackendLogMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/mapper/BackendPerformanceMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/mapper/MethodInvocationMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/mapper/ModuleMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/repository/BackendErrorRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/repository/BackendLogRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/repository/MethodInvocationRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/BackendErrorService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/BackendLogService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/BackendPerformanceService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/BackendResponsibilityService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/MethodInvocationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/ModuleService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/impl/BackendErrorServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/impl/BackendLogServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/impl/BackendPerformanceServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/impl/BackendResponsibilityServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/impl/MethodInvocationServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/service/impl/ModuleServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/AlertClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/BackendClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/FrontendClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/MobileClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/ProjectClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/UserClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/config/DefaultFeignConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/domain/dto/UsersDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/domain/vo/BackendErrorHandleVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/domain/vo/FrontendErrorHandleVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/domain/vo/MobileErrorHandleVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/repository/ErrorRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/bootstrap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/FrontendServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/aggregator/FrontendErrorAggregator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/controller/FrontendController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/domain/po/FrontendBehavior.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/domain/vo/FrontendErrorHandleVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/domain/vo/FrontendErrorVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/mapper/FrontendBehaviorMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/mapper/FrontendErrorMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/mapper/FrontendPerformanceMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/mapper/SourcemapFilesMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/repository/FrontendErrorRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/FileUploadService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/FrontendBehaviorService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/FrontendErrorService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/FrontendPerformanceService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/FrontendResponsibilityService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/SourcemapFilesService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/impl/FileUploadServiceImpl$FileInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/impl/FileUploadServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/impl/FrontendBehaviorServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/impl/FrontendErrorServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/impl/FrontendPerformanceServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/impl/FrontendResponsibilityServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/target/classes/com/qg/frontend/service/impl/SourcemapFilesServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/gateway.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/bootstrap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/qg/gateway/AuthorizeFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/target/classes/com/qg/gateway/GatewayApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/bootstrap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/GraphServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/controller/ErrorController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/controller/GraphController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/controller/MarkdownContentsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/controller/PerformanceController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/domain/po/Error.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/domain/po/MarkdownContents.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/domain/vo/PerformanceVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/mapper/ErrorMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/mapper/MarkdownContentsMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/service/AllErrorService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/service/AllPerformanceService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/service/GraphService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/service/MarkdownContentsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/service/impl/AllErrorServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/service/impl/AllPerformanceServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/service/impl/GraphServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/target/classes/com/qg/graph/service/impl/MarkdownContentsServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/message-service/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/message-service/target/classes/bootstrap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/message-service/target/classes/com/qg/message/MessageServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/message-service/target/classes/com/qg/message/controller/MessageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/message-service/target/classes/com/qg/message/domain/po/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/message-service/target/classes/com/qg/message/mapper/MessageMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/message-service/target/classes/com/qg/message/service/MessageService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/message-service/target/classes/com/qg/message/service/impl/MessageServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/milvus-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/bootstrap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/com/qg/milvus/BackendErrorMilvus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/com/qg/milvus/BackendPerformanceMilvus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/com/qg/milvus/DummyEmbeddingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/com/qg/milvus/EmbeddingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/com/qg/milvus/FrontendErrorMilvus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/com/qg/milvus/FrontendPerformanceMilvus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/com/qg/milvus/MilvusServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/com/qg/milvus/MilvusUpload.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/com/qg/milvus/MobileErrorMilvus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/milvus-service/target/classes/com/qg/milvus/MobilePerformanceMilvus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/bootstrap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/MobileServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/controller/MobileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/domain/vo/MobileOperationVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/mapper/MobileErrorMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/mapper/MobilePerformanceMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/repository/MobileErrorRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/service/MobileErrorService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/service/MobilePerformanceService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/service/MobileResponsibilityService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/service/impl/MobileErrorServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/service/impl/MobilePerformanceServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/target/classes/com/qg/mobile/service/impl/MobileResponsibilityServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/bootstrap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/ProjectServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/controller/ProjectController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/controller/RoleController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/domain/dto/InviteDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/domain/vo/PersonalProjectVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/domain/vo/ProjectMemberVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/domain/vo/RoleVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/mapper/ProjectMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/mapper/RoleMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/service/ProjectService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/service/RoleService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/service/impl/ProjectServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/service/impl/RoleServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/StatisticsDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/repository/StatisticsDataRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/dto/EncryptedRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/dto/EncryptedRequestDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/dto/EncryptionResultDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/dto/EncryptionResultDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/dto/ErrorStatsDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/dto/ErrorStatsDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/dto/MethodInvocationDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/dto/MethodInvocationDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/BackendError.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/BackendError.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/BackendPerformance.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/BackendPerformance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/FrontendError.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/FrontendError.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/FrontendPerformance.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/FrontendPerformance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/MobileError.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/MobileError.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/MobilePerformance.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/MobilePerformance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/Notification.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/Notification.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/Project.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/Project.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/Responsibility.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/Responsibility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/SourcemapFiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/SourcemapFiles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/po/Users.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/BackendResponsibilityVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/BackendResponsibilityVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/ButtonVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/ButtonVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/EarthVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/EarthVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/ErrorTrendVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/ErrorTrendVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/FrontendBehaviorVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/FrontendBehaviorVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/FrontendErrorSourceCodeVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/FrontendErrorSourceCodeVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/FrontendPerformanceAverageVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/FrontendPerformanceAverageVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/FrontendResponsibilityVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/FrontendResponsibilityVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/IllegalAttackVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/IllegalAttackVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/ManualTrackingVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/ManualTrackingVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/MethodInvocationVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/MethodInvocationVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/MobileResponsibilityVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/MobileResponsibilityVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/TransformDataVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/TransformDataVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/UvBillDataVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/vo/UvBillDataVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/repository/StatisticsDataRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/AesUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/ConditionQueryListBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/CryptoUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/FileUploadHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/MathUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/RedisConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/RegexPatterns.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/RegexUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/RsaUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/SourceMapParser$Mapping.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/SourceMapParser$OriginalPosition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/SourceMapParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/SourceMapService$OriginalSourcePosition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/SourceMapService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/YBaseMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/bootstrap.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/UserServiceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/controller/UserController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/controller/UserController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/controller/UserController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/controller/UserController$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/domain/dto/RegisterDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/domain/dto/UsersDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/mapper/UsersMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/service/UsersService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/service/impl/UsersServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/utils/EmailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/qg/user/utils/HashSaltUtil.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/controller/ErrorController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/controller/PerformanceController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/domain/po/Error.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/mapper/ErrorMapper.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/ErrorService.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/ErrorServiceImpl.java" root0="FORCE_HIGHLIGHTING" />
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="E:\java\Apache\apache-maven-3.9.9-bin\apache-maven-3.9.9" />
+        <option name="localRepository" value="E:\java\Apache\apache-maven-3.9.9-bin\apache-maven-3.9.9\mvn_resp" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="userSettingsFile" value="E:\java\Apache\apache-maven-3.9.9-bin\apache-maven-3.9.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="333msJZd7IZGtcp2aApOknhkifh" />
+  <component name="ProjectId" id="33ENYnoEK7HqQzNzB8CrV9q4zuA" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.BackendServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.language.and.region&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-=======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Maven.pmp [clean].executor": "Run",
+    "Maven.pmp [install].executor": "Run",
+    "Maven.pmp [package].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.AlertServiceApplication.executor": "Run",
     "Spring Boot.BackendServiceApplication.executor": "Run",
@@ -119,32 +308,16 @@
     "Spring Boot.UserServiceApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/14527/Desktop/末期/QG-monitor/pmp/gateway/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.language.and.region",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "org.opengauss.Driver",
-      "postgresql"
-    ]
->>>>>>> upstream/main
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.qg.feign.clients" />
-    </key>
-  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -155,7 +328,14 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BackendServiceApplication">
+  <component name="RunManager" selected="Spring Boot.AlertServiceApplication">
+    <configuration name="AlertServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="alert-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.qg.alert.AlertServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BackendServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="backend-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.qg.backend.BackendServiceApplication" />
@@ -198,16 +378,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MobileServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="mobile-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.qg.mobile.MobileServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MobileServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="mobile-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.qg.MobileServiceApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.qg.mobile.MobileServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -226,16 +399,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="lua.app" factoryName="Lua Application">
-      <option name="program" value="lua.exe" />
-      <option name="file" value="" />
-      <option name="workingDir" value="$PROJECT_DIR$/feign-api/src/main/java" />
-      <option name="debuggerType" value="1" />
-      <option name="params" value="" />
-      <option name="charset" value="UTF-8" />
-      <option name="showConsole" value="true" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -245,32 +408,24 @@
       </set>
     </attachedChunks>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="默认任务">
-      <changelist id="101c86bb-486b-41b5-994b-d61830a62385" name="更改" comment="" />
-      <created>1758554335049</created>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="43c55836-bca0-4038-8896-0435ddb6cfd4" name="Changes" comment="" />
+      <created>1758878323444</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-<<<<<<< HEAD
-      <updated>1758554335049</updated>
-      <workItem from="1758800413609" duration="2135000" />
-      <workItem from="1758809026282" duration="9000" />
-      <workItem from="1758811266358" duration="25000" />
-      <workItem from="1758811461431" duration="3080000" />
-      <workItem from="1758847303777" duration="371000" />
-      <workItem from="1758847690804" duration="16000" />
-=======
-      <updated>1758615008920</updated>
-      <workItem from="1758615010356" duration="7598000" />
-      <workItem from="1758722557758" duration="2457000" />
-      <workItem from="1758727799848" duration="549000" />
-      <workItem from="1758808142106" duration="20023000" />
->>>>>>> upstream/main
+      <updated>1758878323444</updated>
+      <workItem from="1758878324830" duration="399000" />
+      <workItem from="1758878733107" duration="675000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
