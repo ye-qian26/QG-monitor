@@ -59,4 +59,24 @@ public interface MobileClient {
 
     @GetMapping("/mobile/getMobilePerformanceByWrapper")
     List<MobilePerformance> getMobilePerformanceByWrapper(@RequestParam LambdaQueryWrapper<MobilePerformance> wrapper);
+
+    /**
+     * 根据条件查询移动错误信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectMobileResponsibilityByCondition")
+    Result selectMobileResponsibilityByCondition(@RequestParam String projectId, @RequestParam String type);
+
+    /**
+     * 根据条件查询移动性能信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectMobilePerformanceByCondition")
+    Result selectMobilePerformanceByCondition(@RequestParam String projectId, @RequestParam String type);
 }

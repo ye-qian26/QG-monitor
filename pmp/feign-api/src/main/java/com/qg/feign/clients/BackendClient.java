@@ -95,4 +95,24 @@ public interface BackendClient {
             @RequestParam String projectId,
             @RequestParam LocalDateTime startTime,
             @RequestParam LocalDateTime endTime);
+
+    /**
+     * 根据条件查询后端错误信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectBackendResponsibilityByCondition")
+    Result selectBackendResponsibilityByCondition(@RequestParam String projectId, @RequestParam String type);
+
+    /**
+     * 根据条件查询后端性能信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectBackendPerformanceByCondition")
+    Result selectBackendPerformanceByCondition(@RequestParam String projectId, @RequestParam String type);
 }

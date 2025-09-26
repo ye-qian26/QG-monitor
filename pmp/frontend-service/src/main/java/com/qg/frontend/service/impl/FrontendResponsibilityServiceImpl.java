@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.qg.common.domain.po.*;
 import com.qg.feign.clients.AlertClient;
 import com.qg.feign.clients.UserClient;
-import com.qg.frontend.domain.vo.FrontendResponsibilityVO;
+import com.qg.common.domain.vo.FrontendResponsibilityVO;
 import com.qg.frontend.mapper.FrontendErrorMapper;
 import com.qg.frontend.service.FrontendResponsibilityService;
 import lombok.RequiredArgsConstructor;
@@ -104,6 +104,13 @@ public class FrontendResponsibilityServiceImpl implements FrontendResponsibility
 //
 //        return new Result(200, List.of(new ArrayList<>(),frontendResponsibilityVOList,new ArrayList<>()), "查询成功");
 //    }
+
+    /**
+     * 根据条件查询前端错误信息
+     * @param projectId 项目id
+     * @param type  错误类型
+     * @return  结果
+     */
     @Override
     public Result selectByCondition(String projectId, String type) {
         // 参数校验

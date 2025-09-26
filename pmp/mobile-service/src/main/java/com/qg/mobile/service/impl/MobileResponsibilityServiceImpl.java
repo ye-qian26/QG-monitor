@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.qg.common.domain.po.*;
 import com.qg.feign.clients.AlertClient;
 import com.qg.feign.clients.UserClient;
-import com.qg.mobile.domain.vo.MobileResponsibilityVO;
+import com.qg.common.domain.vo.MobileResponsibilityVO;
 import com.qg.mobile.mapper.MobileErrorMapper;
 
 import com.qg.mobile.service.MobileResponsibilityService;
@@ -91,6 +91,12 @@ public class MobileResponsibilityServiceImpl implements MobileResponsibilityServ
 //        return new Result(200, List.of(new ArrayList<>(),new ArrayList<>(),mobileResponsibilityVOList), "查询成功");
 //    }
 
+    /**
+     * 根据条件查询移动错误信息
+     * @param projectId 项目id
+     * @param type  错误类型
+     * @return  结果
+     */
     @Override
     public Result selectByCondition(String projectId, String type) {
         // 参数校验

@@ -198,10 +198,12 @@ public class ProjectServiceImpl implements ProjectService {
             }
             // 复制属性
         }
-        if (personalProjectVOList.isEmpty()) return new Result(Code.NOT_FOUND, "没有项目");
+//        if (personalProjectVOList.isEmpty()) return new Result(Code.NOT_FOUND, "没有项目");
 
-
-        return new Result(SUCCESS, personalProjectVOList, "获取用户个人参与项目成功！");
+        // 数据库是空的话，personalProjectVOList会是null
+        return new Result(SUCCESS, personalProjectVOList == null
+                        ? Collections.emptyList()
+                        : personalProjectVOList, "获取用户个人参与项目成功！");
     }
 
 //    //用户获取非公开项目的列表

@@ -4,6 +4,7 @@ package com.qg.frontend.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.qg.common.domain.po.FrontendError;
 import com.qg.common.domain.po.FrontendPerformance;
+import com.qg.common.domain.po.SourcemapFiles;
 import com.qg.frontend.service.*;
 import com.qg.common.domain.po.Result;
 import com.qg.common.domain.vo.ErrorTrendVO;
@@ -39,7 +40,8 @@ public class FrontendController {
 
     @Autowired
     private FrontendPerformanceService frontendPerformanceService;
-
+    @Autowired
+    private FrontendResponsibilityService frontendResponsibilityService;
     @Autowired
     private FrontendErrorService frontendErrorService;
 
@@ -265,7 +267,7 @@ public class FrontendController {
     }
 
     @GetMapping("/getFrontendErrorByWrapper")
-    public List<FrontendError> getFrontendErrorByWrapper(@RequestParam LambdaQueryWrapper<FrontendError> queryWrapper){
+    public List<FrontendError> getFrontendErrorByWrapper(@RequestParam LambdaQueryWrapper<FrontendError> queryWrapper) {
         return frontendErrorService.getFrontendErrorByWrapper(queryWrapper);
     }
 
@@ -273,4 +275,48 @@ public class FrontendController {
     public List<FrontendPerformance> getFrontendPerformanceByWrapper(@RequestParam LambdaQueryWrapper<FrontendPerformance> queryWrapper) {
         return frontendPerformanceService.getFrontendPerformanceByWrapper(queryWrapper);
     }
+
+    /**
+     * 根据条件查询前端错误信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectFrontResponsibilityByCondition")
+    public Result selectFrontResponsibilityByCondition(@RequestParam String projectId, @RequestParam String type) {
+        return frontendResponsibilityService.selectByCondition(projectId, type);
+    }
+
+    /**
+     * 根据条件查询前端性能信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectFrontPerformanceByCondition")
+    public Result selectFrontPerformanceByCondition(@RequestParam String projectId, @RequestParam String type) {
+        return frontendPerformanceService.selectByCondition(projectId, type);
+    }
+
+    @GetMapping("/selectOneSourcemapFileByQueryWrapper")
+    public SourcemapFiles selectOneSourcemapFileByQueryWrapper(LambdaQueryWrapper<SourcemapFiles> QueryWrapper) {
+        return sourcemapFilesService.selectOneSourcemapFileByQueryWrapper(QueryWrapper);
+    }
+
+//    /**
+//     * 通过 source map 将构建后 JS 文件的行列号解析为原始源码（支持上下文）
+//     *
+//     * @param sourceMapPath   source map 文件路径
+//     * @param generatedLine   构建后 JS 文件中的行号（从1开始）
+//     * @param generatedColumn 构建后 JS 文件中的列号（从0开始）
+//     * @return 原始源码位置信息（包含上下文）
+//     */
+//    @GetMapping("/resolveSourcePosition")
+//    public SourceMapService.OriginalSourcePosition resolveSourcePosition(@RequestParam String sourceMapPath,
+//                                                                         @RequestParam int generatedLine,
+//                                                                         @RequestParam int generatedColumn) {
+//        return new SourceMapService().resolveSourcePosition(sourceMapPath, generatedLine, generatedColumn);
+//    }
 }

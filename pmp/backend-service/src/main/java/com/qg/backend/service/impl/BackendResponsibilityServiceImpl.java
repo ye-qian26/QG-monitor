@@ -1,7 +1,7 @@
 package com.qg.backend.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.qg.backend.domain.vo.BackendResponsibilityVO;
+import com.qg.common.domain.vo.BackendResponsibilityVO;
 import com.qg.common.domain.po.BackendError;
 import com.qg.backend.mapper.BackendErrorMapper;
 
@@ -115,6 +115,13 @@ public class BackendResponsibilityServiceImpl implements BackendResponsibilitySe
 //
 //    }
 
+    /**
+     * 根据条件查询后端错误信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
     @Override
     public Result selectByCondition(String projectId, String type) {
         // 参数校验
@@ -186,8 +193,8 @@ public class BackendResponsibilityServiceImpl implements BackendResponsibilitySe
                         // 根据错误类型匹配责任人
                         Responsibility responsibility = responsibilityMap.get(error.getErrorType());
                         if (responsibility != null &&
-                                responsibility.getResponsibleId() != null &&
-                                responsibility.getDelegatorId() != null) {
+                            responsibility.getResponsibleId() != null &&
+                            responsibility.getDelegatorId() != null) {
 
                             vo.setDelegatorId(responsibility.getDelegatorId());
                             vo.setResponsibleId(responsibility.getResponsibleId());

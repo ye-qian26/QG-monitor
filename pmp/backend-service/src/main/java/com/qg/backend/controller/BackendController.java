@@ -5,11 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.qg.backend.service.BackendErrorService;
-import com.qg.backend.service.BackendLogService;
-import com.qg.backend.service.BackendPerformanceService;
-
-import com.qg.backend.service.MethodInvocationService;
+import com.qg.backend.service.*;
 
 import com.qg.common.domain.po.BackendError;
 import com.qg.common.domain.po.BackendPerformance;
@@ -58,6 +54,8 @@ public class BackendController {
     private MethodInvocationService methodInvocationService;
 
     private final ProjectClient projectClient;
+    @Autowired
+    private BackendResponsibilityService backendResponsibilityService;
 
     /**
      * 接收后端方法调用数据
@@ -229,6 +227,30 @@ public class BackendController {
             @RequestParam LocalDateTime startTime,
             @RequestParam LocalDateTime endTime) {
         return methodInvocationService.queryMethodInvocationStats(projectId, startTime, endTime);
+    }
+
+    /**
+     * 根据条件查询后端错误信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectBackendResponsibilityByCondition")
+    public Result selectBackendResponsibilityByCondition(@RequestParam String projectId, @RequestParam String type) {
+        return backendResponsibilityService.selectByCondition(projectId, type);
+    }
+
+    /**
+     * 根据条件查询后端性能信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectBackendPerformanceByCondition")
+    public Result selectBackendPerformanceByCondition(@RequestParam String projectId, @RequestParam String type) {
+        return backendPerformanceService.selectByCondition(projectId, type);
     }
 }
 
