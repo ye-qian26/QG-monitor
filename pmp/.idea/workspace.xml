@@ -5,46 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d4e2c00-b97e-472b-a0a8-4a54829a6679" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/config/TokenInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/config/WebSocketConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alert-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/controller/AlertRuleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/controller/AlertRuleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/controller/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/controller/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/controller/ResponsibilityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/controller/ResponsibilityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/monitor/ResponsibilityMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/monitor/ResponsibilityMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/service/impl/NotificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/service/impl/NotificationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alert-service/target/classes/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/target/classes/bootstrap.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/controller/BackendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/controller/BackendController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/controller/ModuleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/controller/ModuleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend-service/src/main/resources/bootstrap.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/resources/bootstrap.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/domain/vo/BackendResponsibilityVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/vo/BackendResponsibilityVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/impl/BackendResponsibilityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/service/impl/BackendResponsibilityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/controller/BackendController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/controller/BackendController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/controller/BackendController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/target/classes/com/qg/backend/controller/BackendController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/BackendClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/BackendClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/FrontendClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/FrontendClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/MobileClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/MobileClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/BackendClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/BackendClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/FrontendClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/FrontendClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/MobileClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/target/classes/com/qg/feign/clients/MobileClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/controller/FrontendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/controller/FrontendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/domain/po/SourcemapFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/po/SourcemapFiles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/domain/vo/FrontendErrorSourceCodeVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/vo/FrontendErrorSourceCodeVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/domain/vo/FrontendResponsibilityVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/vo/FrontendResponsibilityVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/mapper/SourcemapFilesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/mapper/SourcemapFilesMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/parse/SourceMapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/utils/SourceMapParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/parse/SourceMapService.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/utils/SourceMapService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/SourcemapFilesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/SourcemapFilesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/impl/FrontendResponsibilityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/impl/FrontendResponsibilityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/impl/SourcemapFilesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/main/java/com/qg/frontend/service/impl/SourcemapFilesServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/controller/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllErrorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllErrorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllPerformanceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/AllPerformanceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/controller/MobileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/controller/MobileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/domain/vo/MobileResponsibilityVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/vo/MobileResponsibilityVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/service/impl/MobileResponsibilityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-service/src/main/java/com/qg/mobile/service/impl/MobileResponsibilityServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/qg/project/service/impl/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/controller/ProjectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/controller/ProjectController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/controller/RoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/controller/RoleController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/service/impl/ProjectServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/target/classes/com/qg/project/service/impl/ProjectServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/config/CorsConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/config/JacksonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/config/JacksonConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/config/TokenInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/config/WebConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/config/WebSocketConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/utils/RedisConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/utils/RedisConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/websocket/UnifiedWebSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/websocket/UnifiedWebSocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/config/CorsConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/config/JacksonConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/config/TokenInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/config/WebConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/config/WebSocketConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/RedisConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/utils/RedisConstants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/websocket/UnifiedWebSocketHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/qg/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/qg/user/controller/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +52,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/controller/ErrorController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/controller/PerformanceController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/domain/po/Error.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/mapper/ErrorMapper.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/ErrorService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/graph-service/src/main/java/com/qg/graph/service/impl/ErrorServiceImpl.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -70,40 +69,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AlertServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.BackendServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.FrontendServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.GraphServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MessageServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MilvusServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MobileServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ProjectServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/14527/Desktop/末期/QG-monitor/pmp/gateway/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.language.and.region&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.AlertServiceApplication.executor": "Run",
+    "Spring Boot.BackendServiceApplication.executor": "Run",
+    "Spring Boot.FrontendServiceApplication.executor": "Run",
+    "Spring Boot.GatewayApplication.executor": "Run",
+    "Spring Boot.GraphServiceApplication.executor": "Run",
+    "Spring Boot.MessageServiceApplication.executor": "Run",
+    "Spring Boot.MilvusServiceApplication.executor": "Run",
+    "Spring Boot.MobileServiceApplication.executor": "Run",
+    "Spring Boot.ProjectServiceApplication.executor": "Run",
+    "Spring Boot.UserServiceApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/14527/Desktop/末期/QG-monitor/pmp/gateway/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.language.and.region",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "org.opengauss.Driver",
+      "postgresql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\14527\Desktop\末期\QG-monitor\pmp\gateway\src\main\resources" />
@@ -234,7 +240,9 @@
       <option name="presentableId" value="Default" />
       <updated>1758615008920</updated>
       <workItem from="1758615010356" duration="7598000" />
-      <workItem from="1758722557758" duration="1055000" />
+      <workItem from="1758722557758" duration="2457000" />
+      <workItem from="1758727799848" duration="549000" />
+      <workItem from="1758808142106" duration="20023000" />
     </task>
     <servers />
   </component>

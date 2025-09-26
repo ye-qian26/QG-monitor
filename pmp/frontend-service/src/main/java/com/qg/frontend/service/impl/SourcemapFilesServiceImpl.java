@@ -1,9 +1,10 @@
 package com.qg.frontend.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.qg.common.domain.po.Code;
 import com.qg.common.domain.po.Result;
 import com.qg.feign.clients.ProjectClient;
-import com.qg.frontend.domain.po.SourcemapFiles;
+import com.qg.common.domain.po.SourcemapFiles;
 
 import com.qg.frontend.mapper.SourcemapFilesMapper;
 import com.qg.frontend.service.SourcemapFilesService;
@@ -132,6 +133,11 @@ public class SourcemapFilesServiceImpl implements SourcemapFilesService {
             log.error("系统处理异常", e);
             return new Result(Code.INTERNAL_ERROR, "系统处理异常: " + e.getMessage());
         }
+    }
+
+    @Override
+    public SourcemapFiles selectOneSourcemapFileByQueryWrapper(LambdaQueryWrapper<SourcemapFiles> QueryWrapper) {
+        return sourcemapFilesMapper.selectOne(QueryWrapper);
     }
 
 }

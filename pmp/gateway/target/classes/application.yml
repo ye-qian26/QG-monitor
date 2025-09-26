@@ -29,7 +29,7 @@ spring:
         - id: graph-service
           uri: lb://graph-service
           predicates:
-            - Path=/graph/**,/markdownContents/**
+            - Path=/graph/**,/markdownContents/**,/errors/**
         # 消息服务
         - id: message-service
           uri: lb://message-service

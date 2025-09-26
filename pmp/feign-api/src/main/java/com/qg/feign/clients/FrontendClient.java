@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.qg.common.domain.po.FrontendError;
 import com.qg.common.domain.po.FrontendPerformance;
 import com.qg.common.domain.po.Result;
+import com.qg.common.domain.po.SourcemapFiles;
 import com.qg.common.domain.vo.ErrorTrendVO;
 import com.qg.common.domain.vo.FrontendBehaviorVO;
 import com.qg.common.domain.vo.FrontendPerformanceAverageVO;
@@ -136,4 +137,39 @@ public interface FrontendClient {
 
     @GetMapping("/frontend/getFrontendPerformanceByWrapper")
     List<FrontendPerformance> getFrontendPerformanceByWrapper(@RequestParam LambdaQueryWrapper<FrontendPerformance> queryWrapper);
+
+    /**
+     * 根据条件查询前端错误信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectFrontResponsibilityByCondition")
+    Result selectFrontResponsibilityByCondition(@RequestParam String projectId, @RequestParam String type);
+
+    /**
+     * 根据条件查询前端性能信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectFrontPerformanceByCondition")
+    Result selectFrontPerformanceByCondition(@RequestParam String projectId, @RequestParam String type);
+
+    @GetMapping("/selectOneSourcemapFileByQueryWrapper")
+    SourcemapFiles selectOneSourcemapFileByQueryWrapper(@RequestParam LambdaQueryWrapper<SourcemapFiles> QueryWrapper);
+//    /**
+//     * 通过 source map 将构建后 JS 文件的行列号解析为原始源码（支持上下文）
+//     *
+//     * @param sourceMapPath   source map 文件路径
+//     * @param generatedLine   构建后 JS 文件中的行号（从1开始）
+//     * @param generatedColumn 构建后 JS 文件中的列号（从0开始）
+//     * @return 原始源码位置信息（包含上下文）
+//     */
+//    @GetMapping("/resolveSourcePosition")
+//    SourceMapService.OriginalSourcePosition resolveSourcePosition(@RequestParam String sourceMapPath,
+//                                                                         @RequestParam int generatedLine,
+//                                                                         @RequestParam int generatedColumn);
 }

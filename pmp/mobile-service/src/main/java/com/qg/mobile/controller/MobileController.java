@@ -8,6 +8,7 @@ import com.qg.common.domain.po.Result;
 import com.qg.common.domain.po.MobilePerformance;
 import com.qg.mobile.service.MobileErrorService;
 import com.qg.mobile.service.MobilePerformanceService;
+import com.qg.mobile.service.MobileResponsibilityService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,8 @@ public class MobileController {
 
     @Autowired
     private MobilePerformanceService mobilePerformanceService;
-
+    @Autowired
+    private MobileResponsibilityService mobileResponsibilityService;
     @Autowired
     private MobileErrorService mobileErrorService;
 
@@ -107,5 +109,29 @@ public class MobileController {
     @GetMapping("/getMobilePerformanceByWrapper")
     public List<MobilePerformance> getMobilePerformanceByWrapper(@RequestParam LambdaQueryWrapper<MobilePerformance> wrapper) {
         return mobilePerformanceService.getMobilePerformanceByWrapper(wrapper);
+    }
+
+    /**
+     * 根据条件查询移动错误信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectMobileResponsibilityByCondition")
+    public Result selectMobileResponsibilityByCondition(@RequestParam String projectId, @RequestParam String type) {
+        return mobileResponsibilityService.selectByCondition(projectId, type);
+    }
+
+    /**
+     * 根据条件查询移动性能信息
+     *
+     * @param projectId 项目id
+     * @param type      错误类型
+     * @return 结果
+     */
+    @GetMapping("/selectMobilePerformanceByCondition")
+    public Result selectMobilePerformanceByCondition(@RequestParam String projectId, @RequestParam String type) {
+        return mobilePerformanceService.selectByCondition(projectId, type);
     }
 }
