@@ -3,7 +3,7 @@ package com.qg.feign.clients;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.qg.common.domain.po.Users;
-import com.qg.feign.dto.UsersDto;
+import com.qg.feign.domain.dto.UsersDto;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,14 +29,15 @@ public interface UserClient {
      * @param userIds 用户id集合
      * @return 结果
      */
-    @GetMapping("/selectBatchIds")
+    @GetMapping("/users/selectBatchIds")
     List<Users> selectBatchIds(@RequestParam Set<Long> userIds);
 
     /**
      * 批量查询用户
+     *
      * @param queryWrapper 查询器
-     * @return  结果
+     * @return 结果
      */
-    @GetMapping("/selectList")
-    List<Users> selectList(LambdaQueryWrapper<Users> queryWrapper);
+    @GetMapping("/users/selectList")
+    List<Users> selectList(@RequestParam LambdaQueryWrapper<Users> queryWrapper);
 }

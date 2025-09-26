@@ -75,7 +75,7 @@ public class BackendLogServiceImpl implements BackendLogService {
                 log.warn("项目ID不存在:{}", projectId);
                 return;
             }*/
-            if (!projectClient.checkProjectIdExist(Long.valueOf(projectId))) {
+            if (!projectClient.checkProjectIdExist(projectId)) {
                 log.warn("项目ID不存在:{}", projectId);
                 return;
             }

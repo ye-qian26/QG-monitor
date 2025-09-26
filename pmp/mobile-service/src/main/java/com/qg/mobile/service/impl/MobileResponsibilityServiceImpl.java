@@ -2,14 +2,15 @@ package com.qg.mobile.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 
-import com.qg.common.domain.po.Code;
-import com.qg.common.domain.po.MobileError;
-import com.qg.common.domain.po.Responsibility;
-import com.qg.common.domain.po.Result;
+import com.qg.common.domain.po.*;
+import com.qg.feign.clients.AlertClient;
+import com.qg.feign.clients.UserClient;
+import com.qg.mobile.domain.vo.MobileResponsibilityVO;
 import com.qg.mobile.mapper.MobileErrorMapper;
 
 import com.qg.mobile.service.MobileResponsibilityService;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +28,14 @@ import java.util.stream.Collectors;
  */
 @Service
 @Slf4j
+@AllArgsConstructor
 public class MobileResponsibilityServiceImpl implements MobileResponsibilityService {
 
     @Autowired
     private MobileErrorMapper mobileErrorMapper;
 
-    @Autowired
-    private ResponsibilityMapper responsibilityMapper;
-
-    @Autowired
-    private UsersMapper usersMapper;
+    private final UserClient userClient;
+    private final AlertClient alertClient;
 
 //    @Override
 //    public Result selectByCondition(String projectId, String type) {
@@ -113,8 +112,15 @@ public class MobileResponsibilityServiceImpl implements MobileResponsibilityServ
             // 执行查询
             List<MobileError> mobileErrors = mobileErrorMapper.selectList(queryWrapper);
 
+//            // 查询责任人信息
+//            List<Responsibility> responsibilities = responsibilityMapper.selectList(
+//                    new LambdaQueryWrapper<Responsibility>()
+//                            .eq(Responsibility::getProjectId, projectId)
+//                            .eq(Responsibility::getPlatform, "mobile")
+//            );
+
             // 查询责任人信息
-            List<Responsibility> responsibilities = responsibilityMapper.selectList(
+            List<Responsibility> responsibilities = alertClient.getResponsibilityListByWrapper(
                     new LambdaQueryWrapper<Responsibility>()
                             .eq(Responsibility::getProjectId, projectId)
                             .eq(Responsibility::getPlatform, "mobile")
@@ -132,7 +138,8 @@ public class MobileResponsibilityServiceImpl implements MobileResponsibilityServ
 
             final Map<Long, Users> userMap = new HashMap<>();
             if (!userIds.isEmpty()) {
-                List<Users> usersList = usersMapper.selectBatchIds(userIds);
+//                List<Users> usersList = usersMapper.selectBatchIds(userIds);
+                List<Users> usersList = userClient.selectBatchIds(userIds);
                 userMap.putAll(usersList.stream().collect(Collectors.toMap(Users::getId, u -> u)));
             }
 
@@ -146,8 +153,8 @@ public class MobileResponsibilityServiceImpl implements MobileResponsibilityServ
                         // 根据错误类型匹配责任人
                         Responsibility responsibility = responsibilityMap.get(error.getErrorType());
                         if (responsibility != null &&
-                                responsibility.getResponsibleId() != null &&
-                                responsibility.getDelegatorId() != null) {
+                            responsibility.getResponsibleId() != null &&
+                            responsibility.getDelegatorId() != null) {
 
                             vo.setDelegatorId(responsibility.getDelegatorId());
                             vo.setResponsibleId(responsibility.getResponsibleId());
@@ -161,8 +168,6 @@ public class MobileResponsibilityServiceImpl implements MobileResponsibilityServ
                         return vo;
                     })
                     .collect(Collectors.toList());
-
-
 
 
             return new Result(Code.SUCCESS,

@@ -8,13 +8,13 @@ import com.qg.backend.mapper.BackendErrorMapper;
 import com.qg.common.domain.po.Notification;
 import com.qg.common.domain.po.Responsibility;
 import com.qg.common.domain.po.Role;
-import com.qg.common.repository.ErrorRepository;
+import com.qg.feign.repository.ErrorRepository;
 import com.qg.common.repository.RepositoryConstants;
 
 import com.qg.feign.clients.AlertClient;
 import com.qg.feign.clients.ProjectClient;
 import com.qg.feign.clients.UserClient;
-import com.qg.feign.dto.UsersDto;
+import com.qg.feign.domain.dto.UsersDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -38,8 +38,7 @@ import static com.qg.common.utils.Constants.USER_ROLE_ADMIN;
 
 @Slf4j
 @Repository
-
-public abstract class BackendErrorRepository extends ErrorRepository<BackendError> {
+public class BackendErrorRepository extends ErrorRepository<BackendError> {
 
     @Autowired
     protected BackendErrorMapper backendErrorMapper;
@@ -188,7 +187,7 @@ public abstract class BackendErrorRepository extends ErrorRepository<BackendErro
      * @param error 后端错误
      */
     @Override
-    protected void checkIfAlert(BackendError error) {
+    public void checkIfAlert(BackendError error) {
 
         log.info("判断是否达到阈值！");
 
@@ -427,4 +426,5 @@ public abstract class BackendErrorRepository extends ErrorRepository<BackendErro
         return false;
 
     }
+
 }

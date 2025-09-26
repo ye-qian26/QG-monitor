@@ -20,10 +20,13 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import static com.qg.common.domain.po.Code.*;
+import static com.qg.common.utils.Constants.*;
 import static com.qg.common.utils.RedisConstants.INVITE_CODE_KEY;
 import static com.qg.common.utils.RedisConstants.INVITE_CODE_TTL;
 
@@ -140,8 +143,7 @@ public class ProjectServiceImpl implements ProjectService {
         LambdaQueryWrapper<Role> lqw1 = new LambdaQueryWrapper<>();
         lqw1.eq(Role::getProjectId, uuid);
 
-        if(roleMapper.delete(lqw1)>0)
-        {
+        if (roleMapper.delete(lqw1) > 0) {
             return projectMapper.delete(lqw) == 1 ? new Result(SUCCESS, "删除成功") : new Result(INTERNAL_ERROR, "删除失败，该项目不存在！");
         }
         return new Result(INTERNAL_ERROR, "删除失败！");
@@ -162,9 +164,8 @@ public class ProjectServiceImpl implements ProjectService {
     public Result getPublicProjectList() {
         LambdaQueryWrapper<Project> lqw = new LambdaQueryWrapper<>();
         lqw.eq(Project::getIsDeleted, false).eq(Project::getIsPublic, true);
-        List<Project> list= projectMapper.selectList(lqw);
-        if(list == null)
-        {
+        List<Project> list = projectMapper.selectList(lqw);
+        if (list == null) {
             return new Result(Code.NOT_FOUND, "项目列表为空");
         }
         return new Result(SUCCESS, list, "查询成功");
@@ -186,22 +187,21 @@ public class ProjectServiceImpl implements ProjectService {
             PersonalProjectVO vo = new PersonalProjectVO();
             String uuid = role.getProjectId();
 
-            LambdaQueryWrapper< Project> lqw1 = new LambdaQueryWrapper<>();
+            LambdaQueryWrapper<Project> lqw1 = new LambdaQueryWrapper<>();
             lqw1.eq(Project::getUuid, uuid).eq(Project::getIsDeleted, false);
             Project project = projectMapper.selectOne(lqw1);
 
-            if(project != null )
-            {
+            if (project != null) {
                 BeanUtils.copyProperties(role, vo);
                 BeanUtils.copyProperties(project, vo);
                 personalProjectVOList.add(vo);
             }
             // 复制属性
         }
-        if(personalProjectVOList.isEmpty())  return new Result(Code.NOT_FOUND, "没有项目");
+        if (personalProjectVOList.isEmpty()) return new Result(Code.NOT_FOUND, "没有项目");
 
 
-        return new Result(SUCCESS, personalProjectVOList,"获取用户个人参与项目成功！");
+        return new Result(SUCCESS, personalProjectVOList, "获取用户个人参与项目成功！");
     }
 
 //    //用户获取非公开项目的列表
@@ -269,7 +269,7 @@ public class ProjectServiceImpl implements ProjectService {
             return new Result(BAD_REQUEST, "参数为空");
         }
         if (inviteDto.getInvitedCode() == null || inviteDto.getInvitedCode().isEmpty()
-                || inviteDto.getUserId() == null ) {
+            || inviteDto.getUserId() == null) {
             log.error("参数错误");
             return new Result(BAD_REQUEST, "参数错误");
         }
@@ -355,7 +355,7 @@ public class ProjectServiceImpl implements ProjectService {
         try {
             LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(Project::getIsPublic, false)
-                    .eq(Project::getIsDeleted,  false);
+                    .eq(Project::getIsDeleted, false);
             List<Project> projects = projectMapper.selectList(queryWrapper);
             return new Result(SUCCESS, projects, "查询项目成功");
         } catch (Exception e) {
@@ -389,6 +389,11 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<Project> getProjectByUUIds(List<String> uuids) {
-        return projectMapper.selectBatchIds(uuids);
+        if (uuids.isEmpty()) {
+            return Collections.emptyList();
+        }
+        LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.in(Project::getUuid, uuids);
+        return projectMapper.selectList(queryWrapper);
     }
 }

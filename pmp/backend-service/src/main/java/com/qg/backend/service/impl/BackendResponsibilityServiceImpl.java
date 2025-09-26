@@ -13,7 +13,7 @@ import com.qg.common.domain.po.Responsibility;
 import com.qg.common.domain.po.Result;
 import com.qg.feign.clients.AlertClient;
 import com.qg.feign.clients.UserClient;
-import com.qg.feign.dto.UsersDto;
+import com.qg.feign.domain.dto.UsersDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;

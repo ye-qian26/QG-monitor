@@ -1,17 +1,17 @@
 package com.qg.alert.monitor;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.qg.alert.mapper.AlertRuleMapper;
 import com.qg.alert.mapper.NotificationMapper;
 import com.qg.alert.mapper.ResponsibilityMapper;
 import com.qg.alert.service.NotificationService;
 import com.qg.common.domain.po.*;
-import com.qg.common.repository.ErrorRepository;
 import com.qg.common.repository.RepositoryConstants;
 
 
 import com.qg.feign.clients.*;
-import com.qg.feign.dto.UsersDto;
+
+import com.qg.feign.domain.dto.UsersDto;
+import com.qg.alert.repository.ErrorSonForWechatAlertRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +63,7 @@ public class ResponsibilityMonitor {
     private final MobileClient mobileClient;
 
     @Autowired
-    private ErrorRepository errorRepository;
+    private final ErrorSonForWechatAlertRepository errorRepository;
 
 
     // 每1分钟检查一次(可根据需要调整)
@@ -91,29 +91,29 @@ public class ResponsibilityMonitor {
             long minutesPassed = duration.toMinutes();
 
             // 3. 检查是否超过40分钟或80分钟
-            if (minutesPassed >= ALERT_UPGRADE_TIME_BOSS ) {
+            if (minutesPassed >= ALERT_UPGRADE_TIME_BOSS) {
                 log.info("触发老板报警！");
                 //获取上次信息接收者角色
                 Integer userRole = notificationSendto(item);
-                if(userRole == null){
+                if (userRole == null) {
                     log.info("获取信息失败，直接发给老板");
                     //发送给成员
                     List<Notification> notificationList2 = buildResponsibilityList(item, USER_ROLE_MEMBER);
-                    if (notificationList2.isEmpty()){
+                    if (notificationList2.isEmpty()) {
                         log.warn("该项目无成员，无法再发送！");
                     }
                     //发微信
-                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()), generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_MEMBER));
 
                     //发送给老板
                     //TODO:发送信息
-                    List<Notification> notificationList =buildResponsibilityList( item, USER_ROLE_BOSS);
+                    List<Notification> notificationList = buildResponsibilityList(item, USER_ROLE_BOSS);
 
                     //TODO:发送微信
-                    if(notificationList.isEmpty() ) {
+                    if (notificationList.isEmpty()) {
                         log.warn("该项目无老板，无法再发送！上报给管理员");
-                        List<Notification> notificationList1 = buildResponsibilityList( item, USER_ROLE_ADMIN);
+                        List<Notification> notificationList1 = buildResponsibilityList(item, USER_ROLE_ADMIN);
                         //发信息
 
                         List<Notification> allNotifications = Stream.concat(
@@ -124,7 +124,7 @@ public class ResponsibilityMonitor {
                         notificationService.add(allNotifications);
 
                         //发微信
-                        errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                        errorRepository.sendAlert(getWebhookUrl(item.getProjectId()), generateAlertMessage(item)
                                 , buildMentionedMobileList(item, USER_ROLE_ADMIN));
                     }
                     //发信息
@@ -135,27 +135,27 @@ public class ResponsibilityMonitor {
                     //发信息
                     notificationService.add(allNotifications);
                     //发微信
-                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()), generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_BOSS));
 
-                }else if(userRole.equals(USER_ROLE_ADMIN)){
+                } else if (userRole.equals(USER_ROLE_ADMIN)) {
 
                     log.info("获取信息成功，上次发给了管理员，升级报警，发送给老板");
                     //TODO:发送信息
                     //发送给成员
                     List<Notification> notificationList2 = buildResponsibilityList(item, USER_ROLE_MEMBER);
-                    if (notificationList2.isEmpty()){
+                    if (notificationList2.isEmpty()) {
                         log.warn("该项目无成员，无法再发送！");
                     }
                     //发微信
-                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()), generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_MEMBER));
 
                     //发送给老板
-                    List<Notification> notificationList =buildResponsibilityList( item, USER_ROLE_BOSS);
-                    if(notificationList.isEmpty()){
+                    List<Notification> notificationList = buildResponsibilityList(item, USER_ROLE_BOSS);
+                    if (notificationList.isEmpty()) {
                         log.warn("该项目无老板，无法再发送！上报给管理员");
-                        List<Notification> notificationList1 = buildResponsibilityList( item, USER_ROLE_ADMIN);
+                        List<Notification> notificationList1 = buildResponsibilityList(item, USER_ROLE_ADMIN);
                         List<Notification> allNotifications = Stream.concat(
                                 notificationList1.stream(),
                                 notificationList.stream()
@@ -164,7 +164,7 @@ public class ResponsibilityMonitor {
                         notificationService.add(allNotifications);
 
                         //发微信
-                        errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                        errorRepository.sendAlert(getWebhookUrl(item.getProjectId()), generateAlertMessage(item)
                                 , buildMentionedMobileList(item, USER_ROLE_ADMIN));
                     }
                     List<Notification> allNotifications = Stream.concat(
@@ -175,21 +175,20 @@ public class ResponsibilityMonitor {
                     //发信息
 
                     //发微信
-                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()), generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_BOSS));
 
-                }else if(userRole.equals(USER_ROLE_BOSS)){
+                } else if (userRole.equals(USER_ROLE_BOSS)) {
                     log.info("获取信息成功，上次发给了老板，无需再发");
 
                 }
 
                 notificationCount++;
-            }
-            else if (minutesPassed >= ALERT_UPGRADE_TIME) {
+            } else if (minutesPassed >= ALERT_UPGRADE_TIME) {
                 log.info("触发管理员警告！");
                 //获取上次信息接收者角色
                 Integer userRole = notificationSendto(item);
-                if(userRole == null){
+                if (userRole == null) {
                     log.info("获取信息失败，直接发给管理员");
                     //TODO:发送信息
                     List<Notification> allNotifications = Stream.concat(
@@ -198,20 +197,20 @@ public class ResponsibilityMonitor {
                     ).collect(Collectors.toList());
 
                     notificationService.add(allNotifications);
-                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()), generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_ADMIN));
 
-                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()), generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_MEMBER));
-                }else if(userRole.equals(USER_ROLE_MEMBER)){
+                } else if (userRole.equals(USER_ROLE_MEMBER)) {
                     log.info("获取信息成功，上次发给了普通员工，升级报警，发送给管理员");
                     List<Notification> notificationList2 = buildResponsibilityList(item, USER_ROLE_MEMBER);
-                    if (notificationList2.isEmpty()){
+                    if (notificationList2.isEmpty()) {
                         log.warn("该项目无成员，无法再发送！");
                     }
 
-                    List<Notification> notificationList = buildResponsibilityList(item,USER_ROLE_ADMIN);
-                    if(notificationList.isEmpty()){
+                    List<Notification> notificationList = buildResponsibilityList(item, USER_ROLE_ADMIN);
+                    if (notificationList.isEmpty()) {
                         log.error("获取信息失败!");
                     }
                     //结合起来
@@ -222,18 +221,18 @@ public class ResponsibilityMonitor {
                     notificationService.add(allNotifications);
 
                     //发送给成员
-                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()), generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_MEMBER));
 
                     //发送给管理员
-                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()),generateAlertMessage(item)
+                    errorRepository.sendAlert(getWebhookUrl(item.getProjectId()), generateAlertMessage(item)
                             , buildMentionedMobileList(item, USER_ROLE_ADMIN));
 
-                }else if(userRole.equals(USER_ROLE_ADMIN)){
+                } else if (userRole.equals(USER_ROLE_ADMIN)) {
                     log.info("获取信息成功，上次发给了管理员，无需再发");
                 }
                 notificationCount++;
-            }else{
+            } else {
                 log.info("还在等待项目成员处理~");
             }
 
@@ -262,7 +261,7 @@ public class ResponsibilityMonitor {
             return null;
         }
 
-        if(existNotification.getContent().equals(ALERT_CONTENT_NEW)){
+        if (existNotification.getContent().equals(ALERT_CONTENT_NEW)) {
             return null;
         }
 
@@ -282,8 +281,8 @@ public class ResponsibilityMonitor {
         return role.getUserRole();
     }
 
-        // 查询所有未处理的任务
-    private List<Responsibility> findByIsHandle () {
+    // 查询所有未处理的任务
+    private List<Responsibility> findByIsHandle() {
         LambdaQueryWrapper<Responsibility> qw = new LambdaQueryWrapper<>();
         qw.eq(Responsibility::getIsHandle, RepositoryConstants.UN_HANDLED);
         return responsibilityMapper.selectList(qw);
@@ -291,9 +290,9 @@ public class ResponsibilityMonitor {
     }
 
     //构建发送信息的列表
-    private List<Notification> buildResponsibilityList (Responsibility item,Integer userRole) {
+    private List<Notification> buildResponsibilityList(Responsibility item, Integer userRole) {
         List<Notification> result = new ArrayList<>();
-        List<Role> roles =new ArrayList<>();
+        List<Role> roles = new ArrayList<>();
         if (userRole == USER_ROLE_MEMBER) {
             LambdaQueryWrapper<Role> qw = new LambdaQueryWrapper<>();
             qw.eq(Role::getUserId, item.getResponsibleId())
@@ -321,10 +320,11 @@ public class ResponsibilityMonitor {
         }
         return result;
     }
+
     /**
      * 构建发送微信接收者的手机号码
      */
-    protected List<String> buildMentionedMobileList(Responsibility responsibility,Integer userRole) {
+    protected List<String> buildMentionedMobileList(Responsibility responsibility, Integer userRole) {
         List<Role> roleList = new ArrayList<>();
         List<String> mobileList = new ArrayList<>();
 
@@ -354,8 +354,10 @@ public class ResponsibilityMonitor {
         }
         return mobileList;
     }
+
     /**
      * 获取企业机器人webhook
+     *
      * @param projectId
      * @return
      */
@@ -367,23 +369,23 @@ public class ResponsibilityMonitor {
 
     /**
      * 发送消息模板
+     *
      * @return
      */
     protected String generateAlertMessage(Responsibility item) {
-        if(item.getPlatform().equals("mobile"))
-        {
+        if (item.getPlatform().equals("mobile")) {
             log.info("发送移动端错误！");
             LambdaQueryWrapper<MobileError> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(MobileError::getId, item.getErrorId());
             //MobileError mobileError = mobileErrorMapper.selectOne(queryWrapper);
             MobileError mobileError = mobileClient.getMobileErrorByWrapper(queryWrapper).get(0);
             return String.format("【移动端错误告警】\n" +
-                            "项目ID：%s\n" +
-                            "错误类型：%s\n" +
-                            "类名：%s\n" +
-                            "发生次数：%d\n" +
-                            "触发时间：%s\n" +
-                            ALERT_CONTENT_HANDLE,
+                                 "项目ID：%s\n" +
+                                 "错误类型：%s\n" +
+                                 "类名：%s\n" +
+                                 "发生次数：%d\n" +
+                                 "触发时间：%s\n" +
+                                 ALERT_CONTENT_HANDLE,
                     mobileError.getProjectId(),
                     mobileError.getErrorType(),
                     mobileError.getClassName(),
@@ -391,21 +393,19 @@ public class ResponsibilityMonitor {
                     LocalDateTime.now()
                             .format(DateTimeFormatter
                                     .ofPattern("yyyy-MM-dd HH:mm:ss")));
-        }
-        else if(item.getPlatform().equals("frontend"))
-        {
+        } else if (item.getPlatform().equals("frontend")) {
             log.info("发送前端错误！");
             LambdaQueryWrapper<FrontendError> queryWrapper1 = new LambdaQueryWrapper<>();
             queryWrapper1.eq(FrontendError::getId, item.getErrorId());
             //FrontendError frontendError = frontendErrorMapper.selectOne(queryWrapper1);
             FrontendError frontendError = frontendClient.getFrontendErrorByWrapper(queryWrapper1).get(0);
             return String.format("【前端错误告警】\n" +
-                            "项目ID：%s\n" +
-                            "错误类型：%s\n" +
-                            "错误信息：%s\n" +
-                            "发生次数：%d\n" +
-                            "触发时间：%s\n" +
-                            ALERT_CONTENT_HANDLE,
+                                 "项目ID：%s\n" +
+                                 "错误类型：%s\n" +
+                                 "错误信息：%s\n" +
+                                 "发生次数：%d\n" +
+                                 "触发时间：%s\n" +
+                                 ALERT_CONTENT_HANDLE,
                     frontendError.getProjectId(),
                     frontendError.getErrorType(),
                     frontendError.getMessage(),
@@ -413,19 +413,19 @@ public class ResponsibilityMonitor {
                     LocalDateTime.now()
                             .format(DateTimeFormatter
                                     .ofPattern("yyyy-MM-dd HH:mm:ss")));
-        }else if(item.getPlatform().equals("backend")){
+        } else if (item.getPlatform().equals("backend")) {
             log.info("发送后端错误！");
             LambdaQueryWrapper<BackendError> queryWrapper2 = new LambdaQueryWrapper<>();
             queryWrapper2.eq(BackendError::getId, item.getErrorId());
             //BackendError backendError = backendErrorMapper.selectOne(queryWrapper2);
             BackendError backendError = backendClient.getBackendErrorByWrapper(queryWrapper2).get(0);
             return String.format("【后端错误告警】\n" +
-                            "项目ID：%s\n" +
-                            "错误类型：%s\n" +
-                            "堆栈信息：%s\n" +
-                            "发生次数：%d\n" +
-                            "触发时间：%s\n" +
-                            ALERT_CONTENT_HANDLE,
+                                 "项目ID：%s\n" +
+                                 "错误类型：%s\n" +
+                                 "堆栈信息：%s\n" +
+                                 "发生次数：%d\n" +
+                                 "触发时间：%s\n" +
+                                 ALERT_CONTENT_HANDLE,
                     backendError.getProjectId(),
                     backendError.getErrorType(),
                     backendError.getStack(),

@@ -4,10 +4,13 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 
 import com.qg.common.domain.po.FrontendError;
+import com.qg.common.domain.po.Project;
+import com.qg.feign.clients.ProjectClient;
 import com.qg.frontend.mapper.FrontendErrorMapper;
 
 import com.qg.frontend.repository.FrontendErrorRepository;
 import jakarta.annotation.PreDestroy;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -20,6 +23,7 @@ import java.util.concurrent.*;
 
 @Service
 @Slf4j
+@AllArgsConstructor
 public class FrontendErrorAggregator {
 
     // 使用 Redis 的 key 前缀
@@ -35,8 +39,7 @@ public class FrontendErrorAggregator {
     @Autowired
     private FrontendErrorMapper frontendErrorMapper;
 
-    @Autowired
-    private ProjectMapper projectMapper;
+    private ProjectClient projectClient;
 
     // 添加线程池用于延迟处理
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(3);
@@ -100,7 +103,7 @@ public class FrontendErrorAggregator {
     private void triggerImmediateAlert(FrontendError error) {
         try {
             // 调用仓库的告警逻辑
-            frontendErrorRepository.sendWechatAlert(error);
+            frontendErrorRepository.checkIfAlert(error);
         } catch (Exception e) {
             log.error("即时告警发送失败: {}", e.getMessage());
         }
@@ -221,9 +224,9 @@ public class FrontendErrorAggregator {
         }
 
         try {
-            LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
-            queryWrapper.eq(Project::getUuid, projectId).eq(Project::getIsDeleted, false);
-            return projectMapper.selectCount(queryWrapper) > 0;
+//            LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
+//            queryWrapper.eq(Project::getUuid, projectId).eq(Project::getIsDeleted, false);
+            return projectClient.checkProjectIdExist(projectId);
         } catch (Exception e) {
             log.error("检查项目存在性时发生异常，项目ID: {}", projectId, e);
             return false;

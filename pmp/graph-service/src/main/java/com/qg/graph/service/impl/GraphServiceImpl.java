@@ -7,7 +7,6 @@ import com.qg.common.domain.vo.*;
 import com.qg.feign.clients.BackendClient;
 import com.qg.feign.clients.FrontendClient;
 import com.qg.feign.clients.MobileClient;
-import com.qg.graph.mapper.MethodInvocationMapper;
 import com.qg.graph.service.GraphService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +23,6 @@ public class GraphServiceImpl implements GraphService {
     private final FrontendClient frontendClient;
     private final BackendClient backendClient;
     private final MobileClient mobileClient;
-    private final MethodInvocationMapper methodInvocationMapper;
 
     /**
      * 查询指定时间段内某项目中，用户页面停留《所有路由下》时间数据
@@ -121,7 +119,7 @@ public class GraphServiceImpl implements GraphService {
     @Override
     public List<MethodInvocationVO> getMethodInvocationStats
     (String projectId, LocalDateTime startTime, LocalDateTime endTime) {
-        return methodInvocationMapper.queryMethodInvocationStats(projectId, startTime, endTime);
+        return backendClient.queryMethodInvocationStats(projectId, startTime, endTime);
     }
 
     /**

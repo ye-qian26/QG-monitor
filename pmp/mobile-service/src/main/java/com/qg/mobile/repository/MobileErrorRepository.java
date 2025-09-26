@@ -3,14 +3,13 @@ package com.qg.mobile.repository;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.qg.common.domain.po.*;
-import com.qg.common.repository.ErrorRepository;
+import com.qg.feign.repository.ErrorRepository;
 import com.qg.common.repository.RepositoryConstants;
 import com.qg.feign.clients.AlertClient;
 import com.qg.feign.clients.ProjectClient;
 import com.qg.feign.clients.UserClient;
-import com.qg.feign.dto.UsersDto;
+import com.qg.feign.domain.dto.UsersDto;
 import com.qg.mobile.mapper.MobileErrorMapper;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -34,7 +33,7 @@ import static com.qg.common.utils.Constants.USER_ROLE_ADMIN;
 
 @Slf4j
 @Repository
-public abstract class MobileErrorRepository extends ErrorRepository<MobileError> {
+public class MobileErrorRepository extends ErrorRepository<MobileError> {
 
     @Autowired
     private MobileErrorMapper mobileErrorMapper;
@@ -184,7 +183,7 @@ public abstract class MobileErrorRepository extends ErrorRepository<MobileError>
      * @param error 移动错误
      */
     @Override
-    protected void checkIfAlert(MobileError error) {
+    public void checkIfAlert(MobileError error) {
         log.info("判断是否达到阈值");
 
         int currentCount = error.getEvent();

@@ -24,7 +24,7 @@ public interface ProjectClient {
     Project getProjectById(@RequestParam String uuid);
 
     @GetMapping("/projects/checkProjectIdExist")
-    boolean checkProjectIdExist(@RequestParam Long projectId);
+    boolean checkProjectIdExist(@RequestParam String projectId);
 
     @GetMapping("/projects/selectWebhookByProjectId")
     String selectWebhookByProjectId(@RequestParam String projectId);

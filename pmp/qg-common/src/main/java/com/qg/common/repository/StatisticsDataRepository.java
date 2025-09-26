@@ -61,7 +61,7 @@ public abstract class StatisticsDataRepository<T> {
 
     protected abstract void incrementEvent(T entity);
 
-    protected abstract void checkIfAlert(T entity);
+    public abstract void checkIfAlert(T entity);
 
     /**
      * 统计并缓存数据
@@ -119,6 +119,4 @@ public abstract class StatisticsDataRepository<T> {
             }
         }
     }
-
-    protected abstract boolean saveNotification(List<Long> alertReceiverID, BackendError error);
 }

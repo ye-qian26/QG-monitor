@@ -9,7 +9,7 @@ import com.qg.common.domain.po.Result;
 
 import com.qg.feign.clients.AlertClient;
 import com.qg.feign.clients.UserClient;
-import com.qg.feign.dto.UsersDto;
+import com.qg.feign.domain.dto.UsersDto;
 import com.qg.common.domain.po.Project;
 import com.qg.common.domain.po.Role;
 import com.qg.project.domain.vo.ProjectMemberVO;
@@ -75,7 +75,7 @@ public class RoleServiceImpl implements RoleService {
         }
 
         if (roleVO.getUserId() == null || roleVO.getProjectId() == null
-                || roleVO.getProjectId().isEmpty() || roleVO.getCurrentUserId() == null) {
+            || roleVO.getProjectId().isEmpty() || roleVO.getCurrentUserId() == null) {
             return new Result(Code.BAD_REQUEST, "用户ID和项目ID不能为空");
         }
 
@@ -186,14 +186,13 @@ public class RoleServiceImpl implements RoleService {
         LambdaQueryWrapper<Role> lqw = new LambdaQueryWrapper<>();
         lqw.eq(Role::getProjectId, projectId);
         List<Role> list = roleMapper.selectList(lqw);
-        if(list == null) {
+        if (list == null) {
             return new Result(Code.NOT_FOUND, "该项目下无成员或项目不存在");
         }
         List<ProjectMemberVO> projectMemberVOList = new ArrayList<>();
-        for(Role role : list)
-        {
+        for (Role role : list) {
             ProjectMemberVO vo = new ProjectMemberVO();
-            Long id= role.getUserId();
+            Long id = role.getUserId();
             vo.setId(id);
 /*            LambdaQueryWrapper<Users> lqw1 = new LambdaQueryWrapper<>();
             lqw1.eq(Users::getId, id);
@@ -201,17 +200,17 @@ public class RoleServiceImpl implements RoleService {
 
             UsersDto users = usersClient.findUserById(id);
 
-            if(users != null){
-                BeanUtils.copyProperties(users,vo);
-                BeanUtils.copyProperties(role,vo);
+            if (users != null) {
+                BeanUtils.copyProperties(users, vo);
+                BeanUtils.copyProperties(role, vo);
                 projectMemberVOList.add(vo);
             }
 
         }
-        if(projectMemberVOList.size() == 0){
+        if (projectMemberVOList.size() == 0) {
             return new Result(Code.NOT_FOUND, "该项目下无成员");
         }
-        return new Result(Code.SUCCESS,projectMemberVOList,"查询成功");
+        return new Result(Code.SUCCESS, projectMemberVOList, "查询成功");
     }
 
 
@@ -230,9 +229,6 @@ public class RoleServiceImpl implements RoleService {
             projectLambdaQueryWrapper.eq(Project::getUuid, projectId)
                     .eq(Project::getIsDeleted, false);
             Project project = projectMapper.selectOne(projectLambdaQueryWrapper);
-
-
-
 
 
             // 检查项目是否存在
@@ -278,14 +274,13 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Result updateUserRole(Role role) {
-        if(role.getId() == null){
+        if (role.getId() == null) {
             return new Result(Code.BAD_REQUEST, "参数id为空！");
         }
-        if(role.getUserRole() == USER_ROLE_ADMIN){
+        if (role.getUserRole() == USER_ROLE_ADMIN) {
             role.setPower(PERMISSION_OP);
             return roleMapper.updateById(role) == 1 ? new Result(Code.CREATED, "更新成功") : new Result(Code.INTERNAL_ERROR, "更新失败");
-        }
-        else{
+        } else {
             return roleMapper.updateById(role) == 1 ? new Result(Code.CREATED, "更新成功") : new Result(Code.INTERNAL_ERROR, "更新失败");
         }
     }

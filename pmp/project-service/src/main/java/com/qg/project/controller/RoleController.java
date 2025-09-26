@@ -7,7 +7,7 @@ import com.qg.common.domain.po.Result;
 import com.qg.common.domain.po.Role;
 import com.qg.project.domain.vo.RoleVO;
 import com.qg.project.service.RoleService;
-import io.swagger.v3.oas.annotations.tags.Tag;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Slf4j
-@Tag(name ="权限判断")
+//@Tag(name ="权限判断")
 @RestController
 @RequestMapping("/roles")
 public class RoleController {

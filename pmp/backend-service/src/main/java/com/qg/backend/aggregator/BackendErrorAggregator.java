@@ -6,6 +6,8 @@ import com.qg.common.domain.po.BackendError;
 import com.qg.backend.mapper.BackendErrorMapper;
 
 import com.qg.backend.repository.BackendErrorRepository;
+import com.qg.common.domain.po.Project;
+import com.qg.feign.clients.ProjectClient;
 import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +35,14 @@ public class BackendErrorAggregator {
     @Autowired
     private BackendErrorMapper backendErrorMapper;
 
-    @Autowired
-    private ProjectMapper projectMapper;
 
     // 添加线程池用于延迟处理
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(3);
 
     // 用于跟踪每个key的调度任务
     private final ConcurrentHashMap<String, ScheduledFuture<?>> scheduledTasks = new ConcurrentHashMap<>();
+    @Autowired
+    private ProjectClient projectClient;
 
     /**
      * 添加错误信息到 Redis 缓存中，并触发延迟处理
@@ -126,7 +128,7 @@ public class BackendErrorAggregator {
     private void triggerImmediateAlert(BackendError error) {
         try {
             // 调用仓库的告警逻辑
-            backendErrorRepository.sendWechatAlert(error);
+            backendErrorRepository.checkIfAlert(error);
         } catch (Exception e) {
             log.error("即时告警发送失败: {}", e.getMessage());
         }
@@ -214,7 +216,8 @@ public class BackendErrorAggregator {
         try {
             LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(Project::getUuid, projectId).eq(Project::getIsDeleted, false);
-            return projectMapper.selectCount(queryWrapper) > 0;
+//            return projectMapper.selectCount(queryWrapper) > 0;
+            return projectClient.checkProjectIdExist(projectId);
         } catch (Exception e) {
             log.error("检查项目存在性时发生异常，项目ID: {}", projectId, e);
             return false;
