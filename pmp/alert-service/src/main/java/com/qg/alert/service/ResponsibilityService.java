@@ -4,6 +4,7 @@ package com.qg.alert.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.qg.common.domain.po.Responsibility;
 import com.qg.common.domain.po.Result;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -26,10 +27,19 @@ public interface ResponsibilityService {
 
     int deleteUserId(Long userId);
 
-
     Responsibility getResponsibilityByWrapper(LambdaQueryWrapper<Responsibility> queryWrapper);
 
     Integer updateResponsibilityByWrapper(Responsibility responsibility, LambdaQueryWrapper<Responsibility> queryWrapper);
 
     List<Responsibility> getResponsibilityListByWrapper(LambdaQueryWrapper<Responsibility> queryWrapper);
+
+    List<Responsibility> getResponsibilityListByProjectId(String projectId, String platform);
+
+    Responsibility getResponsibility(String projectId, String errorType);
+
+    Responsibility getResponsibilityFromPlatform(@RequestParam String projectId, @RequestParam String errorType, @RequestParam String platform);
+
+    boolean updateResponsibility(String projectId, String errorType, String platform, Long errorId);
+
+    boolean signResponsibilityNoHandle(String projectId, String errorType, String platform);
 }

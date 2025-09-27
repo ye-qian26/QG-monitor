@@ -1,10 +1,12 @@
 package com.qg.alert.service.impl;
 
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 
 
 import com.qg.alert.websocket.UnifiedWebSocketHandler;
+import com.qg.common.domain.dto.WrapperDTO;
 import com.qg.common.domain.po.*;
 import com.qg.alert.domain.vo.NotificationVO;
 import com.qg.alert.mapper.NotificationMapper;
@@ -63,7 +65,7 @@ public class NotificationServiceImpl implements NotificationService {
     @Override
     public Result selectByReceiverId(Long receiverId, Integer isSenderExist) {
         if (receiverId == null || isSenderExist == null
-                || (!isSenderExist.equals(IS_SENDER_EXIST) && !isSenderExist.equals(IS_SENDER_NOT_EXIST))) {
+            || (!isSenderExist.equals(IS_SENDER_EXIST) && !isSenderExist.equals(IS_SENDER_NOT_EXIST))) {
             log.error("查询通知信息失败，参数错误");
             return new Result(Code.BAD_REQUEST, "查询通知信息失败，参数错误");
         }
@@ -288,8 +290,9 @@ public class NotificationServiceImpl implements NotificationService {
 
     /**
      * 按类型广播通知
+     *
      * @param notifications 通知列表
-     * @param messageType 消息类型 ("notifications" 或 "designate")
+     * @param messageType   消息类型 ("notifications" 或 "designate")
      */
     private void broadcastNotificationsByType(List<Notification> notifications, String messageType) {
         try {
@@ -463,7 +466,7 @@ public class NotificationServiceImpl implements NotificationService {
         /*LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.in(Project::getUuid, projectIds);
         List<Project> projects = projectMapper.selectList(queryWrapper);*/
-        List<Project> projects = projectClient.getProjectByUUIds(projectIds);
+        List<Project> projects = userClient.getProjectByUUIds(projectIds);
 
         return projects.stream()
                 .collect(Collectors.toMap(Project::getUuid, project -> project));
@@ -495,10 +498,12 @@ public class NotificationServiceImpl implements NotificationService {
         }
 
         // 查询所有匹配的错误记录
-        LambdaQueryWrapper<BackendError> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.in(BackendError::getErrorType, errorTypes);
-        /*List<BackendError> errors = backendErrorMapper.selectList(queryWrapper);*/
-        List<BackendError> errors = backendClient.getBackendErrorByWrapper(queryWrapper);
+//        LambdaQueryWrapper<BackendError> queryWrapper = new LambdaQueryWrapper<>();
+//        queryWrapper.in(BackendError::getErrorType, errorTypes);
+//        /*List<BackendError> errors = backendErrorMapper.selectList(queryWrapper);*/
+//
+//        List<BackendError> errors = backendClient.getBackendErrorByWrapper(queryWrapper);
+        List<BackendError> errors = backendClient.getBackendErrorByErrorType(errorTypes, null);
 
         // 按errorType分组，并取每组中时间最新的记录
         return errors.stream()
@@ -519,10 +524,11 @@ public class NotificationServiceImpl implements NotificationService {
             return new HashMap<>();
         }
 
-        LambdaQueryWrapper<FrontendError> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.in(FrontendError::getErrorType, errorTypes);
-        /*List<FrontendError> errors = frontendErrorMapper.selectList(queryWrapper);*/
-        List<FrontendError> errors = frontendClient.getFrontendErrorByWrapper(queryWrapper);
+//        LambdaQueryWrapper<FrontendError> queryWrapper = new LambdaQueryWrapper<>();
+//        queryWrapper.in(FrontendError::getErrorType, errorTypes);
+//        /*List<FrontendError> errors = frontendErrorMapper.selectList(queryWrapper);*/
+//        List<FrontendError> errors = frontendClient.getFrontendErrorByWrapper(queryWrapper);
+        List<FrontendError> errors = backendClient.getFrontendErrorByErrorType(errorTypes, null);
 
         return errors.stream()
                 .collect(Collectors.groupingBy(
@@ -542,10 +548,11 @@ public class NotificationServiceImpl implements NotificationService {
             return new HashMap<>();
         }
 
-        LambdaQueryWrapper<MobileError> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.in(MobileError::getErrorType, errorTypes);
-        //List<MobileError> errors = mobileErrorMapper.selectList(queryWrapper);
-        List<MobileError> errors = mobileClient.getMobileErrorByWrapper(queryWrapper);
+//        LambdaQueryWrapper<MobileError> queryWrapper = new LambdaQueryWrapper<>();
+//        queryWrapper.in(MobileError::getErrorType, errorTypes);
+//        //List<MobileError> errors = mobileErrorMapper.selectList(queryWrapper);
+//        List<MobileError> errors = mobileClient.getMobileErrorByWrapper(queryWrapper);
+        List<MobileError> errors = backendClient.getMobileErrorByErrorType(errorTypes, null);
 
         return errors.stream()
                 .collect(Collectors.groupingBy(
@@ -555,5 +562,28 @@ public class NotificationServiceImpl implements NotificationService {
                                 Optional::get
                         )
                 ));
+    }
+
+    /**
+     * 获取通知内容
+     *
+     * @param projectId 项目id
+     * @param errorType 错误类型
+     * @param platform  来源
+     * @param errorId   错误id
+     * @param content   内容
+     * @return 结果
+     */
+    @Override
+    public Notification getNotification(String projectId, String errorType, String platform, Long errorId, String content) {
+        LambdaQueryWrapper<Notification> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Notification::getErrorType, errorType)
+                .eq(Notification::getProjectId, projectId)
+                .eq(Notification::getErrorId, errorId)
+                .eq(Notification::getPlatform, platform)
+                .eq(Notification::getContent, content)
+                .orderByDesc(Notification::getTimestamp)  // 按时间倒序排序
+                .last("LIMIT 1");  // 限制只取第一条记录
+        return notificationMapper.selectOne(queryWrapper);
     }
 }

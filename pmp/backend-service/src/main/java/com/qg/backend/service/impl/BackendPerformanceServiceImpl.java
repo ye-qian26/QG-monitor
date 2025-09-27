@@ -8,6 +8,7 @@ import com.qg.backend.service.BackendPerformanceService;
 import com.qg.backend.service.ModuleService;
 import com.qg.common.domain.po.Result;
 import com.qg.feign.clients.ProjectClient;
+import com.qg.feign.clients.UserClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,8 @@ public class BackendPerformanceServiceImpl implements BackendPerformanceService 
     private final ProjectClient projectClient;
     @Autowired
     private ModuleService moduleService;
+    @Autowired
+    private UserClient userClient;
 
     @Override
     public int saveBackendPerformance(List<BackendPerformance> backendPerformances) {
@@ -97,7 +100,7 @@ public class BackendPerformanceServiceImpl implements BackendPerformanceService 
 
             // 检查项目ID是否存在
             String projectId = backendPerformances.getFirst().getProjectId();
-            if (!projectClient.checkProjectIdExist(projectId)) {
+            if (!userClient.checkProjectIdExist(projectId)) {
                 log.warn("项目ID:{}不存在", projectId);
                 return new Result(BAD_REQUEST, "项目ID不存在");
             }

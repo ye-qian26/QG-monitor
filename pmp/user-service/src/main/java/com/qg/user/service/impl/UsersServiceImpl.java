@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -365,11 +366,22 @@ public class UsersServiceImpl implements UsersService {
 
     /**
      * 批量查询用户
+     *
      * @param queryWrapper 查询器
-     * @return  结果
+     * @return 结果
      */
     @Override
     public List<Users> selectList(LambdaQueryWrapper<Users> queryWrapper) {
         return usersMapper.selectList(queryWrapper);
     }
+
+//    /**
+//     * 批量查询用户
+//     *
+//     * @param phone 电话号码
+//     * @return 结果
+//     */
+//    @Override
+//    public Users selectUserByPhone(String phone) {
+//    }
 }

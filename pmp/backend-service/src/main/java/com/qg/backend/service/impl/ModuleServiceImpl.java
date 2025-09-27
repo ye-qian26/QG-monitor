@@ -11,6 +11,7 @@ import com.qg.common.domain.po.Code;
 import com.qg.common.domain.po.Project;
 import com.qg.common.domain.po.Result;
 import com.qg.feign.clients.ProjectClient;
+import com.qg.feign.clients.UserClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class ModuleServiceImpl implements ModuleService {
     private ProjectMapper projectMapper;
     */
     private final ProjectClient projectClient;
+    @Autowired
+    private UserClient userClient;
+
     @Override
     public Result addModule(Module module) {
         log.info("添加模块: {}", module);
@@ -48,7 +52,7 @@ public class ModuleServiceImpl implements ModuleService {
         // 判断项目id是否存在
         /*Project project = projectMapper.selectOne(new LambdaQueryWrapper<Project>()
                 .eq(Project::getUuid, module.getProjectId()));*/
-        Project project =  projectClient.getProjectById(module.getProjectId().toString());
+        Project project =  userClient.getProjectById(module.getProjectId().toString());
         if (project == null) {
             log.error("添加模块失败，项目id不存在");
             return new Result(Code.NOT_FOUND, "添加模块失败，项目id不存在");
@@ -78,7 +82,7 @@ public class ModuleServiceImpl implements ModuleService {
         // 判断项目id是否存在
         /*Project project = projectMapper.selectOne(new LambdaQueryWrapper<Project>()
                 .eq(Project::getUuid, projectId));*/
-        Project project =  projectClient.getProjectById(projectId.toString());
+        Project project =  userClient.getProjectById(projectId.toString());
         if (project == null) {
             log.error("查询模块失败，项目id不存在");
             return new Result(Code.NOT_FOUND, "查询模块失败，项目id不存在");

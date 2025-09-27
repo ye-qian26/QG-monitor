@@ -132,16 +132,18 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
     protected boolean checkNotificationNoExist(BackendError error, LocalDateTime timestamp) {
         //检测通知是否已存在
         log.info("错误信息：{}", error);
-        LambdaQueryWrapper<Notification> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Notification::getErrorType, error.getErrorType())
-                .eq(Notification::getProjectId, error.getProjectId())
-                .eq(Notification::getErrorId, error.getId())
-                .eq(Notification::getPlatform, "backend")
-                .eq(Notification::getContent, ALERT_CONTENT_NEW)
-                .orderByDesc(Notification::getTimestamp)  // 按时间倒序排序
-                .last("LIMIT 1");  // 限制只取第一条记录
+//        LambdaQueryWrapper<Notification> queryWrapper = new LambdaQueryWrapper<>();
+//        queryWrapper.eq(Notification::getErrorType, error.getErrorType())
+//                .eq(Notification::getProjectId, error.getProjectId())
+//                .eq(Notification::getErrorId, error.getId())
+//                .eq(Notification::getPlatform, "backend")
+//                .eq(Notification::getContent, ALERT_CONTENT_NEW)
+//                .orderByDesc(Notification::getTimestamp)  // 按时间倒序排序
+//                .last("LIMIT 1");  // 限制只取第一条记录
         /*Notification notification = notificationMapper.selectOne(queryWrapper);*/
-        Notification notification = alertClient.getNotificationByWrapper(queryWrapper);
+        Notification notification = alertClient.getNotification(error.getProjectId(),
+                error.getErrorType(), "backend", error.getId(), ALERT_CONTENT_NEW);
+
         log.info("notification:{}", notification);
 
         if (notification == null) {
@@ -158,11 +160,11 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
             if (duration.getSeconds() < 300) {
                 log.info("该错误5分钟内有通知记录");
                 // 检测该错误是否未被解决 （未解决在该时间段内无需重发）
-                LambdaQueryWrapper<Responsibility> queryWrapper1 = new LambdaQueryWrapper<>();
-                queryWrapper1.eq(Responsibility::getErrorType, error.getErrorType())
-                        .eq(Responsibility::getProjectId, error.getProjectId());
+//                LambdaQueryWrapper<Responsibility> queryWrapper1 = new LambdaQueryWrapper<>();
+//                queryWrapper1.eq(Responsibility::getErrorType, error.getErrorType())
+//                        .eq(Responsibility::getProjectId, error.getProjectId());
                 /*Responsibility responsibility1 = responsibilityMapper.selectOne(queryWrapper1);*/
-                Responsibility responsibility1 = alertClient.getResponsibilityByQueryWrapper(queryWrapper1);
+                Responsibility responsibility1 = alertClient.getResponsibility(error.getProjectId(), error.getErrorType());
 
                 // 若该错误未被指派、则发送警告
                 if (responsibility1 == null) {
@@ -271,31 +273,35 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
                 // TODO: 需要@的成员手机号列表
 
                 //查看该错误类型是否被委派
-                LambdaQueryWrapper<Responsibility> queryWrapper = new LambdaQueryWrapper<>();
-                queryWrapper.eq(Responsibility::getErrorType, error.getErrorType())
-                        .eq(Responsibility::getProjectId, error.getProjectId());
-                /*Responsibility responsibility = responsibilityMapper.selectOne(queryWrapper);*/
-                Responsibility responsibility = alertClient.getResponsibilityByQueryWrapper(queryWrapper);
+//                LambdaQueryWrapper<Responsibility> queryWrapper = new LambdaQueryWrapper<>();
+//                queryWrapper.eq(Responsibility::getErrorType, error.getErrorType())
+//                        .eq(Responsibility::getProjectId, error.getProjectId());
+//                /*Responsibility responsibility = responsibilityMapper.selectOne(queryWrapper);*/
+
+                Responsibility responsibility = alertClient.getResponsibility(error.getProjectId(), error.getErrorType());
 
                 if (responsibility != null) {
                     log.info("该错误已经被委派");
 
                     //更新responsibility中的errorId
-                    LambdaQueryWrapper<Responsibility> queryWrapper5 = new LambdaQueryWrapper<>();
-                    queryWrapper5.eq(Responsibility::getProjectId, error.getProjectId())
-                            .eq(Responsibility::getPlatform, "backend")
-                            .eq(Responsibility::getErrorType, error.getErrorType());
-                    /* Responsibility responsibility1 = responsibilityMapper.selectOne(queryWrapper5);*/
-                    Responsibility responsibility1 = alertClient.getResponsibilityByQueryWrapper(queryWrapper5);
-                    responsibility1.setErrorId(error.getId());
-                    alertClient.updateResponsibilityByWrapper(responsibility1, queryWrapper5);
-                    /*responsibilityMapper.update(responsibility1, queryWrapper5);*/
+//                    LambdaQueryWrapper<Responsibility> queryWrapper5 = new LambdaQueryWrapper<>();
+//                    queryWrapper5.eq(Responsibility::getProjectId, error.getProjectId())
+//                            .eq(Responsibility::getPlatform, "backend")
+//                            .eq(Responsibility::getErrorType, error.getErrorType());
+//                    /* Responsibility responsibility1 = responsibilityMapper.selectOne(queryWrapper5);*/
+//                    Responsibility responsibility1 = alertClient.getResponsibilityByQueryWrapper(queryWrapper5);
+//                    responsibility1.setErrorId(error.getId());
+//                    alertClient.updateResponsibilityByWrapper(responsibility1, queryWrapper5);
+//                    /*responsibilityMapper.update(responsibility1, queryWrapper5);*/
 
-                    //标记该错误为未解决
-                    responsibility.setIsHandle(UN_HANDLED);
-                    responsibility.setUpdateTime(LocalDateTime.now());
-                    /*responsibilityMapper.update(responsibility, queryWrapper);*/
-                    alertClient.updateResponsibilityByWrapper(responsibility, queryWrapper);
+                    alertClient.updateResponsibility(error.getProjectId(), error.getErrorType(), "backend", error.getId());
+
+//                    //标记该错误为未解决
+//                    responsibility.setIsHandle(UN_HANDLED);
+//                    responsibility.setUpdateTime(LocalDateTime.now());
+//                    /*responsibilityMapper.update(responsibility, queryWrapper);*/
+//                    alertClient.updateResponsibilityByWrapper(responsibility, queryWrapper);
+                    alertClient.signResponsibilityNoHandle(error.getProjectId(), error.getErrorType(), "backend");
 
                     //存储进通知表
                     List<Long> alertReceiverID = Arrays.asList(responsibility.getResponsibleId());
@@ -327,12 +333,14 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
                     sendAlert(webhookUrl, message, alertReceiver);
                 } else {
                     log.info("该错误未被委派！");
-                    //未指派的错误找到管理员
-                    LambdaQueryWrapper<Role> queryWrapper3 = new LambdaQueryWrapper<>();
-                    queryWrapper3.eq(Role::getProjectId, error.getProjectId())
-                            .eq(Role::getUserRole, USER_ROLE_ADMIN);
-                    /*List<Role> roles = roleMapper.selectList(queryWrapper3);*/
-                    List<Role> roles = projectClient.getRoleListByQueryWrapper(queryWrapper3);
+//                    //未指派的错误找到管理员
+//                    LambdaQueryWrapper<Role> queryWrapper3 = new LambdaQueryWrapper<>();
+//                    queryWrapper3.eq(Role::getProjectId, error.getProjectId())
+//                            .eq(Role::getUserRole, USER_ROLE_ADMIN);
+//                    /*List<Role> roles = roleMapper.selectList(queryWrapper3);*/
+//                    List<Role> roles = projectClient.getRoleListByQueryWrapper(queryWrapper3);
+
+                    List<Role> roles = userClient.getRoleListByProjectId(error.getProjectId());
 
                     // 2. 提取角色中的用户ID集合
                     List<Long> userIds = roles.stream()
@@ -368,26 +376,28 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
                 }
             } else {
                 //查看该错误类型是否被委派
-                LambdaQueryWrapper<Responsibility> queryWrapper = new LambdaQueryWrapper<>();
-                queryWrapper.eq(Responsibility::getErrorType, error.getErrorType())
-                        .eq(Responsibility::getProjectId, error.getProjectId());
+//                LambdaQueryWrapper<Responsibility> queryWrapper = new LambdaQueryWrapper<>();
+//                queryWrapper.eq(Responsibility::getErrorType, error.getErrorType())
+//                        .eq(Responsibility::getProjectId, error.getProjectId());
+//
+//                /*Responsibility responsibility = responsibilityMapper.selectOne(queryWrapper);*/
+                Responsibility responsibility = alertClient.getResponsibility(error.getProjectId(), error.getErrorType());
 
-                /*Responsibility responsibility = responsibilityMapper.selectOne(queryWrapper);*/
-                Responsibility responsibility = alertClient.getResponsibilityByQueryWrapper(queryWrapper);
 
                 if (responsibility != null) {
                     log.info("该错误已经被委派");
+                    alertClient.updateResponsibility(error.getProjectId(), error.getErrorType(), "backend", error.getId());
 
-                    //更新responsibility中的errorId
-                    LambdaQueryWrapper<Responsibility> queryWrapper5 = new LambdaQueryWrapper<>();
-                    queryWrapper5.eq(Responsibility::getProjectId, error.getProjectId())
-                            .eq(Responsibility::getPlatform, "backend")
-                            .eq(Responsibility::getErrorType, error.getErrorType());
-                    /*Responsibility responsibility1 = responsibilityMapper.selectOne(queryWrapper5);*/
-                    Responsibility responsibility1 = alertClient.getResponsibilityByQueryWrapper(queryWrapper5);
-                    responsibility1.setErrorId(error.getId());
-                    /*responsibilityMapper.update(responsibility1, queryWrapper5);*/
-                    alertClient.updateResponsibilityByWrapper(responsibility1, queryWrapper5);
+//                    //更新responsibility中的errorId
+//                    LambdaQueryWrapper<Responsibility> queryWrapper5 = new LambdaQueryWrapper<>();
+//                    queryWrapper5.eq(Responsibility::getProjectId, error.getProjectId())
+//                            .eq(Responsibility::getPlatform, "backend")
+//                            .eq(Responsibility::getErrorType, error.getErrorType());
+//                    /*Responsibility responsibility1 = responsibilityMapper.selectOne(queryWrapper5);*/
+//                    Responsibility responsibility1 = alertClient.getResponsibilityByQueryWrapper(queryWrapper5);
+//                    responsibility1.setErrorId(error.getId());
+//                    /*responsibilityMapper.update(responsibility1, queryWrapper5);*/
+//                    alertClient.updateResponsibilityByWrapper(responsibility1, queryWrapper5);
                 }
             }
         }

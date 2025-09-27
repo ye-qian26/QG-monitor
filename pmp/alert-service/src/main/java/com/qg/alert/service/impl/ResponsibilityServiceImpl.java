@@ -1,10 +1,11 @@
 package com.qg.alert.service.impl;
 
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 
 
-
+import com.qg.common.domain.dto.WrapperDTO;
 import com.qg.common.domain.po.*;
 import com.qg.alert.domain.vo.ResponsibilityVO;
 import com.qg.alert.mapper.ResponsibilityMapper;
@@ -20,12 +21,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.qg.common.domain.po.Code.INTERNAL_ERROR;
 import static com.qg.common.domain.po.Code.SUCCESS;
+import static com.qg.common.repository.RepositoryConstants.UN_HANDLED;
 import static com.qg.common.utils.Constants.*;
 
 @Service
@@ -53,7 +57,6 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
 
     private final ProjectClient projectClient;
 
-
     @Autowired
     private ResponsibilityMapper responsibilityMapper;
 
@@ -63,8 +66,6 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
 
     private final MobileClient mobileClient;
 
-
-
     @Override
     public Result addResponsibility(Responsibility responsibility) {
         // 参数校验
@@ -73,9 +74,9 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
         }
 
         if (responsibility.getProjectId() == null || responsibility.getProjectId().isEmpty()
-                || responsibility.getErrorId() == null
-                || responsibility.getPlatform() == null || responsibility.getPlatform().isEmpty()
-                || responsibility.getResponsibleId() == null || responsibility.getDelegatorId() == null) {
+            || responsibility.getErrorId() == null
+            || responsibility.getPlatform() == null || responsibility.getPlatform().isEmpty()
+            || responsibility.getResponsibleId() == null || responsibility.getDelegatorId() == null) {
             return new Result(Code.BAD_REQUEST, "参数类型不能为空");
         }
 
@@ -104,12 +105,14 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
      */
     private Result handleBackendResponsibility(Responsibility responsibility) {
         // 判断错误类型是否存在
-        LambdaQueryWrapper<BackendError> backendQueryWrapper = new LambdaQueryWrapper<>();
-        backendQueryWrapper.eq(BackendError::getProjectId, responsibility.getProjectId())
-                .eq(BackendError::getId, responsibility.getErrorId());
-
+//        LambdaQueryWrapper<BackendError> backendQueryWrapper = new LambdaQueryWrapper<>();
+//        backendQueryWrapper.eq(BackendError::getProjectId, responsibility.getProjectId())
+//                .eq(BackendError::getId, responsibility.getErrorId());
         /*BackendError backendError = backendErrorMapper.selectOne(backendQueryWrapper);*/
-        BackendError backendError = backendClient.getBackendErrorByWrapper(backendQueryWrapper).get(0);
+//        BackendError backendError = backendClient.getBackendErrorByWrapper(backendQueryWrapper).get(0);
+
+        BackendError backendError = backendClient.getBackendErrorByErrorId(responsibility.getErrorId()).getFirst();
+
         if (backendError == null) {
             return new Result(Code.BAD_REQUEST, "后端错误类型不存在");
         }
@@ -123,12 +126,14 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
      */
     private Result handleFrontendResponsibility(Responsibility responsibility) {
         // 判断错误类型是否存在
-        LambdaQueryWrapper<FrontendError> frontendQueryWrapper = new LambdaQueryWrapper<>();
-        frontendQueryWrapper.eq(FrontendError::getProjectId, responsibility.getProjectId())
-                .eq(FrontendError::getId, responsibility.getErrorId());
+//        LambdaQueryWrapper<FrontendError> frontendQueryWrapper = new LambdaQueryWrapper<>();
+//        frontendQueryWrapper.eq(FrontendError::getProjectId, responsibility.getProjectId())
+//                .eq(FrontendError::getId, responsibility.getErrorId());
+//
+//        //FrontendError frontendError = frontendErrorMapper.selectOne(frontendQueryWrapper);
+//        FrontendError frontendError = frontendClient.getFrontendErrorByWrapper(frontendQueryWrapper).get(0);
+        FrontendError frontendError = backendClient.getFrontendErrorByErrorId(responsibility.getErrorId()).getFirst();
 
-        //FrontendError frontendError = frontendErrorMapper.selectOne(frontendQueryWrapper);
-        FrontendError frontendError = frontendClient.getFrontendErrorByWrapper(frontendQueryWrapper).get(0);
         if (frontendError == null) {
             return new Result(Code.BAD_REQUEST, "前端错误类型不存在");
         }
@@ -142,12 +147,13 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
      */
     private Result handleMobileResponsibility(Responsibility responsibility) {
         // 判断错误类型是否存在
-        LambdaQueryWrapper<MobileError> mobileQueryWrapper = new LambdaQueryWrapper<>();
-        mobileQueryWrapper.eq(MobileError::getProjectId, responsibility.getProjectId())
-                .eq(MobileError::getId, responsibility.getErrorId());
-
-        //MobileError mobileError = mobileErrorMapper.selectOne(mobileQueryWrapper);
-        MobileError mobileError = mobileClient.getMobileErrorByWrapper(mobileQueryWrapper).get(0);
+//        LambdaQueryWrapper<MobileError> mobileQueryWrapper = new LambdaQueryWrapper<>();
+//        mobileQueryWrapper.eq(MobileError::getProjectId, responsibility.getProjectId())
+//                .eq(MobileError::getId, responsibility.getErrorId());
+//
+//        //MobileError mobileError = mobileErrorMapper.selectOne(mobileQueryWrapper);
+//        MobileError mobileError = mobileClient.getMobileErrorByWrapper(mobileQueryWrapper).get(0);
+        MobileError mobileError = backendClient.getMobileErrorByErrorId(responsibility.getErrorId()).getFirst();
         if (mobileError == null) {
             return new Result(Code.BAD_REQUEST, "移动端错误类型不存在");
         }
@@ -220,7 +226,6 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
         return notificationList;
     }
 
-
     @Override
     public Result getResponsibilityList(String projectId) {
         if (projectId == null) {
@@ -242,7 +247,7 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
             fillResponsibilityVO(responsibilityVO);
             responsibilityVOList.add(responsibilityVO);
         }
-        if(responsibilityVOList.size() == 0){
+        if (responsibilityVOList.size() == 0) {
             return new Result(Code.NOT_FOUND, "该项目下无委派");
         }
         return new Result(SUCCESS, responsibilityVOList, "查询成功");
@@ -250,14 +255,14 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
 
     @Override
     public Result selectByRespId(Long responsibleId) {
-        if(responsibleId == null){
+        if (responsibleId == null) {
             return new Result(Code.BAD_REQUEST, "用户ID不能为空");
         }
         LambdaQueryWrapper<Responsibility> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Responsibility::getResponsibleId, responsibleId);
         List<Responsibility> responsibilities = responsibilityMapper.selectList(queryWrapper);
 
-        if(responsibilities.isEmpty()){
+        if (responsibilities.isEmpty()) {
             return new Result(Code.NOT_FOUND, "无此用户");
         }
         List<ResponsibilityVO> responsibilityVOList = new ArrayList<>();
@@ -267,7 +272,7 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
             fillResponsibilityVO(responsibilityVO);
             responsibilityVOList.add(responsibilityVO);
         }
-        if(responsibilityVOList.size() == 0){
+        if (responsibilityVOList.size() == 0) {
             return new Result(Code.NOT_FOUND, "此用户未被委派");
         }
         return new Result(SUCCESS, responsibilityVOList, "查询成功");
@@ -275,20 +280,20 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
 
     @Override
     public Result updateResponsibility(Responsibility responsibility) {
-        if(responsibility.getDelegatorId() == null || responsibility.getResponsibleId() == null
-                || responsibility.getProjectId() == null || responsibility.getErrorId() == null){
+        if (responsibility.getDelegatorId() == null || responsibility.getResponsibleId() == null
+            || responsibility.getProjectId() == null || responsibility.getErrorId() == null) {
             return new Result(Code.BAD_REQUEST, "参数不能为空");
         }
         LambdaQueryWrapper<Responsibility> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Responsibility::getProjectId, responsibility.getProjectId())
                 .eq(Responsibility::getErrorId, responsibility.getErrorId());
 
-        return responsibilityMapper.update(responsibility,queryWrapper) > 0 ? new Result(SUCCESS, "更新成功") : new Result(INTERNAL_ERROR, "更新失败");
+        return responsibilityMapper.update(responsibility, queryWrapper) > 0 ? new Result(SUCCESS, "更新成功") : new Result(INTERNAL_ERROR, "更新失败");
     }
 
     @Override
     public Result deleteResponsibility(Long id) {
-        if(id == null){
+        if (id == null) {
             return new Result(Code.BAD_REQUEST, "参数不能为空");
         }
         return responsibilityMapper.deleteById(id) > 0 ? new Result(SUCCESS, "删除成功") : new Result(INTERNAL_ERROR, "删除失败");
@@ -352,8 +357,8 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
         }
 
         if (isNullOrEmpty(responsibility.getErrorType())
-                || isNullOrEmpty(responsibility.getProjectId())
-                || isNullOrEmpty(responsibility.getPlatform())) {
+            || isNullOrEmpty(responsibility.getProjectId())
+            || isNullOrEmpty(responsibility.getPlatform())) {
             return new Result(Code.BAD_REQUEST, "参数缺失");
         }
 
@@ -434,8 +439,6 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
         return responsibilityMapper.delete(queryWrapper);
     }
 
-
-
     @Override
     public Responsibility getResponsibilityByWrapper(LambdaQueryWrapper<Responsibility> queryWrapper) {
         return responsibilityMapper.selectOne(queryWrapper);
@@ -475,13 +478,13 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
 
         List<String> errorTypes = new ArrayList<>(errorTypeToHandleStatus.keySet());
 
-        LambdaQueryWrapper<BackendError> backendErrorQueryWrapper = new LambdaQueryWrapper<>();
-        backendErrorQueryWrapper.in(BackendError::getErrorType, errorTypes)
-                .eq(BackendError::getProjectId, projectId)
-                .orderByDesc(BackendError::getTimestamp);
-
+//        LambdaQueryWrapper<BackendError> backendErrorQueryWrapper = new LambdaQueryWrapper<>();
+//        backendErrorQueryWrapper.in(BackendError::getErrorType, errorTypes)
+//                .eq(BackendError::getProjectId, projectId)
+//                .orderByDesc(BackendError::getTimestamp);
         //List<BackendError> backendErrors = backendErrorMapper.selectList(backendErrorQueryWrapper);
-        List<BackendError> backendErrors = backendClient.getBackendErrorByWrapper(backendErrorQueryWrapper);
+//        List<BackendError> backendErrors = backendClient.getBackendErrorByWrapper(backendErrorQueryWrapper);
+        List<BackendError> backendErrors = backendClient.getBackendErrorByErrorType(errorTypes, projectId);
 
         // 转换为BackendErrorHandleVO并设置处理状态
         return backendErrors.stream().map(backendError -> {
@@ -512,13 +515,14 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
 
         List<String> errorTypes = new ArrayList<>(errorTypeToHandleStatus.keySet());
 
-        LambdaQueryWrapper<FrontendError> frontendErrorQueryWrapper = new LambdaQueryWrapper<>();
-        frontendErrorQueryWrapper.in(FrontendError::getErrorType, errorTypes)
-                .eq(FrontendError::getProjectId, projectId)
-                .orderByDesc(FrontendError::getTimestamp);
-
-        //List<FrontendError> frontendErrors = frontendErrorMapper.selectList(frontendErrorQueryWrapper);
-        List<FrontendError> frontendErrors = frontendClient.getFrontendErrorByWrapper(frontendErrorQueryWrapper);
+//        LambdaQueryWrapper<FrontendError> frontendErrorQueryWrapper = new LambdaQueryWrapper<>();
+//        frontendErrorQueryWrapper.in(FrontendError::getErrorType, errorTypes)
+//                .eq(FrontendError::getProjectId, projectId)
+//                .orderByDesc(FrontendError::getTimestamp);
+//
+//        // List<FrontendError> frontendErrors = frontendErrorMapper.selectList(frontendErrorQueryWrapper);
+//        List<FrontendError> frontendErrors = frontendClient.getFrontendErrorByWrapper(frontendErrorQueryWrapper);
+        List<FrontendError> frontendErrors = backendClient.getFrontendErrorByErrorType(errorTypes, projectId);
 
         // 转换为FrontendErrorHandleVO并设置处理状态
         return frontendErrors.stream().map(frontendError -> {
@@ -549,13 +553,14 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
 
         List<String> errorTypes = new ArrayList<>(errorTypeToHandleStatus.keySet());
 
-        LambdaQueryWrapper<MobileError> mobileErrorQueryWrapper = new LambdaQueryWrapper<>();
-        mobileErrorQueryWrapper.in(MobileError::getErrorType, errorTypes)
-                .eq(MobileError::getProjectId, projectId)
-                .orderByDesc(MobileError::getTimestamp);
-
-        //List<MobileError> mobileErrors = mobileErrorMapper.selectList(mobileErrorQueryWrapper);
-        List<MobileError> mobileErrors = mobileClient.getMobileErrorByWrapper(mobileErrorQueryWrapper);
+//        LambdaQueryWrapper<MobileError> mobileErrorQueryWrapper = new LambdaQueryWrapper<>();
+//        mobileErrorQueryWrapper.in(MobileError::getErrorType, errorTypes)
+//                .eq(MobileError::getProjectId, projectId)
+//                .orderByDesc(MobileError::getTimestamp);
+//
+//        //List<MobileError> mobileErrors = mobileErrorMapper.selectList(mobileErrorQueryWrapper);
+//        List<MobileError> mobileErrors = mobileClient.getMobileErrorByWrapper(mobileErrorQueryWrapper);
+        List<MobileError> mobileErrors = backendClient.getMobileErrorByErrorType(errorTypes, projectId);
 
         // 转换为MobileErrorHandleVO并设置处理状态
         return mobileErrors.stream().map(mobileError -> {
@@ -567,6 +572,7 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
             return vo;
         }).collect(Collectors.toList());
     }
+
     //填充VO
     public ResponsibilityVO fillResponsibilityVO(ResponsibilityVO responsibilityVO) {
         // 批量收集ID
@@ -618,7 +624,6 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
         return responsibilityVO;
     }
 
-
     //批量映射
     private Map<Long, Error> getErrorMap(Set<Long> errorIds) {
         /*if (errorIds.isEmpty()) return Collections.emptyMap();
@@ -628,12 +633,13 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
         return errors.stream().collect(Collectors.toMap(Error::getId, e -> e));*/
         return Collections.emptyMap();
     }
+
     private Map<String, Project> getProjectMap(Set<String> projectIds) {
         if (projectIds.isEmpty()) return Collections.emptyMap();
         LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.in(Project::getUuid, projectIds);
         //List<Project> projects = projectMapper.selectList(queryWrapper);
-        List<Project> projects = projectClient.getProjectByUUIds((List<String>) projectIds);
+        List<Project> projects = userClient.getProjectByUUIds((List<String>) projectIds);
         return projects.stream().collect(Collectors.toMap(Project::getUuid, p -> p));
     }
 
@@ -646,4 +652,106 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
         return users.stream().collect(Collectors.toMap(UsersDto::getId, u -> u));
     }
 
+    /**
+     * 获取责任列表
+     *
+     * @param projectId 项目id
+     * @param platform  来源
+     * @return 结果
+     */
+    @Override
+    public List<Responsibility> getResponsibilityListByProjectId(String projectId, String platform) {
+        LambdaQueryWrapper<Responsibility> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Responsibility::getProjectId, projectId);
+
+        // 来源为null默认全表扫描
+        if (platform == null) {
+            return responsibilityMapper.selectList(queryWrapper);
+        }
+        queryWrapper.eq(Responsibility::getPlatform, platform);
+        return responsibilityMapper.selectList(queryWrapper);
+    }
+
+    /**
+     * 获取责任
+     *
+     * @param projectId 项目id
+     * @param errorType 错误类型
+     * @return 结果
+     */
+    @Override
+    public Responsibility getResponsibility(String projectId, String errorType) {
+        LambdaQueryWrapper<Responsibility> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Responsibility::getErrorType, errorType)
+                .eq(Responsibility::getProjectId, projectId);
+        return responsibilityMapper.selectOne(queryWrapper);
+    }
+
+    /**
+     * 获取某端责任
+     *
+     * @param projectId 项目id
+     * @param errorType 错误类型
+     * @return 结果
+     */
+    @Override
+    public Responsibility getResponsibilityFromPlatform(@RequestParam String projectId, @RequestParam String errorType, @RequestParam String platform) {
+        LambdaQueryWrapper<Responsibility> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Responsibility::getProjectId, projectId)
+                .eq(Responsibility::getPlatform, platform)
+                .eq(Responsibility::getErrorType, errorType);
+        return responsibilityMapper.selectOne(queryWrapper);
+    }
+
+    /**
+     * 更新责任错误id
+     *
+     * @param projectId 项目id
+     * @param errorType 错误类型
+     * @param platform  来源
+     * @param errorId   新的id
+     * @return 结果
+     */
+    @Override
+    public boolean updateResponsibility(String projectId, String errorType, String platform, Long errorId) {
+        LambdaQueryWrapper<Responsibility> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Responsibility::getProjectId, projectId)
+                .eq(Responsibility::getPlatform, platform)
+                .eq(Responsibility::getErrorType, errorType);
+
+        // 仅改errorId
+        Responsibility updateEntity = new Responsibility();
+        updateEntity.setErrorId(errorId);
+        return responsibilityMapper.update(updateEntity, queryWrapper) > 0;
+    }
+
+    /**
+     * 标记为未解决
+     *
+     * @param projectId 项目id
+     * @param errorType 错误类型
+     * @param platform  来源
+     * @return 结果
+     */
+    @Override
+    public boolean signResponsibilityNoHandle(String projectId, String errorType, String platform) {
+
+        LambdaQueryWrapper<Responsibility> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Responsibility::getProjectId, projectId)
+                .eq(Responsibility::getErrorType, errorType)
+                .eq(Responsibility::getPlatform, platform);
+
+        Responsibility responsibility = responsibilityMapper.selectOne(queryWrapper);
+        if (responsibility == null) {
+            log.warn("未查询到责任记录，标记未解决失败：projectId={}, errorType={}, platform={}",
+                    projectId, errorType, platform);
+            return false;
+        }
+
+        responsibility.setIsHandle(UN_HANDLED);
+        responsibility.setUpdateTime(LocalDateTime.now());
+
+        return responsibilityMapper.updateById(responsibility) > 0;
+
+    }
 }

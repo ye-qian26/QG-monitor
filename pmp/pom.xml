@@ -18,25 +18,24 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>graph-service</module>
-        <module>alert-service</module>
-        <module>milvus-service</module>
+        <module>qg-common</module>
         <module>gateway</module>
         <module>feign-api</module>
+        <!--        <module>graph-service</module>-->
+        <!--        <module>milvus-service</module>-->
+        <!--        <module>frontend-service</module>-->
+        <!--        <module>mobile-service</module>-->
+        <!--        <module>project-service</module>-->
+        <module>alert-service</module>
         <module>backend-service</module>
-        <module>frontend-service</module>
-        <module>mobile-service</module>
         <module>user-service</module>
-        <module>qg-common</module>
-        <module>project-service</module>
         <module>message-service</module>
-
     </modules>
 
     <properties>
         <java.version>21</java.version>
-<!--        <spring-cloud.version>2021.0.3</spring-cloud.version>-->
-<!--        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>-->
+        <!--        <spring-cloud.version>2021.0.3</spring-cloud.version>-->
+        <!--        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>-->
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <!-- Spring Cloud Alibaba 与 Spring Cloud 2023.0.x 兼容的版本 -->
         <spring-cloud-alibaba.version>2023.0.1.0</spring-cloud-alibaba.version> <!-- 降低小版本，提高稳定性 -->
@@ -168,11 +167,11 @@
             <version>3.0.0</version>
         </dependency>
 
-<!--        &lt;!&ndash; websocket &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-websocket</artifactId>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash; websocket &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-websocket</artifactId>-->
+        <!--        </dependency>-->
 
         <!-- JSR310 -->
         <dependency>

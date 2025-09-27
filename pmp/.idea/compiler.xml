@@ -9,21 +9,24 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
-        <module name="milvus-service" />
-        <module name="graph-service" />
         <module name="alert-service" />
         <module name="qg-common" />
-        <module name="mobile-service" />
         <module name="user-service" />
         <module name="backend-service" />
-        <module name="frontend-service" />
         <module name="message-service" />
-        <module name="project-service" />
         <module name="feign-api" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="frontend-service" target="21" />
+      <module name="graph-service" target="21" />
+      <module name="milvus-service" target="21" />
+      <module name="mobile-service" target="21" />
+      <module name="project-service" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

@@ -2,6 +2,7 @@ package com.qg.message;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @Description: // 类说明
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Version: 1.0     // 版本
  */
 @SpringBootApplication
+@EnableFeignClients(basePackages = "com.qg.feign.clients")
 public class MessageServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(MessageServiceApplication.class, args);

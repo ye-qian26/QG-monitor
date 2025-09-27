@@ -13,6 +13,7 @@ import com.qg.backend.service.ModuleService;
 import com.qg.common.domain.vo.EarthVO;
 import com.qg.common.domain.vo.IllegalAttackVO;
 import com.qg.feign.clients.ProjectClient;
+import com.qg.feign.clients.UserClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -42,7 +43,7 @@ public class BackendLogServiceImpl implements BackendLogService {
     private ModuleService moduleService;
     /*    @Autowired
         private ProjectService projectService;*/
-    private final ProjectClient projectClient;
+    private final UserClient userClient;
 
 
     @Override
@@ -75,7 +76,7 @@ public class BackendLogServiceImpl implements BackendLogService {
                 log.warn("项目ID不存在:{}", projectId);
                 return;
             }*/
-            if (!projectClient.checkProjectIdExist(projectId)) {
+            if (!userClient.checkProjectIdExist(projectId)) {
                 log.warn("项目ID不存在:{}", projectId);
                 return;
             }
