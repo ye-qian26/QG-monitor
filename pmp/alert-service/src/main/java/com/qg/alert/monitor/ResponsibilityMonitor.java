@@ -1,9 +1,11 @@
 package com.qg.alert.monitor;
 
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.qg.alert.mapper.NotificationMapper;
 import com.qg.alert.mapper.ResponsibilityMapper;
 import com.qg.alert.service.NotificationService;
+import com.qg.common.domain.dto.WrapperDTO;
 import com.qg.common.domain.po.*;
 import com.qg.common.repository.RepositoryConstants;
 
@@ -266,12 +268,13 @@ public class ResponsibilityMonitor {
         }
 
         //查询被通知者在项目中的角色
-        LambdaQueryWrapper<Role> queryWrapper1 = new LambdaQueryWrapper<>();
-        queryWrapper1.eq(Role::getUserId, existNotification.getReceiverId())
-                .eq(Role::getProjectId, existNotification.getProjectId());
-
-        //Role role = roleMapper.selectOne(queryWrapper1);
-        Role role = projectClient.getRoleListByQueryWrapper(queryWrapper1).get(0);
+//        LambdaQueryWrapper<Role> queryWrapper1 = new LambdaQueryWrapper<>();
+//        queryWrapper1.eq(Role::getUserId, existNotification.getReceiverId())
+//                .eq(Role::getProjectId, existNotification.getProjectId());
+//
+//        //Role role = roleMapper.selectOne(queryWrapper1);
+//        Role role = projectClient.getRoleListByQueryWrapper(queryWrapper1).get(0);
+        Role role = userClient.getReceiverRoleInProject(existNotification.getProjectId(), existNotification.getReceiverId());
 
         if (role == null) {
             log.warn("未查询到相关信息！");
@@ -294,18 +297,21 @@ public class ResponsibilityMonitor {
         List<Notification> result = new ArrayList<>();
         List<Role> roles = new ArrayList<>();
         if (userRole == USER_ROLE_MEMBER) {
-            LambdaQueryWrapper<Role> qw = new LambdaQueryWrapper<>();
-            qw.eq(Role::getUserId, item.getResponsibleId())
-                    .eq(Role::getProjectId, item.getProjectId());
-            //Role role = roleMapper.selectOne(qw);
-            Role role = projectClient.getRoleListByQueryWrapper(qw).get(0);
+//            LambdaQueryWrapper<Role> qw = new LambdaQueryWrapper<>();
+//            qw.eq(Role::getUserId, item.getResponsibleId())
+//                    .eq(Role::getProjectId, item.getProjectId());
+//            //Role role = roleMapper.selectOne(qw);
+//            Role role = projectClient.getRoleListByQueryWrapper(qw).get(0);
+            Role role = userClient.getReceiverRoleInProject(item.getProjectId(), item.getResponsibleId());
+
             roles.add(role);
 
         } else {
-            LambdaQueryWrapper<Role> qw = new LambdaQueryWrapper<>();
-            qw.eq(Role::getUserRole, userRole).eq(Role::getProjectId, item.getProjectId());
-            //roles = roleMapper.selectList(qw);
-            roles = projectClient.getRoleListByQueryWrapper(qw);
+//            LambdaQueryWrapper<Role> qw = new LambdaQueryWrapper<>();
+//            qw.eq(Role::getUserRole, userRole).eq(Role::getProjectId, item.getProjectId());
+//            //roles = roleMapper.selectList(qw);
+//            roles = projectClient.getRoleListByQueryWrapper(qw);
+            roles = userClient.getTheRoleListInProject(item.getProjectId(), userRole);
         }
         for (Role role : roles) {
             Notification notification = new Notification();
@@ -329,19 +335,20 @@ public class ResponsibilityMonitor {
         List<String> mobileList = new ArrayList<>();
 
         if (userRole == USER_ROLE_MEMBER) {
-            LambdaQueryWrapper<Role> qw = new LambdaQueryWrapper<>();
-            qw.eq(Role::getUserId, responsibility.getResponsibleId())
-                    .eq(Role::getProjectId, responsibility.getProjectId());
-            //Role role = roleMapper.selectOne(qw);
-            Role role = projectClient.getRoleListByQueryWrapper(qw).get(0);
+//            LambdaQueryWrapper<Role> qw = new LambdaQueryWrapper<>();
+//            qw.eq(Role::getUserId, responsibility.getResponsibleId())
+//                    .eq(Role::getProjectId, responsibility.getProjectId());
+//            //Role role = roleMapper.selectOne(qw);
+//            Role role = projectClient.getRoleListByQueryWrapper(qw).get(0);
+
+            Role role = userClient.getReceiverRoleInProject(responsibility.getProjectId(), responsibility.getResponsibleId());
             roleList.add(role);
         } else {
-
-            LambdaQueryWrapper<Role> queryWrapper = new LambdaQueryWrapper<>();
-            queryWrapper.eq(Role::getProjectId, responsibility.getProjectId())
-                    .eq(Role::getUserRole, userRole);
-            //roleList = roleMapper.selectList(queryWrapper);
-            roleList = projectClient.getRoleListByQueryWrapper(queryWrapper);
+//            LambdaQueryWrapper<Role> queryWrapper = new LambdaQueryWrapper<>();
+//            queryWrapper.eq(Role::getProjectId, responsibility.getProjectId())
+//                    .eq(Role::getUserRole, userRole);
+//            //roleList = roleMapper.selectList(queryWrapper);
+            roleList = userClient.getTheRoleListInProject(responsibility.getProjectId(), userRole);
         }
         for (Role role : roleList) {
             LambdaQueryWrapper<Users> queryWrapper1 = new LambdaQueryWrapper<>();
@@ -349,8 +356,6 @@ public class ResponsibilityMonitor {
             //Users user = usersMapper.selectOne(queryWrapper1);
             UsersDto user = userClient.findUserById(role.getUserId());
             mobileList.add(user.getPhone());
-
-
         }
         return mobileList;
     }
@@ -364,7 +369,7 @@ public class ResponsibilityMonitor {
     protected String getWebhookUrl(String projectId) {
         // 从数据库查询webhook
         //return projectMapper.selectWebhookByProjectId(projectId);
-        return projectClient.selectWebhookByProjectId(projectId);
+        return userClient.selectWebhookByProjectId(projectId);
     }
 
     /**
@@ -375,10 +380,11 @@ public class ResponsibilityMonitor {
     protected String generateAlertMessage(Responsibility item) {
         if (item.getPlatform().equals("mobile")) {
             log.info("发送移动端错误！");
-            LambdaQueryWrapper<MobileError> queryWrapper = new LambdaQueryWrapper<>();
-            queryWrapper.eq(MobileError::getId, item.getErrorId());
-            //MobileError mobileError = mobileErrorMapper.selectOne(queryWrapper);
-            MobileError mobileError = mobileClient.getMobileErrorByWrapper(queryWrapper).get(0);
+//            LambdaQueryWrapper<MobileError> queryWrapper = new LambdaQueryWrapper<>();
+//            queryWrapper.eq(MobileError::getId, item.getErrorId());
+//            //MobileError mobileError = mobileErrorMapper.selectOne(queryWrapper);
+//            MobileError mobileError = mobileClient.getMobileErrorByWrapper(queryWrapper).get(0);
+            MobileError mobileError = backendClient.getMobileErrorByErrorId(item.getErrorId()).getFirst();
             return String.format("【移动端错误告警】\n" +
                                  "项目ID：%s\n" +
                                  "错误类型：%s\n" +
@@ -395,10 +401,11 @@ public class ResponsibilityMonitor {
                                     .ofPattern("yyyy-MM-dd HH:mm:ss")));
         } else if (item.getPlatform().equals("frontend")) {
             log.info("发送前端错误！");
-            LambdaQueryWrapper<FrontendError> queryWrapper1 = new LambdaQueryWrapper<>();
-            queryWrapper1.eq(FrontendError::getId, item.getErrorId());
-            //FrontendError frontendError = frontendErrorMapper.selectOne(queryWrapper1);
-            FrontendError frontendError = frontendClient.getFrontendErrorByWrapper(queryWrapper1).get(0);
+//            LambdaQueryWrapper<FrontendError> queryWrapper1 = new LambdaQueryWrapper<>();
+//            queryWrapper1.eq(FrontendError::getId, item.getErrorId());
+//            //FrontendError frontendError = frontendErrorMapper.selectOne(queryWrapper1);
+//            FrontendError frontendError = frontendClient.getFrontendErrorByWrapper(queryWrapper1).get(0);
+            FrontendError frontendError = backendClient.getFrontendErrorByErrorId(item.getErrorId()).getFirst();
             return String.format("【前端错误告警】\n" +
                                  "项目ID：%s\n" +
                                  "错误类型：%s\n" +
@@ -415,10 +422,13 @@ public class ResponsibilityMonitor {
                                     .ofPattern("yyyy-MM-dd HH:mm:ss")));
         } else if (item.getPlatform().equals("backend")) {
             log.info("发送后端错误！");
-            LambdaQueryWrapper<BackendError> queryWrapper2 = new LambdaQueryWrapper<>();
-            queryWrapper2.eq(BackendError::getId, item.getErrorId());
-            //BackendError backendError = backendErrorMapper.selectOne(queryWrapper2);
-            BackendError backendError = backendClient.getBackendErrorByWrapper(queryWrapper2).get(0);
+//            LambdaQueryWrapper<BackendError> queryWrapper2 = new LambdaQueryWrapper<>();
+//            queryWrapper2.eq(BackendError::getId, item.getErrorId());
+//            //BackendError backendError = backendErrorMapper.selectOne(queryWrapper2);
+//            BackendError backendError = backendClient.getBackendErrorByWrapper(queryWrapper2).get(0);
+
+            BackendError backendError = backendClient.getBackendErrorByErrorId(item.getErrorId()).getFirst();
+
             return String.format("【后端错误告警】\n" +
                                  "项目ID：%s\n" +
                                  "错误类型：%s\n" +

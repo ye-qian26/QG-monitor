@@ -19,20 +19,48 @@ import java.util.List;
  */
 @FeignClient("project-service")
 public interface ProjectClient {
-
-    @GetMapping("/projects/getProjectByUUId")
-    Project getProjectById(@RequestParam String uuid);
-
-    @GetMapping("/projects/checkProjectIdExist")
-    boolean checkProjectIdExist(@RequestParam String projectId);
-
-    @GetMapping("/projects/selectWebhookByProjectId")
-    String selectWebhookByProjectId(@RequestParam String projectId);
-
-    @GetMapping("/roles/getRoleListByQueryWrapper")
-    List<Role> getRoleListByQueryWrapper(@RequestParam LambdaQueryWrapper<Role> queryWrapper);
-
-    @GetMapping("/projects/getProjectByUUIds")
-    List<Project> getProjectByUUIds(@RequestParam List<String> uuids);
-
+//
+//    @GetMapping("/projects/getProjectByUUId")
+//    Project getProjectById(@RequestParam String uuid);
+//
+//    @GetMapping("/projects/checkProjectIdExist")
+//    boolean checkProjectIdExist(@RequestParam String projectId);
+//
+//    @GetMapping("/projects/selectWebhookByProjectId")
+//    String selectWebhookByProjectId(@RequestParam String projectId);
+//
+////    @GetMapping("/roles/getRoleListByQueryWrapper")
+////    List<Role> getRoleListByQueryWrapper(@RequestParam LambdaQueryWrapper<Role> queryWrapper);
+//
+//    @GetMapping("/projects/getProjectByUUIds")
+//    List<Project> getProjectByUUIds(@RequestParam List<String> uuids);
+//
+//    /**
+//     * 通过项目id查询权限
+//     *
+//     * @param projectId 项目id
+//     * @return 结果
+//     */
+//    @GetMapping("/roles/getRoleListByProjectId")
+//    List<Role> getRoleListByProjectId(@RequestParam String projectId);
+//
+//    /**
+//     * 查询该用户在该项目下的权限
+//     *
+//     * @param projectId 项目id
+//     * @param userId    查询的用户
+//     * @return 结果
+//     */
+//    @GetMapping("/roles/getReceiverRoleInProject")
+//    Role getReceiverRoleInProject(@RequestParam String projectId, @RequestParam Long userId);
+//
+//    /**
+//     * 查询该项目下的所有该用户权限的权限
+//     *
+//     * @param projectId 项目id
+//     * @param userRole    查询的用户
+//     * @return 结果
+//     */
+//    @GetMapping("/roles/getTheRoleListInProject")
+//    List<Role> getTheRoleListInProject(@RequestParam String projectId, @RequestParam Integer userRole);
 }

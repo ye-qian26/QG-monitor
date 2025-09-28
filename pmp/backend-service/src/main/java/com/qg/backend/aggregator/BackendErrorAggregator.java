@@ -8,6 +8,7 @@ import com.qg.backend.mapper.BackendErrorMapper;
 import com.qg.backend.repository.BackendErrorRepository;
 import com.qg.common.domain.po.Project;
 import com.qg.feign.clients.ProjectClient;
+import com.qg.feign.clients.UserClient;
 import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class BackendErrorAggregator {
     // 用于跟踪每个key的调度任务
     private final ConcurrentHashMap<String, ScheduledFuture<?>> scheduledTasks = new ConcurrentHashMap<>();
     @Autowired
-    private ProjectClient projectClient;
+    private UserClient userClient;
 
     /**
      * 添加错误信息到 Redis 缓存中，并触发延迟处理
@@ -217,7 +218,7 @@ public class BackendErrorAggregator {
             LambdaQueryWrapper<Project> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(Project::getUuid, projectId).eq(Project::getIsDeleted, false);
 //            return projectMapper.selectCount(queryWrapper) > 0;
-            return projectClient.checkProjectIdExist(projectId);
+            return userClient.checkProjectIdExist(projectId);
         } catch (Exception e) {
             log.error("检查项目存在性时发生异常，项目ID: {}", projectId, e);
             return false;

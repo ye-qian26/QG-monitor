@@ -17,6 +17,7 @@ import com.qg.common.domain.vo.TransformDataVO;
 import com.qg.common.domain.vo.UvBillDataVO;
 import com.qg.common.utils.MathUtil;
 import com.qg.feign.clients.ProjectClient;
+import com.qg.feign.clients.UserClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,8 @@ public class BackendErrorServiceImpl implements BackendErrorService {
     //private ProjectService projectService;
 
     private final ProjectClient projectClient;
+    @Autowired
+    private UserClient userClient;
 
     @Override
     public Result selectByCondition(String projectId, Long moduleId, String type) {
@@ -107,7 +110,7 @@ public class BackendErrorServiceImpl implements BackendErrorService {
         try {
             BackendError backendError = JSONUtil.toBean(errorData, BackendError.class);
             if (backendError.getProjectId() == null ||
-                !projectClient.checkProjectIdExist(backendError.getProjectId()) ||
+                !userClient.checkProjectIdExist(backendError.getProjectId()) ||
                 backendError.getErrorType() == null ||
                 backendError.getEnvironment() == null) {
                 log.error("参数错误");
@@ -132,7 +135,7 @@ public class BackendErrorServiceImpl implements BackendErrorService {
      * web端，获取后端错误统计
      *
      * @param projectId 项目id
-     * @return  结果
+     * @return 结果
      */
     @Override
     public Object[] getBackendErrorStats(String projectId) {
@@ -177,7 +180,7 @@ public class BackendErrorServiceImpl implements BackendErrorService {
      * app端，获取后端错误统计
      *
      * @param projectId 项目id
-     * @return  结果
+     * @return 结果
      */
     @Override
     public Object[] getBackendErrorStatsPro(String projectId) {
@@ -256,5 +259,35 @@ public class BackendErrorServiceImpl implements BackendErrorService {
         }
     }
 
+    /**
+     * 通过错误id查询后端错误
+     *
+     * @param errorId 错误id
+     * @return 结果
+     */
+    @Override
+    public List<BackendError> getBackendErrorByErrorId(Long errorId) {
+        return backendErrorMapper.selectList(new LambdaQueryWrapper<BackendError>().eq(BackendError::getId, errorId));
+    }
+
+    /**
+     * 通过错误类型查询后端错误
+     *
+     * @param errorTypes 错误id
+     * @return 结果
+     */
+    @Override
+    public List<BackendError> getBackendErrorByErrorType(List<String> errorTypes, String projectId) {
+        if (projectId == null) {
+            return backendErrorMapper.selectList(new LambdaQueryWrapper<BackendError>().in(BackendError::getErrorType, errorTypes));
+        }
+
+        return backendErrorMapper.selectList(
+                new LambdaQueryWrapper<BackendError>()
+                        .eq(BackendError::getProjectId, projectId)
+                        .in(BackendError::getErrorType, errorTypes)
+                        .orderByDesc(BackendError::getTimestamp)
+        );
+    }
 
 }

@@ -27,4 +27,8 @@ public interface BackendErrorService {
     Object[] getBackendErrorStatsPro(String projectId);
 
     List<BackendError> getBackendErrorByWrapper(LambdaQueryWrapper<BackendError> queryWrapper);
+
+    List<BackendError> getBackendErrorByErrorId(Long errorId);
+
+    List<BackendError> getBackendErrorByErrorType(List<String> errorTypes, String projectId);
 }

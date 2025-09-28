@@ -1,0 +1,149 @@
+package com.qg.user.controller;
+
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.qg.common.domain.po.Result;
+
+import com.qg.common.domain.po.Role;
+
+import com.qg.user.domain.vo.RoleVO;
+import com.qg.user.service.RoleService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Slf4j
+//@Tag(name ="权限判断")
+@RestController
+@RequestMapping("/roles")
+public class RoleController {
+
+    @Autowired
+    private RoleService roleService;
+
+    /**
+     * 用户添加权限
+     * 管理员创建项目/用户加入项目的时候
+     *
+     * @param role
+     * @return
+     */
+    @PostMapping
+    public Result addRole(@RequestBody Role role) {
+        return roleService.addRole(role);
+    }
+
+    /**
+     * 改变权限
+     *
+     * @param roleVO
+     * @return
+     */
+    @PutMapping
+    public Result updateRole(@RequestBody RoleVO roleVO) {
+        return roleService.updateRole(roleVO);
+    }
+
+    /**
+     * 删除项目成员
+     *
+     * @param projectId
+     * @param userId
+     * @return
+     */
+    @DeleteMapping
+    public Result deleteRole(@RequestParam String projectId, @RequestParam Long userId) {
+        return roleService.deleteRole(projectId, userId);
+    }
+
+    /**
+     * 获取项目中的开发成员名单
+     *
+     * @param projectId
+     * @return
+     */
+    @GetMapping("/getMemberList")
+    public Result getMemberList(@RequestParam String projectId) {
+        return roleService.getMemberList(projectId);
+    }
+
+    /**
+     * 个人与项目关联
+     *
+     * @param userId
+     * @param projectId
+     * @return
+     */
+    @GetMapping("/getRole")
+    public Result getRole(@RequestParam Long userId, @RequestParam String projectId) {
+        return roleService.getRole(userId, projectId);
+    }
+
+    /**
+     * 更新用户角色
+     *
+     * @param role
+     * @return
+     */
+    @PutMapping("/updateUserRole")
+    public Result updateUserRole(@RequestBody Role role) {
+        return roleService.updateUserRole(role);
+    }
+
+
+    /**
+     * @param projectId
+     * @return com.qg.domain.Result
+     * @Author lrt
+     * @Description //TODO 查看可管理项目的人数
+     * @Date 21:40 2025/8/14
+     * @Param
+     **/
+    @GetMapping("/getBossCountByProjectId")
+    public Result getBossCountByProjectId(@RequestParam String projectId) {
+        return roleService.getBossCountByProjectId(projectId);
+    }
+
+    @GetMapping("/getRoleListByQueryWrapper")
+    public List<Role> getRoleListByQueryWrapper(@RequestParam LambdaQueryWrapper<Role> queryWrapper) {
+        return roleService.getRoleListByQueryWrapper(queryWrapper);
+    }
+
+    /**
+     * 通过项目id查询权限
+     *
+     * @param projectId 项目id
+     * @return 结果
+     */
+    @GetMapping("/getRoleListByProjectId")
+    public List<Role> getRoleListByProjectId(@RequestParam String projectId) {
+        return roleService.getRoleListByProjectId(projectId);
+    }
+
+    /**
+     * 查询该用户在该项目下的权限
+     *
+     * @param projectId 项目id
+     * @param userId    查询的用户
+     * @return 结果
+     */
+    @GetMapping("/getReceiverRoleInProject")
+    public Role getReceiverRoleInProject(@RequestParam String projectId, @RequestParam Long userId) {
+        return roleService.getReceiverRoleInProject(projectId, userId);
+    }
+
+    /**
+     * 查询该项目下的所有该用户权限的权限
+     *
+     * @param projectId 项目id
+     * @param userRole  查询的用户
+     * @return 结果
+     */
+    @GetMapping("/roles/getTheRoleListInProject")
+    public List<Role> getTheRoleListInProject(@RequestParam String projectId, @RequestParam Integer userRole) {
+        return roleService.getTheRoleListInProject(projectId, userRole);
+    }
+
+}

@@ -157,11 +157,13 @@ public class BackendResponsibilityServiceImpl implements BackendResponsibilitySe
                             .eq(Responsibility::getProjectId, projectId)
                             .eq(Responsibility::getPlatform, "backend")
             );*/
-            List<Responsibility> responsibilityList = alertClient.getResponsibilityListByWrapper(
-                    new LambdaQueryWrapper<Responsibility>()
-                            .eq(Responsibility::getProjectId, projectId)
-                            .eq(Responsibility::getPlatform, "backend")
-            );
+//            List<Responsibility> responsibilityList = alertClient.getResponsibilityListByWrapper(
+//                    new LambdaQueryWrapper<Responsibility>()
+//                            .eq(Responsibility::getProjectId, projectId)
+//                            .eq(Responsibility::getPlatform, "backend")
+//            );
+
+            List<Responsibility> responsibilityList = alertClient.getResponsibilityListByProjectId(projectId, "backend");
 
             // 修复点：声明为 final
             final Map<String, Responsibility> responsibilityMap = responsibilityList.stream()

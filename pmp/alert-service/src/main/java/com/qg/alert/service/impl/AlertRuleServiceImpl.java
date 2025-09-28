@@ -10,6 +10,7 @@ import com.qg.common.domain.po.Code;
 import com.qg.common.domain.po.Project;
 import com.qg.common.domain.po.Result;
 import com.qg.feign.clients.ProjectClient;
+import com.qg.feign.clients.UserClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class AlertRuleServiceImpl implements AlertRuleService {
     @Autowired
     private ProjectMapper projectMapper;
     */
-    private final ProjectClient projectClient;
+    private final UserClient userClient;
 
 
     @Override
@@ -101,7 +102,7 @@ public class AlertRuleServiceImpl implements AlertRuleService {
             Project project = projectMapper.selectOne(new LambdaQueryWrapper<Project>()
                     .eq(Project::getUuid, projectId));
             */
-            Project project = projectClient.getProjectById(projectId);
+            Project project = userClient.getProjectById(projectId);
             if (project == null) {
                 log.error("操作告警阈值失败，项目id不存在 id: {}", projectId);
                 return new Result(Code.NOT_FOUND, "操作告警阈值失败，项目id不存在");

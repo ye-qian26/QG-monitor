@@ -19,37 +19,37 @@ spring:
         - id: backend-service
           uri: lb://backend-service
           predicates:
-            - Path=/backend/**
-        # 前端服务
-        - id: frontend-service
-          uri: lb://frontend-service
-          predicates:
-            - Path=/frontend/**
+            - Path=/backend/**,/frontend/**,/mobile/**,/graph/**,/markdownContents/**,/errors/**,/milvus/**
+#        # 前端服务
+#        - id: frontend-service
+#          uri: lb://frontend-service
+#          predicates:
+#            - Path=/frontend/**
         # 图表服务
-        - id: graph-service
-          uri: lb://graph-service
-          predicates:
-            - Path=/graph/**,/markdownContents/**,/errors/**
+#        - id: graph-service
+#          uri: lb://graph-service
+#          predicates:
+#            - Path=/graph/**,/markdownContents/**,/errors/**
         # 消息服务
         - id: message-service
           uri: lb://message-service
           predicates:
-            - Path=/messages/**
-        # ai服务
-        - id: milvus-service
-          uri: lb://milvus-service
-          predicates:
-            - Path=/milvus/**
-        # 移动服务
-        - id: mobile-service
-          uri: lb://mobile-service
-          predicates:
-            - Path=/mobile/**
-        # 项目服务
-        - id: project-service
-          uri: lb://project-service
-          predicates:
-            - Path=/projects/**,/roles/**
+            - Path=/messages/**,
+#        # ai服务
+#        - id: milvus-service
+#          uri: lb://milvus-service
+#          predicates:
+#            - Path=/milvus/**
+#        # 移动服务
+#        - id: mobile-service
+#          uri: lb://mobile-service
+#          predicates:
+#            - Path=/mobile/**
+#        # 项目服务
+#        - id: project-service
+#          uri: lb://project-service
+#          predicates:
+#            - Path=/projects/**,/roles/**
 #        # 角色服务
 #        - id: role-service
 #          uri: lb://role-service
@@ -59,9 +59,9 @@ spring:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/users/**
+            - Path=/users/**,/projects/**,/roles/**
       default-filters:
-        - AddRequestHeader=Truth,Itcast is freaking awesome!
+        - AddRequestHeader=Truth,this is request header~
       globalcors: # 全局的跨域处理
         add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题
 #        corsConfigurations:

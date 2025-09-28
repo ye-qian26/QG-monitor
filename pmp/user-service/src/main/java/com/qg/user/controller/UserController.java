@@ -321,13 +321,13 @@ public class UserController {
         return usersService.selectBatchIds(userIds);
     }
 
-    /**
-     * 批量查询用户
-     * @param queryWrapper 查询器
-     * @return  结果
-     */
-    @GetMapping("/selectList")
-    public List<Users> selectList(LambdaQueryWrapper<Users> queryWrapper) {
-        return usersService.selectList(queryWrapper);
-    }
+//    /**
+//     * 批量查询用户
+//     * @param phone 电话号码
+//     * @return  结果
+//     */
+//    @GetMapping("/selectUserByPhone")
+//    public Users selectUserByPhone(String phone) {
+//        return usersService.selectUserByPhone(phone);
+//    }
 }

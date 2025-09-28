@@ -5,8 +5,11 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.qg.backend.service.*;
 
+import com.qg.common.domain.dto.WrapperDTO;
 import com.qg.common.domain.po.BackendError;
 import com.qg.common.domain.po.BackendPerformance;
 import com.qg.common.domain.po.Result;
@@ -15,6 +18,7 @@ import com.qg.common.domain.vo.IllegalAttackVO;
 import com.qg.common.domain.vo.MethodInvocationVO;
 import com.qg.feign.clients.ProjectClient;
 
+import com.qg.feign.clients.UserClient;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -53,7 +57,7 @@ public class BackendController {
     @Autowired
     private MethodInvocationService methodInvocationService;
 
-    private final ProjectClient projectClient;
+    private final UserClient userClient;
     @Autowired
     private BackendResponsibilityService backendResponsibilityService;
 
@@ -80,7 +84,7 @@ public class BackendController {
           /*  if (!projectService.checkProjectIdExist(projectId)) {
                 return;
             }*/
-            if (!projectClient.checkProjectIdExist(projectId)) {
+            if (!userClient.checkProjectIdExist(projectId)) {
                 return;
             }
 
@@ -203,9 +207,22 @@ public class BackendController {
         return backendPerformanceService.getAverageTime(projectId, timeType);
     }
 
-    @GetMapping("/getBackendErrorByWrapper")
-    public List<BackendError> getBackendErrorByWrapper(@RequestParam LambdaQueryWrapper<BackendError> queryWrapper) {
-        return backendErrorService.getBackendErrorByWrapper(queryWrapper);
+//    @GetMapping("/getBackendErrorByWrapper")
+//    public List<BackendError> getBackendErrorByWrapper(@RequestParam LambdaQueryWrapper<BackendError> queryWrapper) {
+//        return backendErrorService.getBackendErrorByWrapper(queryWrapper);
+//    }
+
+    @PostMapping("/getBackendErrorByWrapper")
+    public List<BackendError> getBackendErrorByWrapper(@RequestBody WrapperDTO<BackendError> dto) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        LambdaQueryWrapper<BackendError> wrapper = mapper.readValue(
+                dto.getWrapperJson(),
+                TypeFactory.defaultInstance().constructParametricType(
+                        LambdaQueryWrapper.class,
+                        BackendError.class
+                )
+        );
+        return backendErrorService.getBackendErrorByWrapper(wrapper);
     }
 
     @GetMapping("/getBackendPerformanceByWrapper")
@@ -237,7 +254,7 @@ public class BackendController {
      * @return 结果
      */
     @GetMapping("/selectBackendResponsibilityByCondition")
-    public Result selectBackendResponsibilityByCondition(@RequestParam String projectId, @RequestParam String type) {
+    public Result selectBackendResponsibilityByCondition(@RequestParam String projectId, @RequestParam(required = false) String type) {
         return backendResponsibilityService.selectByCondition(projectId, type);
     }
 
@@ -249,8 +266,31 @@ public class BackendController {
      * @return 结果
      */
     @GetMapping("/selectBackendPerformanceByCondition")
-    public Result selectBackendPerformanceByCondition(@RequestParam String projectId, @RequestParam String type) {
+    public Result selectBackendPerformanceByCondition(@RequestParam String projectId, @RequestParam(required = false) String type) {
         return backendPerformanceService.selectByCondition(projectId, type);
     }
+
+    /**
+     * 通过错误id查询后端错误
+     *
+     * @param errorId 错误id
+     * @return 结果
+     */
+    @GetMapping("/getBackendErrorByErrorId")
+    public List<BackendError> getBackendErrorByErrorId(@RequestParam Long errorId) {
+        return backendErrorService.getBackendErrorByErrorId(errorId);
+    }
+
+    /**
+     * 通过错误类型查询后端错误
+     *
+     * @param errorTypes 错误id
+     * @return 结果
+     */
+    @GetMapping("/backend/getBackendErrorByErrorType")
+    public List<BackendError> getBackendErrorByErrorType(@RequestParam List<String> errorTypes, @RequestParam String projectId) {
+        return backendErrorService.getBackendErrorByErrorType(errorTypes, projectId);
+    }
+
 }
 
