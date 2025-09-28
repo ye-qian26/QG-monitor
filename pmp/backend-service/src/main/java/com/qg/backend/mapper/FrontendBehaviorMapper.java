@@ -24,58 +24,44 @@ import java.util.List;
 @Mapper
 public interface FrontendBehaviorMapper extends BaseMapper<FrontendBehavior> {
 
-    /**
-     * 查询指定时间段内指定项目下的所有前端行为
-     *
-     * @param projectId
-     * @param startTime
-     * @param endTime
-     * @return
-     */
     @Select("""
             SELECT
-              (crumb->'data'->>'route') AS route,
-              AVG((crumb->'data'->>'totalTime')::BIGINT) AS avg_total_time,
-              AVG((crumb->'data'->>'visibleTime')::BIGINT) AS avg_visible_time,
-              COUNT(*) AS samples
-            FROM frontend_behavior,
-                 jsonb_array_elements(breadcrumbs) AS crumb
-            WHERE
-              project_id = #{projectId}
-              AND timestamp BETWEEN #{startTime} AND #{endTime}
-              AND crumb->>'message' = 'Page stay time recorded'
-            GROUP BY route
+                route_data->>'route' AS route,
+                AVG((route_data->>'totalTime')::BIGINT) AS avg_total_time,
+                AVG((route_data->>'visibleTime')::BIGINT) AS avg_visible_time,
+                COUNT(*) AS samples
+            FROM (
+                SELECT 
+                    jsonb_array_elements(breadcrumbs) AS route_data
+                FROM frontend_behavior
+                WHERE project_id = #{projectId}
+                    AND timestamp BETWEEN #{startTime} AND #{endTime}
+            ) AS expanded_data
+            WHERE route_data->>'message' = 'Page stay time recorded'
+            GROUP BY route_data->>'route'
             """)
     List<FrontendBehaviorVO> queryTimeDataByProjectIdAndTimeRange(
             @Param("projectId") String projectId,
             @Param("startTime") LocalDateTime startTime,
             @Param("endTime") LocalDateTime endTime);
 
-
-    /**
-     * 按路由和时间范围查
-     *
-     * @param projectId
-     * @param route
-     * @param startTime
-     * @param endTime
-     * @return
-     */
     @Select("""
             SELECT
-              (crumb->'data'->>'route') AS route,
-              AVG((crumb->'data'->>'totalTime')::BIGINT) AS avg_total_time,
-              AVG((crumb->'data'->>'visibleTime')::BIGINT) AS avg_visible_time,
-              COUNT(*) AS samples
-            FROM frontend_behavior,
-                 jsonb_array_elements(breadcrumbs) AS crumb
-            WHERE
-              project_id = #{projectId, jdbcType=VARCHAR}
-              AND timestamp BETWEEN #{startTime, jdbcType=TIMESTAMP} AND #{endTime, jdbcType=TIMESTAMP}
-              AND crumb->>'message' = 'Page stay time recorded'
-              AND (CAST(#{route, jdbcType=VARCHAR} AS TEXT) IS NULL
-                   OR crumb->'data'->>'route' = CAST(#{route, jdbcType=VARCHAR} AS TEXT))
-            GROUP BY route
+                route_data->>'route' AS route,
+                AVG((route_data->>'totalTime')::BIGINT) AS avg_total_time,
+                AVG((route_data->>'visibleTime')::BIGINT) AS avg_visible_time,
+                COUNT(*) AS samples
+            FROM (
+                SELECT 
+                    jsonb_array_elements(breadcrumbs) AS route_data
+                FROM frontend_behavior
+                WHERE project_id = #{projectId, jdbcType=VARCHAR}
+                    AND timestamp BETWEEN #{startTime, jdbcType=TIMESTAMP} AND #{endTime, jdbcType=TIMESTAMP}
+            ) AS expanded_data
+            WHERE route_data->>'message' = 'Page stay time recorded'
+                AND (CAST(#{route, jdbcType=VARCHAR} AS TEXT) IS NULL
+                     OR route_data->>'route' = CAST(#{route, jdbcType=VARCHAR} AS TEXT))
+            GROUP BY route_data->>'route'
             """)
     List<FrontendBehaviorVO> queryTimeDataByProjectIdAndTimeRangeAndRoute(
             @Param("projectId") String projectId,
@@ -83,21 +69,19 @@ public interface FrontendBehaviorMapper extends BaseMapper<FrontendBehavior> {
             @Param("startTime") LocalDateTime startTime,
             @Param("endTime") LocalDateTime endTime);
 
-
-    /**
-     * 获取某个项目的按钮点击情况
-     * @param projectId
-     * @return
-     */
     @Select("""
             SELECT
-                (crumb->'data'->>'id') AS buttonId,
-               SUM(event) AS eventCount
-            FROM pmp.frontend_behavior,
-                jsonb_array_elements(breadcrumbs) AS crumb
-            WHERE project_id = #{projectId}
-               AND (crumb->'data'->>'tagName') = 'BUTTON'
-            GROUP BY buttonId
+                button_data->>'id' AS buttonId,
+                SUM(event) AS eventCount
+            FROM (
+                SELECT 
+                    event,
+                    jsonb_array_elements(breadcrumbs) AS button_data
+                FROM pmp.frontend_behavior
+                WHERE project_id = #{projectId}
+            ) AS expanded_data
+            WHERE button_data->>'tagName' = 'BUTTON'
+            GROUP BY button_data->>'id'
             """)
     List<ButtonVO> queryFrontendButton(@Param("projectId") String projectId);
 }

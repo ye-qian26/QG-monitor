@@ -13,6 +13,7 @@ import com.qg.common.domain.vo.FrontendPerformanceAverageVO;
 import com.qg.common.domain.vo.ManualTrackingVO;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -139,6 +140,7 @@ public class FrontendController {
     }
 
     /**
+     * 已弃用，以下方法均弃用
      * graph微服务，查询指定时间段内某项目中，用户页面停留《所有路由下》时间数据
      *
      * @param projectId 项目id
@@ -156,6 +158,8 @@ public class FrontendController {
 
 
     /**
+     * 已弃用
+     *
      * @param projectId 项目id
      * @param route     查询的路由
      * @param startTime 开始时间
