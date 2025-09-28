@@ -1,0 +1,6 @@
+server:
+  port: 8089
+feign:
+  okhttp:
+    enabled: true
+

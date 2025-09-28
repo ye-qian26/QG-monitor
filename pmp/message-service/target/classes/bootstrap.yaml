@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: message-service
+  cloud:
+    nacos:
+      server-addr: 47.113.224.195:8848
+      username: nacos
+      password: nacos
+      config:
+        enabled: true  # 配置中心启用
+        file-extension: yaml
+        shared-configs:
+          - data-id: shared-spring.yaml
+          - data-id: shared-mp.yaml
+          - data-id: shared-rsa.yaml
