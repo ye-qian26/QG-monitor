@@ -365,6 +365,7 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
                         log.error("保存通知进数据库失败！");
                     }
 
+                    System.err.println("--查询webhook...");
                     String webhookUrl = getWebhookUrl(error.getProjectId());
 
                     System.err. println("360行webhookUrl: " + webhookUrl);

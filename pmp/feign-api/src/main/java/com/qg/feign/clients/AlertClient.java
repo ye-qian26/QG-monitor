@@ -94,7 +94,7 @@ public interface AlertClient {
                                                           @RequestParam String errorType, @RequestParam String environment);
 
     @PostMapping("/notifications/addNotifications")
-    int addNotification(@RequestBody List<Notification> notifications);
+    void addNotification(@RequestBody List<Notification> notifications);
 
     /**
      * 标记为未解决
