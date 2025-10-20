@@ -91,7 +91,7 @@ public interface BackendClient {
      * @return 结果
      */
     @GetMapping("/backend/getBackendErrorByErrorType")
-    List<BackendError> getBackendErrorByErrorType(@RequestParam List<String> errorTypes, @RequestParam String projectId);
+    List<BackendError> getBackendErrorByErrorType(@RequestParam List<String> errorTypes, @RequestParam(required = false) String projectId);
 
 
 //    @PostMapping("/backend/getBackendErrorByWrapper")

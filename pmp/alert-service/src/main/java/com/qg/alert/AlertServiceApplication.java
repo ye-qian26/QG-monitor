@@ -3,6 +3,7 @@ package com.qg.alert;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @Description: // 类说明
@@ -13,6 +14,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @SpringBootApplication
 @EnableFeignClients(basePackages = "com.qg.feign")
+@EnableScheduling
 public class AlertServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(AlertServiceApplication.class, args);

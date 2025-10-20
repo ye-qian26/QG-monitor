@@ -152,7 +152,7 @@ public class ResponsibilityController {
      * @param errorType 错误类型
      * @return 结果
      */
-    @GetMapping("/responsibilities/getResponsibility")
+    @GetMapping("/getResponsibility")
     public Responsibility getResponsibility(@RequestParam String projectId, @RequestParam String errorType) {
         return responsibilityService.getResponsibility(projectId, errorType);
     }
@@ -164,7 +164,7 @@ public class ResponsibilityController {
      * @param errorType 错误类型
      * @return 结果
      */
-    @GetMapping("/responsibilities/getResponsibilityFromPlatform")
+    @GetMapping("/getResponsibilityFromPlatform")
     Responsibility getResponsibilityFromPlatform(@RequestParam String projectId, @RequestParam String errorType, @RequestParam String platform) {
         return responsibilityService.getResponsibilityFromPlatform(projectId, errorType, platform);
     }
@@ -178,7 +178,7 @@ public class ResponsibilityController {
      * @param errorId   新的id
      * @return 结果
      */
-    @PutMapping("/responsibilities/updateResponsibility")
+    @PutMapping("/updateResponsibility")
     public boolean updateResponsibility(@RequestParam String projectId, @RequestParam String errorType, @RequestParam String platform, @RequestParam Long errorId) {
         return responsibilityService.updateResponsibility(projectId, errorType, platform, errorId);
     }
@@ -191,7 +191,7 @@ public class ResponsibilityController {
      * @param platform  来源
      * @return 结果
      */
-    @PutMapping("/responsibilities/signResponsibilityNoHandle")
+    @PutMapping("/signResponsibilityNoHandle")
     boolean signResponsibilityNoHandle(@RequestParam String projectId,
                                        @RequestParam String errorType,
                                        @RequestParam String platform) {

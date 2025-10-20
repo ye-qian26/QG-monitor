@@ -5,20 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d4e2c00-b97e-472b-a0a8-4a54829a6679" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/alert-service/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0f31226d-0bf3-43d4-8004-14f7925b3afc/storage_v2/_src_/database/postgres.edMnLQ/schema/pmp.E7IBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/frontend-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph-service/graph-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/milvus-service/milvus-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-service/mobile-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/project-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/dto/WrapperDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/src/main/java/com/qg/common/domain/dto/WrapperDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/dto/WrapperDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/target/classes/com/qg/common/domain/dto/WrapperDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/alert-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/alert-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/AlertServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/AlertServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/controller/ResponsibilityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/controller/ResponsibilityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/service/impl/NotificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/alert-service/src/main/java/com/qg/alert/service/impl/NotificationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/backend-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/backend-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/BackendServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/BackendServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/aggregator/BackendErrorAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/aggregator/BackendErrorAggregator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/controller/BackendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/controller/BackendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/BackendErrorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-service/src/main/java/com/qg/backend/repository/BackendErrorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/feign-api.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/BackendClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/feign-api/src/main/java/com/qg/feign/clients/BackendClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message-service/message-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/message-service/message-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qg-common/qg-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/qg-common/qg-common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/user-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/user-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../study/Code/闲用/helloworld/helloworld.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../study/Code/闲用/前端/day1/day1.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,47 +60,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AlertServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.BackendServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.FrontendServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.GraphServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MessageServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MilvusServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MobileServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ProjectServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/14527/Desktop/末期/QG-monitor/pmp/gateway/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.AlertServiceApplication.executor": "Run",
+    "Spring Boot.BackendServiceApplication.executor": "Run",
+    "Spring Boot.FrontendServiceApplication.executor": "Run",
+    "Spring Boot.GatewayApplication.executor": "Run",
+    "Spring Boot.GraphServiceApplication.executor": "Run",
+    "Spring Boot.MessageServiceApplication.executor": "Run",
+    "Spring Boot.MilvusServiceApplication.executor": "Run",
+    "Spring Boot.MobileServiceApplication.executor": "Run",
+    "Spring Boot.ProjectServiceApplication.executor": "Run",
+    "Spring Boot.UserServiceApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/桌面/qg/末期/sdk/QG-MonitorPlatform-SDK/pmpSDK",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;org.opengauss.Driver&quot;,
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "org.opengauss.Driver",
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\14527\Desktop\末期\QG-monitor\pmp\gateway\src\main\resources" />
@@ -188,10 +196,20 @@
       <workItem from="1758808142106" duration="30986000" />
       <workItem from="1758961745003" duration="18531000" />
       <workItem from="1759048966039" duration="288000" />
+      <workItem from="1760022101793" duration="589000" />
+      <workItem from="1760056811286" duration="10000" />
+      <workItem from="1760086795006" duration="8000" />
+      <workItem from="1760098259826" duration="5287000" />
+      <workItem from="1760171572540" duration="151000" />
+      <workItem from="1760973695311" duration="5512000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

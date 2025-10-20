@@ -493,6 +493,7 @@ public class NotificationServiceImpl implements NotificationService {
      * 获取后端错误信息映射（按错误类型，获取最新的记录）
      */
     private Map<String, BackendError> getBackendErrorMapByType(List<String> errorTypes) {
+
         if (errorTypes.isEmpty()) {
             return new HashMap<>();
         }
