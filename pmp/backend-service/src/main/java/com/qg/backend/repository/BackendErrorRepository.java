@@ -207,7 +207,6 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
 
         if (currentCount >= threshold) {
             log.info("发送后端告警");
-
             //查询同类错误的最新记录
             LambdaQueryWrapper<BackendError> queryWrapper4 = new LambdaQueryWrapper<>();
             queryWrapper4.eq(BackendError::getProjectId, error.getProjectId())
@@ -222,6 +221,7 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
 
             // 如果存在同类错误记录，检查时间间隔
             if (latestError != null) {
+
                 log.info("最新错误：{}", latestError);
                 long timeDiff = Timestamp.valueOf(error.getTimestamp()).getTime()
                                 - Timestamp.valueOf(latestError.getTimestamp()).getTime();
@@ -235,6 +235,7 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
 
                 // 如果时间间隔小于40分钟，只更新event次数
                 if (minutesDiff < 40) {
+
                     log.info("小于40分钟");
                     latestError.setEvent(latestError.getEvent() + error.getEvent());
                     //latestError.setTimestamp(error.getTimestamp()); // 更新时间戳为最新时间
@@ -266,7 +267,6 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
 
             error = backendErrorMapper.selectOne(queryWrapper2);
             log.info("errorId:{}", error.getId());
-
 
             if (shouldAlert(generateUniqueKey(error), error)) {
                 String message = generateAlertMessage(error);
@@ -316,6 +316,8 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
                         return;
                     }
 
+                    System.err. println("321行webhookUrl: " + webhookUrl);
+
                     //获取负责人手机号码
 /*                    LambdaQueryWrapper<Users> queryWrapper1 = new LambdaQueryWrapper<>();
                     queryWrapper1.eq(Users::getId, responsibility.getResponsibleId());
@@ -354,6 +356,9 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
                     }
 
                     String webhookUrl = getWebhookUrl(error.getProjectId());
+
+                    System.err. println("360行webhookUrl: " + webhookUrl);
+
                     if (StrUtil.isBlank(webhookUrl)) {
                         log.warn("未找到对应的企业微信群机器人Webhook地址, 告警失败");
                         return;
@@ -383,7 +388,6 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
 //                /*Responsibility responsibility = responsibilityMapper.selectOne(queryWrapper);*/
                 Responsibility responsibility = alertClient.getResponsibility(error.getProjectId(), error.getErrorType());
 
-
                 if (responsibility != null) {
                     log.info("该错误已经被委派");
                     alertClient.updateResponsibility(error.getProjectId(), error.getErrorType(), "backend", error.getId());
@@ -401,6 +405,7 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
                 }
             }
         }
+
     }
 
     /**

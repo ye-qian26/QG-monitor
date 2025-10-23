@@ -287,8 +287,8 @@ public class BackendController {
      * @param errorTypes 错误id
      * @return 结果
      */
-    @GetMapping("/backend/getBackendErrorByErrorType")
-    public List<BackendError> getBackendErrorByErrorType(@RequestParam List<String> errorTypes, @RequestParam String projectId) {
+    @GetMapping("/getBackendErrorByErrorType")
+    public List<BackendError> getBackendErrorByErrorType(@RequestParam List<String> errorTypes, @RequestParam(required = false) String projectId) {
         return backendErrorService.getBackendErrorByErrorType(errorTypes, projectId);
     }
 

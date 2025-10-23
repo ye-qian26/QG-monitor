@@ -49,6 +49,7 @@ public class BackendErrorAggregator {
      * 添加错误信息到 Redis 缓存中，并触发延迟处理
      */
     public void addErrorToCache(BackendError backendError) {
+
         // 构建 Redis key，包含 environment
         String key = generateRedisKey(backendError.getProjectId(),
                 backendError.getErrorType(),
@@ -199,7 +200,7 @@ public class BackendErrorAggregator {
         // key格式: backend:error:projectId:errorType:environment
         String[] parts = key.split(":");
         if (parts.length >= 3) {
-            return parts[3]; // 第三个部分是projectId
+            return parts[2]; // 第三个部分是projectId
         }
         return null;
     }

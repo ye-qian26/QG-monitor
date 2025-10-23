@@ -1,7 +1,5 @@
 package com.qg.common.repository;
 
-
-import com.qg.common.domain.po.BackendError;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +77,7 @@ public abstract class StatisticsDataRepository<T> {
 
         // 更新内存缓存
         T cached = cacheMap.computeIfAbsent(key, k -> entity);
-        incrementEvent(cached);
+        //incrementEvent(cached);
 
         // 判断是否需要告警
         checkIfAlert(cached);

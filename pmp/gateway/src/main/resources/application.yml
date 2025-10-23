@@ -8,13 +8,19 @@ spring:
       discovery:
         enabled: true  # 开启服务注册发现
       server-addr: http://47.113.224.195:8848 # nacos地址
+#        server-addr: 192.168.148.100:8848
     gateway:
       routes:
         # 告警服务
-        - id: alert-service
+        - id: alert-service # 路由标示，必须唯一
           uri: lb://alert-service
           predicates:
-            - Path=/alertRules/**,/notifications/**,/responsibilities/**,/ws/**,/ws
+            - Path=/alertRules/**,/notifications/**,/responsibilities/**
+        # websocket服务
+        - id: websocket-service
+          uri: lb:ws://alert-service
+          predicates:
+            - Path=/ws/**,/ws
         # 后端服务
         - id: backend-service
           uri: lb://backend-service
@@ -60,8 +66,8 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/users/**,/projects/**,/roles/**
-#      default-filters:
-#        - AddRequestHeader=Truth,this is request header~
+      default-filters:
+        - AddRequestHeader=Truth,this is request header~
       globalcors: # 全局的跨域处理
         add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题
 #        corsConfigurations:

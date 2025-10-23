@@ -105,7 +105,7 @@ public class NotificationServiceImpl implements NotificationService {
             return new Result(Code.SUCCESS, notificationVOList, "查询成功");
         } catch (Exception e) {
             log.error("查询通知失败，接收者ID: {}", receiverId, e);
-            return new Result(Code.INTERNAL_ERROR, "查询通知失败: " + e.getMessage());
+            return new Result(Code.INTERNAL_ERROR, Collections.emptyList(), "查询通知失败: " + e.getMessage());
         }
     }
 
@@ -493,6 +493,7 @@ public class NotificationServiceImpl implements NotificationService {
      * 获取后端错误信息映射（按错误类型，获取最新的记录）
      */
     private Map<String, BackendError> getBackendErrorMapByType(List<String> errorTypes) {
+
         if (errorTypes.isEmpty()) {
             return new HashMap<>();
         }
