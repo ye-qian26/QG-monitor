@@ -21,8 +21,6 @@
     </properties>
 
     <dependencies>
-
-
         <!--网关-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -30,6 +28,22 @@
         </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- 强制排除所有子依赖中的 Tomcat -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>3.5.6</version> <!-- 与父工程版本一致 -->
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-tomcat</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <!--    <build>-->
     <!--        <plugins>-->
     <!--            <plugin>-->

@@ -191,8 +191,6 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
     @Override
     public void checkIfAlert(BackendError error) {
 
-        System.err. println("-- BackendErrorRepository checkIfAlert called");
-
         log.info("判断是否达到阈值！");
 
         Integer threshold = alertClient.selectThresholdByProjectAndErrorType(
@@ -207,11 +205,8 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
 
         int currentCount = error.getEvent();
 
-        System.err.println("--210");
-
         if (currentCount >= threshold) {
             log.info("发送后端告警");
-            System.err.println("--214");
             //查询同类错误的最新记录
             LambdaQueryWrapper<BackendError> queryWrapper4 = new LambdaQueryWrapper<>();
             queryWrapper4.eq(BackendError::getProjectId, error.getProjectId())
@@ -226,7 +221,7 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
 
             // 如果存在同类错误记录，检查时间间隔
             if (latestError != null) {
-                System.err.println("--229");
+
                 log.info("最新错误：{}", latestError);
                 long timeDiff = Timestamp.valueOf(error.getTimestamp()).getTime()
                                 - Timestamp.valueOf(latestError.getTimestamp()).getTime();
@@ -240,21 +235,19 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
 
                 // 如果时间间隔小于40分钟，只更新event次数
                 if (minutesDiff < 40) {
-                    System.err.println("--243");
+
                     log.info("小于40分钟");
                     latestError.setEvent(latestError.getEvent() + error.getEvent());
                     //latestError.setTimestamp(error.getTimestamp()); // 更新时间戳为最新时间
                     backendErrorMapper.updateById(latestError);
                     log.info("时间间隔小于40分钟，只更新错误次数，errorId:{}", latestError.getId());
                 } else {
-                    System.err.println("--250");
                     log.info("大于40分钟");
                     //插入新的错误信息
                     log.info("存储错误数据: {}", error);
                     backendErrorMapper.insert(error);
                 }
             } else {
-                System.err.println("--257");
                 log.info("没有找到错误信息，存储错误数据: {}", error);
                 backendErrorMapper.insert(error);
             }
@@ -275,9 +268,7 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
             error = backendErrorMapper.selectOne(queryWrapper2);
             log.info("errorId:{}", error.getId());
 
-            System.err.println("--278");
             if (shouldAlert(generateUniqueKey(error), error)) {
-                System.err.println("--280");
                 String message = generateAlertMessage(error);
                 // TODO: 需要@的成员手机号列表
 
@@ -351,7 +342,6 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
 //                    /*List<Role> roles = roleMapper.selectList(queryWrapper3);*/
 //                    List<Role> roles = projectClient.getRoleListByQueryWrapper(queryWrapper3);
 
-                    System.err.println("--353");
                     List<Role> roles = userClient.getRoleListByProjectId(error.getProjectId());
 
                     // 2. 提取角色中的用户ID集合
@@ -365,7 +355,6 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
                         log.error("保存通知进数据库失败！");
                     }
 
-                    System.err.println("--查询webhook...");
                     String webhookUrl = getWebhookUrl(error.getProjectId());
 
                     System.err. println("360行webhookUrl: " + webhookUrl);
@@ -398,7 +387,6 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
 //
 //                /*Responsibility responsibility = responsibilityMapper.selectOne(queryWrapper);*/
                 Responsibility responsibility = alertClient.getResponsibility(error.getProjectId(), error.getErrorType());
-                System.err.println("--400");
 
                 if (responsibility != null) {
                     log.info("该错误已经被委派");
@@ -418,7 +406,6 @@ public class BackendErrorRepository extends ErrorRepository<BackendError> {
             }
         }
 
-        System.err.println("--420");
     }
 
     /**

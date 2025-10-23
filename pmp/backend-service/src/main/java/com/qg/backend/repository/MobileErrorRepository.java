@@ -46,6 +46,7 @@ public class MobileErrorRepository extends ErrorRepository<MobileError> {
     @Override
     protected void saveToDatabase(MobileError error) {
         try {
+            System.err.println("存储错误数据: " + error + this.getClass().getSimpleName());
             mobileErrorMapper.insert(error);
         } catch (Exception e) {
             log.error("移动端错误统计失败,项目ID: {}: {}", error.getProjectId(), e.getMessage());

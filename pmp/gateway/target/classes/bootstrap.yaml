@@ -18,13 +18,17 @@ spring:
           - org.springframework.cloud.gateway.config.GrpcSslConfigurer
           - org.springframework.cloud.gateway.filter.GrpcMetricsPostProcessor
     nacos:
-      server-addr: 47.113.224.195:8848
+      server-addr: 192.168.148.100:8848
       username: nacos
       password: nacos
       config:
         enabled: true  # 配置中心启用
         file-extension: yaml
         shared-configs:
-          - data-id: shared-spring.yaml
-          - data-id: shared-mp.yaml
-          - data-id: shared-rsa.yaml
+          - data-id: shared-jdbc.yaml
+          - data-id: shared-log.yaml
+          - data-id: shared-swagger.yaml
+          - data-id: gateway-routes.json
+          - data-id: shared-seata.yaml
+        discovery:
+          ip: 192.168.148.1

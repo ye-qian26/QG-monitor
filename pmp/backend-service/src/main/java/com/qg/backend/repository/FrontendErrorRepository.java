@@ -108,7 +108,7 @@ public class FrontendErrorRepository extends ErrorRepository<FrontendError> {
         String[] data = redisKey.split(":");
 
         HashMap<String, Integer> alertRuleMap = alertClient
-                .selectByBackendRedisKeyToMap(data[2], data[3], data[4]);
+                .selectByBackendRedisKeyToMap(data[1], data[2], data[3]);
 
         int currentCount = error.getEvent();
         int threshold = alertRuleMap.getOrDefault(redisKey, DEFAULT_THRESHOLD.getAsInt());

@@ -105,7 +105,7 @@ public class NotificationServiceImpl implements NotificationService {
             return new Result(Code.SUCCESS, notificationVOList, "查询成功");
         } catch (Exception e) {
             log.error("查询通知失败，接收者ID: {}", receiverId, e);
-            return new Result(Code.INTERNAL_ERROR, "查询通知失败: " + e.getMessage());
+            return new Result(Code.INTERNAL_ERROR, Collections.emptyList(), "查询通知失败: " + e.getMessage());
         }
     }
 
