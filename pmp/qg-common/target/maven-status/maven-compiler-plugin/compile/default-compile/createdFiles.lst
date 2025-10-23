@@ -19,6 +19,7 @@ com\qg\common\domain\vo\FrontendResponsibilityVO.class
 com\qg\common\utils\Constants.class
 com\qg\common\domain\dto\MethodInvocationDTO.class
 com\qg\common\domain\po\BackendError.class
+com\qg\common\domain\dto\WrapperDTO.class
 com\qg\common\domain\po\Project.class
 com\qg\common\domain\vo\UvBillDataVO.class
 com\qg\common\utils\MathUtil.class

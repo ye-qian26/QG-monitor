@@ -1,0 +1,12 @@
+com\qg\feign\clients\BackendClient.class
+com\qg\feign\domain\vo\MobileErrorHandleVO.class
+com\qg\feign\domain\vo\FrontendErrorHandleVO.class
+com\qg\feign\clients\AlertClient.class
+com\qg\feign\clients\UserClient.class
+com\qg\feign\repository\ErrorRepository.class
+com\qg\feign\domain\vo\BackendErrorHandleVO.class
+com\qg\feign\clients\ProjectClient.class
+com\qg\feign\clients\FrontendClient.class
+com\qg\feign\config\DefaultFeignConfiguration.class
+com\qg\feign\domain\dto\UsersDto.class
+com\qg\feign\clients\MobileClient.class

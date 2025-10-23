@@ -1,0 +1,6 @@
+com\qg\message\service\impl\MessageServiceImpl.class
+com\qg\message\service\MessageService.class
+com\qg\message\domain\po\Message.class
+com\qg\message\MessageServiceApplication.class
+com\qg\message\controller\MessageController.class
+com\qg\message\mapper\MessageMapper.class

@@ -34,12 +34,18 @@
             <artifactId>qg-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.yeqian</groupId>
-            <artifactId>qg-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <!-- 显式配置跳过 repackage -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>  <!-- 关键配置 -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
