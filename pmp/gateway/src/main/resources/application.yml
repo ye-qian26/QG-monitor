@@ -11,10 +11,10 @@ spring:
     gateway:
       routes:
         # 告警服务
-        - id: alert-service # 路由标示，必须唯一
-          uri: lb://alert-service # 这里填spring.application.name的值
+        - id: alert-service
+          uri: lb://alert-service
           predicates:
-            - Path=/alertRules/**,/notifications/**,/responsibilities/**
+            - Path=/alertRules/**,/notifications/**,/responsibilities/**,/ws/**,/ws
         # 后端服务
         - id: backend-service
           uri: lb://backend-service
@@ -60,8 +60,8 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/users/**,/projects/**,/roles/**
-      default-filters:
-        - AddRequestHeader=Truth,this is request header~
+#      default-filters:
+#        - AddRequestHeader=Truth,this is request header~
       globalcors: # 全局的跨域处理
         add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题
 #        corsConfigurations:
